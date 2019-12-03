@@ -1,5 +1,6 @@
 import projectStore from "./ProjectStore";
 
+//Test objects used when testing the project store
 const testData = {
   id: 123456789,
   name: "TestProjectName",
@@ -97,7 +98,7 @@ const updatedWorkItem = {
   workItemStoryPoints: 20
 };
 
-
+//Tests
 it("loads data without crashing", () => {
   projectStore.loadProjectIntoStore(testData);
   expect(projectStore).toEqual(testData);
@@ -114,7 +115,7 @@ describe("testing updateStore", () => {
       id: testData.sprints[0].sprintId,
       data: newLane
     });
-    expect(projectStore.sprints[0].lanes[2]).toEqual(newLane);
+    expect(projectStore.sprints[0].lanes).toContainEqual(newLane);
   });
 
   it("updates an existing lane without crashing", () => {
@@ -123,14 +124,14 @@ describe("testing updateStore", () => {
       id: testData.sprints[0].sprintId,
       data: newLane
     });
-    expect(projectStore.sprints[0].lanes[2]).toEqual(newLane);
+    expect(projectStore.sprints[0].lanes).toContainEqual(newLane);
 
     projectStore.updateStore({
       type: "updateLane",
       id: testData.sprints[0].sprintId,
       data: updatedLane
     });
-    expect(projectStore.sprints[0].lanes[2]).toEqual(updatedLane);
+    expect(projectStore.sprints[0].lanes).toContainEqual(updatedLane);
   });
 
   it("removes an existing lane without crashing", () => {
@@ -139,7 +140,7 @@ describe("testing updateStore", () => {
       id: testData.sprints[0].sprintId,
       data: newLane
     });
-    expect(projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)).toBeDefined();
+    expect(projectStore.sprints[0].lanes).toContainEqual(newLane);
 
     projectStore.updateStore({
       type: "removeLane",
@@ -148,7 +149,7 @@ describe("testing updateStore", () => {
         id: newLane.laneId
       }
     });
-    expect(projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)).toBe(false);
+    expect(projectStore.sprints[0].lanes).not.toContainEqual(newLane);
   });
 
   it("adds a sprint without crashing", () => {
@@ -182,7 +183,7 @@ describe("testing updateStore", () => {
       id: testData.id,
       data: newSprint
     });
-    expect(projectStore.sprints.some(sp => sp.sprintId === newSprint.sprintId)).toBe(true);
+    expect(projectStore.sprints).toContainEqual(newSprint);
 
     projectStore.updateStore({
       type: "removeSprint",
@@ -191,7 +192,7 @@ describe("testing updateStore", () => {
         id: newSprint.sprintId
       }
     });
-    expect(projectStore.sprints.some(sp => sp.sprintId === newSprint.sprintId)).toBe(false);
+    expect(projectStore.sprints).not.toContainEqual(newSprint);
   });
 
   it("adds a workitem without crashing", () => {
@@ -235,9 +236,12 @@ describe("testing updateStore", () => {
     expect(projectStore.workItems).not.toContainEqual(newWorkItem);
   });
 
-  it("adds a comment without crashing", () => {});
-
-  it("removes an existing comment without crashing", () => {});
-
-  it("updates the project without crashing", () => {});
+  it("updates the project without crashing", () => {
+    projectStore.updateStore({
+      type: "updateProject",
+      id: testData.id,
+      data: {name: "newName"}
+    });
+    expect(projectStore.name).toEqual('newName');
+  });
 });

@@ -24,21 +24,27 @@ class ProjectStore{
     //Updates the currently loaded project 
     updateStore = (response) => {
         let foundSprint;
+        let foundWorkItem;
 
         switch (response.type) {
+            case 'updateProject':
+                this.name = response.data.name;
+                break;
+
             case 'updateWorkItem':
                 const tempWorkItems = this.workItems;
-                const foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
+                foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
                 if(foundWorkItem)
                     tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = response.data;
                 else
-                    tempWorkItems.push(response.data)
-                
+                    tempWorkItems.push(response.data)                
                     this.sprints = tempWorkItems;
                 break;
+
             case 'removeWorkItem':
                 this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.id);
                 break;
+
             case 'updateSprint':
                 const tempArray = this.sprints;
                 foundSprint = tempArray.find(sp => sp.sprintId === response.data.sprintId);
@@ -49,9 +55,11 @@ class ProjectStore{
                 
                     this.sprints = tempArray;
                 break;
+
             case 'removeSprint':
                 this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.id);
                 break;
+
             case 'updateLane':
                 foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
                 if (foundSprint){ 
@@ -68,6 +76,7 @@ class ProjectStore{
                     throw Error("Sprint not found")
                 }
                 break;
+
             case 'removeLane':
                 foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
                 if (foundSprint){ 
