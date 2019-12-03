@@ -1,0 +1,30 @@
+#sidebar {
+    width: 240px;
+    background: #EB5757;
+    position: fixed;
+    height: 100vh;
+}
+
+#divider {
+    position: absolute;
+    width: 240px;
+    height: 0px;
+    left: 0px;
+    top: 70px;
+
+    border: 1px solid #FFFFFF;
+}
+
+#title {
+    margin-left: 70px;
+    margin-top: 15px;
+    color: white;
+}
+
+#logo {
+    position: absolute;
+    width: 48px;
+    height: 47px;
+    left: 10px;
+    top: 20px;
+}
