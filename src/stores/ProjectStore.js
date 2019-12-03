@@ -5,9 +5,9 @@ class ProjectStore{
     id = 0;
     name = "";
     companyId = 0;
-    users = [];
-    sprints = [];
-    workItems = [];
+    users = {};
+    sprints = {};
+    workItems = {};
 
     //All actions that are used to modify the store
 
@@ -22,9 +22,36 @@ class ProjectStore{
     }
 
     //Updates the currently loaded project 
-    updateStore = (data) => {
-        //TODO: Update store with the recieved data
-        throw Error("Not implemented");
+    updateStore = (response) => {
+        let foundSprint;
+
+        switch (response.type) {
+            case 'updateLane':
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                if (foundSprint){ 
+                    const tempArray = foundSprint.lanes;
+                    const foundLane = tempArray.find(ln => ln.laneId === response.data.laneId);
+                    if(foundLane)
+                        tempArray[tempArray.indexOf(foundLane)] = response.data;
+                    else
+                        tempArray.push(response.data)
+
+                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = tempArray;
+                }
+                else{
+                    throw Error("Sprint not found")
+                }
+                break;
+            case 'removeLane':
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                if (foundSprint){ 
+                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = foundSprint.lanes.filter(ln => ln.laneId !== response.data.id);
+                }
+                break;
+        
+            default:
+                    throw Error("Response type not found")
+        }
     }
 
     
