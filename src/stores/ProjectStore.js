@@ -12,7 +12,6 @@ class ProjectStore{
     //All actions that are used to modify the store
 
     //Loads a new project into the store
-    
     loadProjectIntoStore = (data) => {
         this.id = data.id;
         this.name = data.name;
@@ -23,9 +22,8 @@ class ProjectStore{
     }
 
     //Updates the currently loaded project 
-    
     updateStore = (data) => {
-        //TODO: Recieve data from socket and update store
+        //TODO: Update store with the recieved data
         throw Error("Not implemented");
     }
 
@@ -118,6 +116,4 @@ decorate(ProjectStore, {
     removeWorkItem: action,
 })
 
-const projectStore = new ProjectStore();
-
-export default projectStore;
+export default new ProjectStore();;
