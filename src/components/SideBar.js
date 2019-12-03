@@ -2,16 +2,23 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+
 import DashboardIcon from '@material-ui/icons/Dashboard';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+  dashboardIcon:{
+    fontSize: 'large',
+  },
+  listItemText:{
+    fontSize:'1.6em',
+    color: '#FFFFFF',
+  },
   root: {
     display: 'flex',
   },
@@ -52,28 +59,14 @@ export default function SideBar() {
       >
         <div className={classes.toolbar} />
         <Divider />
-        
 
-        {/* TODO: Change text size and color to abt 20px and white*/}
         <ListItem button key={"Dashboard"}>
-            <ListItemIcon> <DashboardIcon/> </ListItemIcon>
-            <ListItemText primary={"Dashboard"} />
+            <ListItemIcon classes={{primary:classes.dashboardIcon}}> <DashboardIcon style={{ color: '#FFFFFF' }}/> </ListItemIcon>
+            <ListItemText classes={{primary:classes.listItemText}} primary={"Dashboard"} />
         </ListItem>
+
         <Divider/>
-
-        {/* List expects array of items to map through like displayed below*/}
-        {/* <List>
-            {['Dashboard'].map((text, index) => (
-                <ListItem button key={text}>
-                <ListItemIcon> <DashboardIcon/> </ListItemIcon>
-                <ListItemText primary={text} />
-                </ListItem>
-            ))}
-        </List> */}
-
       </Drawer>
     </div>
   );
 }
-          
-          
