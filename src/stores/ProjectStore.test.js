@@ -55,6 +55,49 @@ const testData = {
   ]
 };
 
+const newSprint = {
+  sprintId: 9861981,
+  sprintTitle: "new sprint title"
+};
+
+const updatedSprint = {
+  sprintId: 9861981,
+  sprintTitle: "updated sprint title"
+};
+
+const newLane = {
+  laneId: "567891",
+  laneTitle: "new lane title"
+};
+
+const updatedLane = {
+  laneId: "567891",
+  laneTitle: "updated lane title"
+};
+
+const newWorkItem = {
+  workItemId: 3216874,
+  workItemTitle: "new work item",
+  workItemDesc: "This is a workitem",
+  workItemOwner: testData.users[0].userId,
+  workItemCategory: 'Epic',
+  workItemLane: testData.sprints[0].lanes[0].laneId,
+  workItemStatus: 'todo',
+  workItemStoryPoints: 10
+};
+
+const updatedWorkItem = {
+  workItemId: 3216874,
+  workItemTitle: "updated work item",
+  workItemDesc: "This is an updated workitem",
+  workItemOwner: testData.users[1].userId,
+  workItemCategory: 'Task',
+  workItemLane: testData.sprints[0].lanes[1].laneId,
+  workItemStatus: 'done',
+  workItemStoryPoints: 20
+};
+
+
 it("loads data without crashing", () => {
   projectStore.loadProjectIntoStore(testData);
   expect(projectStore).toEqual(testData);
@@ -66,11 +109,6 @@ describe("testing updateStore", () => {
   });
 
   it("adds a lane without crashing", () => {
-    const newLane = {
-      laneId: "567891",
-      laneTitle: "new lane title"
-    };
-
     projectStore.updateStore({
       type: "updateLane",
       id: testData.sprints[0].sprintId,
@@ -80,21 +118,13 @@ describe("testing updateStore", () => {
   });
 
   it("updates an existing lane without crashing", () => {
-    const newLane = {
-      laneId: "567891",
-      laneTitle: "new lane title"
-    };
-    const updatedLane = {
-      laneId: "567891",
-      laneTitle: "updated lane title"
-    };
-
     projectStore.updateStore({
       type: "updateLane",
       id: testData.sprints[0].sprintId,
       data: newLane
     });
     expect(projectStore.sprints[0].lanes[2]).toEqual(newLane);
+
     projectStore.updateStore({
       type: "updateLane",
       id: testData.sprints[0].sprintId,
@@ -104,19 +134,13 @@ describe("testing updateStore", () => {
   });
 
   it("removes an existing lane without crashing", () => {
-    const newLane = {
-      laneId: "567891",
-      laneTitle: "new lane title"
-    };
-
     projectStore.updateStore({
       type: "updateLane",
       id: testData.sprints[0].sprintId,
       data: newLane
     });
-    expect(
-      projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)
-    ).toBeDefined();
+    expect(projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)).toBeDefined();
+
     projectStore.updateStore({
       type: "removeLane",
       id: testData.sprints[0].sprintId,
@@ -124,43 +148,26 @@ describe("testing updateStore", () => {
         id: newLane.laneId
       }
     });
-    expect(
-      projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)
-    ).toBe(false);
+    expect(projectStore.sprints[0].lanes.some(ln => ln.laneId === newLane.laneId)).toBe(false);
   });
 
   it("adds a sprint without crashing", () => {
-    const newSprint = {
-      sprintId: 9861981,
-      sprintTitle: "new sprint title"
-    }
-
     projectStore.updateStore({
       type: "updateSprint",
       id: testData.id,
       data: newSprint
     });
-
     expect(projectStore.sprints[2]).toEqual(newSprint);
   });
 
   it("updates an existing sprint without crashing", () => {
-    const newSprint = {
-      sprintId: 9861981,
-      sprintTitle: "new sprint title"
-    }
-
-    const updatedSprint = {
-      sprintId: 9861981,
-      sprintTitle: "updated sprint title"
-    }
-
     projectStore.updateStore({
       type: "updateSprint",
       id: testData.id,
       data: newSprint
     });
     expect(projectStore.sprints[2]).toEqual(newSprint);
+
     projectStore.updateStore({
       type: "updateSprint",
       id: testData.id,
@@ -170,17 +177,13 @@ describe("testing updateStore", () => {
   });
 
   it("removes an existing sprint without crashing", () => {
-    let newSprint = {
-      sprintId: 9861981,
-      sprintTitle: "new sprint title"
-    }
-
     projectStore.updateStore({
       type: "updateSprint",
       id: testData.id,
       data: newSprint
     });
     expect(projectStore.sprints.some(sp => sp.sprintId === newSprint.sprintId)).toBe(true);
+
     projectStore.updateStore({
       type: "removeSprint",
       id: testData.id,
@@ -190,4 +193,51 @@ describe("testing updateStore", () => {
     });
     expect(projectStore.sprints.some(sp => sp.sprintId === newSprint.sprintId)).toBe(false);
   });
+
+  it("adds a workitem without crashing", () => {
+    projectStore.updateStore({
+      type: "updateWorkItem",
+      id: testData.id,
+      data: newWorkItem
+    });
+    expect(projectStore.workItems).toContainEqual(newWorkItem);
+  });
+
+  it("updates an existing workitem without crashing", () => {
+    projectStore.updateStore({
+      type: "updateWorkItem",
+      id: testData.id,
+      data: newWorkItem
+    });
+    expect(projectStore.workItems).toContainEqual(newWorkItem);
+
+    projectStore.updateStore({
+      type: "updateWorkItem",
+      id: testData.id,
+      data: updatedWorkItem
+    });
+    expect(projectStore.workItems).toContainEqual(updatedWorkItem);
+  });
+
+  it("removes an existing workitem without crashing", () => {
+    projectStore.updateStore({
+      type: "updateWorkItem",
+      id: testData.id,
+      data: newWorkItem
+    });
+    expect(projectStore.workItems).toContainEqual(newWorkItem);
+
+    projectStore.updateStore({
+      type: "removeWorkItem",
+      id: testData.id,
+      data: {id: newWorkItem.workItemId}
+    });
+    expect(projectStore.workItems).not.toContainEqual(newWorkItem);
+  });
+
+  it("adds a comment without crashing", () => {});
+
+  it("removes an existing comment without crashing", () => {});
+
+  it("updates the project without crashing", () => {});
 });

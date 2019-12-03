@@ -26,6 +26,19 @@ class ProjectStore{
         let foundSprint;
 
         switch (response.type) {
+            case 'updateWorkItem':
+                const tempWorkItems = this.workItems;
+                const foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
+                if(foundWorkItem)
+                    tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = response.data;
+                else
+                    tempWorkItems.push(response.data)
+                
+                    this.sprints = tempWorkItems;
+                break;
+            case 'removeWorkItem':
+                this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.id);
+                break;
             case 'updateSprint':
                 const tempArray = this.sprints;
                 foundSprint = tempArray.find(sp => sp.sprintId === response.data.sprintId);
