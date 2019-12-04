@@ -16,7 +16,6 @@ const Board = inject('store')(observer(class Board extends Component {
     render() {
         return (
             <Container id='board'>
-                <h1>{this.state.sprint.sprintTitle}</h1>
                 <Row id='row' style={{width: this.state.sprint.lanes.length * 320}}>
                     {this.state.sprint.lanes.map((lane) => <Lane data={lane}/>)}
                 </Row>
