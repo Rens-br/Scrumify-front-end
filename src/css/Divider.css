@@ -1,9 +1,6 @@
 .dividerDiv {
-    width: 240px;
+    width: 100%;
     height: 2px;
-    left: 0px;
-    background-color: #FFFFFF;
     display: flex;
-    margin-left: -40px;
-    margin-bottom: 0px;
+    background-color: #FFFFFF;
 }

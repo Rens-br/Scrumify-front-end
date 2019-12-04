@@ -11,8 +11,9 @@ export default class SideBar extends React.Component{
     return(
       <div id="sidebar">
         <NavButton icon="dashboard" label="KANKER" />
-        
+        <Divider />
         <NavButton label="CHEMO" />
+        <Divider />
       </div>
     );
   }
