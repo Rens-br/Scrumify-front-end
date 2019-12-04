@@ -19,4 +19,5 @@
 .btnText {
     font-size: 30px;
     color: #FFFFFF;
+    user-select: none; 
 }
