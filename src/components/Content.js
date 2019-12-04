@@ -8,6 +8,7 @@ const Content = inject('store')(observer(class Content extends Component{
     render() {
         return (
             <div id='content'>
+				<div id='header'/>
                 <Board sprint={this.props.store.projectStore.sprints[0]}/>
             </div>
         );

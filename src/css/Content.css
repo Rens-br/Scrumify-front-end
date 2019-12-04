@@ -2,4 +2,11 @@
     position: relative;
     margin-left: 240px;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#header{
+    display: flex;
+    flex: 80px;
 }
