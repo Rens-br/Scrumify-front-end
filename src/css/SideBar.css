@@ -5,28 +5,7 @@
     height: 100vh;
     float: left;
     position: fixed;
-}
-
-#title {
-    margin-left: 70px;
-    margin-top: 15px;
-    height: 50px;
-    color: white;
-}
-
-#logo {
-    position: absolute;
-    width: 48px;
-    height: 47px;
-    left: 10px;
-    top: 20px;
-    bottom: 40px;
-    margin-bottom: 40px;
-}
-
-.icon{
-    float: left;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
