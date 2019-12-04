@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/icons": "^4.5.1",
+    "@material/react-material-icon": "^0.15.0",
     "@trendmicro/react-sidenav": "^0.4.5",
     "bootstrap": "^4.4.1",
     "mobx": "^5.15.0",

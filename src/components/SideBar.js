@@ -13,7 +13,10 @@ export default class SideBar extends React.Component{
         <h1 id="title">Scrumify</h1>
         <ul>
           <Divider style={{ marginTop: '15px' }}/>
-          <NavButton label="Project"/>
+          <NavButton icon="dashboard" label="Dashboard"/>
+          <Divider />
+          
+          <Divider />
         </ul>
       </div>
     );

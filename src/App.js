@@ -5,7 +5,7 @@ function App() {
   return (
     <div style={{ display: 'flex' }} className="App">
       <SideBar />
-    <div><p>die kanker</p></div>
+    <div style={{ marginLeft: '240px' }}><p>die kanker</p></div>
       
     </div>
   );
