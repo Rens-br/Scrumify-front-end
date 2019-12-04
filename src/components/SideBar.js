@@ -3,6 +3,7 @@ import NavButton from './NavButton';
 import Divider from './Divider';
 import '../css/bootstrap.min.css';
 import '../css/SideBar.css';
+import NavDropdown from './NavDropdown';
 
 
 export default class SideBar extends React.Component{
@@ -15,7 +16,7 @@ export default class SideBar extends React.Component{
           <Divider style={{ marginTop: '15px' }}/>
           <NavButton icon="dashboard" label="Dashboard"/>
           <Divider />
-          
+          <NavDropdown label="kkrProject" />
           <Divider />
         </ul>
       </div>
