@@ -1,0 +1,13 @@
+#lane {
+    margin: 10px;
+    max-width: 300px;
+    min-width: 300px;
+    background-color: red;
+    padding: 0px;
+}
+
+#laneHeader{
+    background-color: white;
+    height: 50px;
+    width: 100%;
+}
