@@ -1,6 +1,8 @@
 import React from 'react';
+import NavButton from './NavButton';
+import Divider from './Divider';
 import '../css/bootstrap.min.css';
-import './SideBar.css';
+import '../css/SideBar.css';
 
 
 export default class SideBar extends React.Component{
@@ -9,7 +11,10 @@ export default class SideBar extends React.Component{
       <div id="sidebar">
       <img src={ require('../img/Scrumify logo wit.png') } alt="KANKER" id="logo"></img>
         <h1 id="title">Scrumify</h1>
-        <hr id="divider"/>
+        <ul>
+          <Divider />
+          <NavButton label="Project"/>
+        </ul>
       </div>
     );
   }
