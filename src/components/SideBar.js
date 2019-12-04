@@ -12,7 +12,7 @@ export default class SideBar extends React.Component{
       <img src={ require('../img/Scrumify logo wit.png') } alt="KANKER" id="logo"></img>
         <h1 id="title">Scrumify</h1>
         <ul>
-          <Divider />
+          <Divider style={{ marginTop: '15px' }}/>
           <NavButton label="Project"/>
         </ul>
       </div>

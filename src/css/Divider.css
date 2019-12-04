@@ -1,8 +1,9 @@
 .dividerDiv {
-    position: absolute;
     width: 240px;
     height: 3px;
     left: 0px;
     top: 70px;
     background-color: #FFFFFF;
+    display: flex;
+    margin-left: -40px;
 }

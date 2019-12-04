@@ -3,8 +3,10 @@ import SideBar from './components/SideBar';
 
 function App() {
   return (
-    <div className="App">
+    <div style={{ display: 'flex' }} className="App">
       <SideBar />
+    <div><p>die kanker</p></div>
+      
     </div>
   );
 }

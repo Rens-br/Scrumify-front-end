@@ -3,6 +3,8 @@
     background: #EB5757;
     position: fixed;
     height: 100vh;
+    float: left;
+    position: relative;
 }
 
 #title {
@@ -10,6 +12,7 @@
     margin-top: 15px;
     height: 50px;
     color: white;
+    display: flex;
 }
 
 #logo {
