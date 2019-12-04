@@ -6,7 +6,7 @@ import '../css/Divider.css';
 export default class SideBar extends React.Component{
   render(){
     return(
-        <div style={this.props.style} className="dividerDiv"></div>
+        <div className="dividerDiv"></div>
     );
   }
 }

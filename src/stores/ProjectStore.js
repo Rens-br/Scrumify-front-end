@@ -9,6 +9,63 @@ class ProjectStore{
     sprints = {};
     workItems = {};
 
+    constructor(){
+        this.loadProjectIntoStore({
+            id: 123456789,
+            name: "TestProjectName",
+            companyId: 123456,
+            users: [{
+                userId: 1234567,
+                userName: "TestUserName1",
+                userEmail: "testemail1@email.com"
+            },
+                {
+                    userId: 12345678,
+                    userName: "TestUserName2",
+                    userEmail: "testemail2@email.com"
+                }
+            ],
+            sprints: [{
+                sprintId: 1234567891,
+                sprintTitle: "testSprint1",
+                lanes: [{
+                    laneId: 23456,
+                    laneTitle: "testLaneTitle1"
+                },
+                    {
+                        laneId: 34567,
+                        laneTitle: "testLaneTitle2"
+                    }
+                ]
+            },
+                {
+                    sprintId: 456789,
+                    sprintTitle: "testSprint2",
+                    lanes: [{
+                        laneId: 56789,
+                        laneTitle: "testLaneTitle1"
+                    },
+                        {
+                            laneId: 6789,
+                            laneTitle: "testLaneTitle2"
+                        }
+                    ]
+                }
+            ],
+            workItems: [{
+                workItemId: 789123,
+                workItemTitle: "TestWorkItem1",
+                workItemDescription: "This is a workitem test."
+            },
+                {
+                    workItemId: 891234,
+                    workItemTitle: "TestWorkItem2",
+                    workItemDescription: "This is another workitem test."
+                }
+            ]
+        });
+    }
+
     //All actions that are used to modify the store
 
     //Loads a new project into the store

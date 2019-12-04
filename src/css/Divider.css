@@ -1,4 +1,5 @@
 .dividerDiv {
+    position: absolute;
     width: 240px;
     height: 2px;
     left: 0px;

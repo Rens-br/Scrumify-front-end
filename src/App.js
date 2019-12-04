@@ -1,12 +1,13 @@
 import React from 'react';
 import SideBar from './components/SideBar';
+import Board from "./components/Board";
+import Content from "./components/Content";
 
 function App() {
   return (
-    <div style={{ display: 'flex' }} className="App">
+    <div className="App">
       <SideBar />
-    <div style={{ marginLeft: '240px' }}><p>die kanker</p></div>
-      
+      <Content/>
     </div>
   );
 }
