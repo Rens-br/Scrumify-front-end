@@ -5,7 +5,6 @@ import '../css/Lane.css';
 import Card from './Card';
 import {Droppable} from 'react-beautiful-dnd';
 import {inject, observer } from 'mobx-react';
-import {autorun} from 'mobx';
 
 const Lane = inject('store')(observer(class Lane extends Component{
 	render() {
@@ -17,6 +16,7 @@ const Lane = inject('store')(observer(class Lane extends Component{
 				<Droppable droppableId={this.props.data.laneId.toString()}>
 					{(provided, snapshot) => (
 						<div
+							id='cardArea'
 							{...provided.droppableProps}
 							ref={provided.innerRef}
 						>
