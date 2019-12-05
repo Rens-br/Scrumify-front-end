@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/bootstrap.min.css';
-import '../css/NavButton.css';
+import '../../css/bootstrap.min.css';
+import './NavButton.css';
 import MaterialIcon from '@material/react-material-icon';
 import '@material/react-material-icon/dist/material-icon.css';
 

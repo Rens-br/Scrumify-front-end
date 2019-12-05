@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/bootstrap.min.css';
-import '../css/Divider.css';
+import '../../css/bootstrap.min.css';
+import './Divider.css';
 
 
 export default class Divider extends React.Component{

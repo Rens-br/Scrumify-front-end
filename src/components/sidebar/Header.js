@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/bootstrap.min.css';
-import '../css/Header.css';
-import Logo from '../img/Scrumify logo wit.png';
+import '../../css/bootstrap.min.css';
+import './Header.css';
+import Logo from '../../img/Scrumify logo wit.png';
 
 
 export default class Header extends React.Component{
