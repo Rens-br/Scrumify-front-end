@@ -1,6 +1,6 @@
 import React from 'react';
-import '../css/bootstrap.min.css';
-import '../css/NavDropdown.css';
+import '../../css/bootstrap.min.css';
+import './NavDropdown.css';
 import NavButton from './NavButton';
 
 
