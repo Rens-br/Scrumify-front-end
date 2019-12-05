@@ -6,9 +6,13 @@ import '@material/react-material-icon/dist/material-icon.css';
 
 
 export default class NavButton extends React.Component{
+  ocEvent = () => {
+    alert('You clicked a button'+this.props.path);
+  }
+
   render(){
     return(
-        <div className="btnDiv">
+        <div className="btnDiv" onClick={this.ocEvent}>
             <MaterialIcon className="btnIcon" icon={this.props.icon} style={{ fontSize: '24px' }}/>
             <p className="btnText">{this.props.label}</p>
         </div>
