@@ -1,19 +1,27 @@
 import React from 'react';
 import { Component } from 'react';
 import MaterialIcon from '@material/react-material-icon';
-import {Row} from 'react-bootstrap';
+import '../css/Card.css';
+import {Draggable} from 'react-beautiful-dnd';
 
 class Card extends Component{
 	render() {
 		return (
-			<Row>
-				<div id='card'>
-					<div>
-						<p>Title</p>
-						<MaterialIcon icon='menu'/>
+			<Draggable draggableId={this.props.workitem.workItemId.toString()} index={this.props.index}>
+				{(provided, snapshot) => (
+					<div
+						id='card'
+						ref={provided.innerRef}
+						{...provided.draggableProps}
+						{...provided.dragHandleProps}
+					>
+						<div id='cardHeader'>
+							<p id='cardTitle'>Work Item {this.props.workitem.workItemId}</p>
+							<MaterialIcon id='cardIcon' icon='menu'/>
+						</div>
 					</div>
-				</div>
-			</Row>
+				)}
+			</Draggable>
 		);
 	}
 }

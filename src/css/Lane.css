@@ -11,3 +11,9 @@
     height: 50px;
     width: 100%;
 }
+
+#cardContainer{
+    padding: 0;
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+}
