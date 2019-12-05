@@ -2,6 +2,7 @@ import React from 'react';
 import { Component } from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
 import '../css/Lane.css';
+import Card from './Card';
 
 class Lane extends Component{
 	render() {
@@ -11,7 +12,7 @@ class Lane extends Component{
 					<p>{this.props.data.laneTitle}</p>
 				</div>
 				<Container>
-
+					<Card/>
 				</Container>
 			</Col>
 		);
