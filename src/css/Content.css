@@ -6,8 +6,3 @@
     flex-direction: column;
     background-color: #fafafa;
 }
-
-#header{
-    display: flex;
-    flex: 80px;
-}
