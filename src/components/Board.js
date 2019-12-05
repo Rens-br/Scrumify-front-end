@@ -15,7 +15,15 @@ const Board = inject('store')(observer(class Board extends Component {
     }
 
     onDragEnd = (result) => {
-        console.log(result)
+        if(result.destination){
+            this.props.store.projectStore.updateWorkItem(parseInt(result.draggableId), {laneId: parseInt(result.destination.droppableId), laneIndex: result.destination.index});
+        }
+    };
+
+    getLane = (lane) => {
+        let laneData = lane;
+        laneData.items = this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId);
+        return laneData;
     };
 
     render() {
@@ -23,7 +31,7 @@ const Board = inject('store')(observer(class Board extends Component {
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Container id='board'>
                     <Row id='row' style={{width: this.state.sprint.lanes.length * 320}}>
-                        {this.state.sprint.lanes.map((lane) => <Lane data={lane}/>)}
+                        {this.state.sprint.lanes.map((lane) => <Lane data={this.getLane(lane)}/>)}
                     </Row>
                 </Container>
             </DragDropContext>
