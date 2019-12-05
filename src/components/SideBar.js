@@ -17,6 +17,20 @@ export default class SideBar extends React.Component{
         <Divider />
         <NavDropdown/>
         <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
+        <NavDropdown/>
+        <Divider/>
       </div>
     );
   }

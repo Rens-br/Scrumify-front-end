@@ -9,7 +9,7 @@ export default class NavButton extends React.Component{
   render(){
     return(
         <div className="btnDiv">
-            <MaterialIcon className="btnIcon" icon={this.props.icon} style={{ fontSize: '35px' }}/>
+            <MaterialIcon className="btnIcon" icon={this.props.icon} style={{ fontSize: '24px' }}/>
             <p className="btnText">{this.props.label}</p>
         </div>
     );
