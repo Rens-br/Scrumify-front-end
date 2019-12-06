@@ -35,6 +35,30 @@ class ProjectStore{
                     {
                         laneId: 34567,
                         laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34561,
+                        laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34562,
+                        laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34563,
+                        laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34564,
+                        laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34565,
+                        laneTitle: "testLaneTitle2"
+                    },
+                    {
+                        laneId: 34566,
+                        laneTitle: "testLaneTitle2"
                     }
                 ]
             },
@@ -54,19 +78,61 @@ class ProjectStore{
             ],
             workItems: [
                 {
-                    workItemId: 783,
+                    workItemId: 123,
                     workItemTitle: "TestWorkItem1",
                     workItemDescription: "This is a workitem test.",
                     laneId: 23456
                 },
                 {
-                    workItemId: 834,
+                    workItemId: 234,
                     workItemTitle: "TestWorkItem2",
                     workItemDescription: "This is another workitem test.",
                     laneId: 23456
                 },
                 {
-                    workItemId: 894,
+                    workItemId: 345,
+                    workItemTitle: "TestWorkItem3",
+                    workItemDescription: "This is another workitem test.",
+                    laneId: 34567
+                },
+                {
+                    workItemId: 456,
+                    workItemTitle: "TestWorkItem1",
+                    workItemDescription: "This is a workitem test.",
+                    laneId: 23456
+                },
+                {
+                    workItemId: 567,
+                    workItemTitle: "TestWorkItem2",
+                    workItemDescription: "This is another workitem test.",
+                    laneId: 23456
+                },
+                {
+                    workItemId: 678,
+                    workItemTitle: "TestWorkItem3",
+                    workItemDescription: "This is another workitem test.",
+                    laneId: 34567
+                },
+                {
+                    workItemId: 789,
+                    workItemTitle: "TestWorkItem3",
+                    workItemDescription: "This is another workitem test.",
+                    laneId: 34567
+                },
+                {
+                    workItemId: 891,
+                    workItemTitle: "TestWorkItem1",
+                    workItemDescription: "This is a workitem test.",
+                    laneId: 23456
+                },
+                {
+                    workItemId: 912,
+                    workItemTitle: "TestWorkItem2",
+                    workItemDescription: "This is another workitem test.",
+                    laneId: 23456
+                },
+                {
+                    workItemId: 2134,
                     workItemTitle: "TestWorkItem3",
                     workItemDescription: "This is another workitem test.",
                     laneId: 34567
