@@ -7,7 +7,7 @@ const testUser = {
     email: 'kaulorens@shemail.com',
     projects: [{
         projectId: 123456789,
-        projectName: 'Rens de schuld geven van alle problemen op de wereld',
+        projectName: 'Rens de schuld geven van alle problemen in de wereld',
     },{
         projectId: 69,
         projectName: 'Het goedmaken met Rens omdat ie me low-key wel hard carryt',

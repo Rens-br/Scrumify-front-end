@@ -20,7 +20,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
-			backgroundColor: isOver ? '#f0f0f0': 'white'
+			backgroundColor: isOver ? '#FAFAFA': 'white'
 		};
 
 		return connectDropTarget(

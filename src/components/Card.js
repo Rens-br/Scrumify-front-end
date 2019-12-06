@@ -17,7 +17,7 @@ const cardSource = {
 export class Card extends Component{
 	render() {
 		return this.props.connectDragSource(
-			<div style={{backgroundColor: '#ff0000'}}>
+			<div id="card">
 				<div id='cardHeader'>
 					<p id='cardTitle'>{this.props.workItem.workItemTitle}</p>
 					<MaterialIcon id='cardIcon' icon='menu'/>
