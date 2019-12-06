@@ -15,6 +15,7 @@
 #laneTitle{
     margin-top: 20px;
     margin-left: 20px;
+    font-size: 20px;
     font-weight: 600;
     user-select: none;
 }

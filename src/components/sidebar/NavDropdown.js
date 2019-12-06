@@ -2,6 +2,7 @@ import React from 'react';
 import '../../css/bootstrap.min.css';
 import './NavDropdown.css';
 import NavButton from './NavButton';
+import Divider from './Divider';
 
 
 export default class NavDropdown extends React.Component{
@@ -28,7 +29,7 @@ export default class NavDropdown extends React.Component{
   render(){
     return(
       <div className="dropdownDiv">
-        <div onClick={this.toggleDropdown}><NavButton icon="arrow_forward_ios" label="Project" /></div>
+        <div onClick={this.toggleDropdown}><NavButton icon="arrow_forward_ios" label={this.props.data.projectName} /></div>
         {this.state.on && (
           <div className="dropdownBtn">
           <NavButton icon="directions_run" label="Sprints"/>

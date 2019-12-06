@@ -3,13 +3,24 @@
     min-height: 72px;
     max-height: 72px;
     border-bottom: 2px solid;
-    border-color: red;
+    border-color: #EB5757;
 }
 
 .NavBarTitle{
     margin-left: 15px;
     margin-top: 7px;
-    color: red;
+    color: #EB5757;
     font-weight: 600;
     user-select: none;
+}
+
+.profileIcon {
+    color: #EB5757;
+    user-select: none;
+}
+
+.profileButton {
+    display: flex;
+    margin-left: auto;
+    margin-right: 0px;
 }

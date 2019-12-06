@@ -1,5 +1,18 @@
-import {action, decorate, observable} from 'mobx'
+import {action, decorate, observable} from 'mobx';
 import { ERROR } from 'jest-validate/build/utils';
+
+const testUser = {
+    userId: 420,
+    name: 'Kaulo Rens',
+    email: 'kaulorens@shemail.com',
+    projects: [{
+        projectId: 123456789,
+        projectName: 'Project #1',
+    },{
+        projectId: 69,
+        projectName: 'Project #2',
+    }]
+}
 
 class UserStore{
     //Values stored in user store
@@ -8,6 +21,9 @@ class UserStore{
     email = "";
     projects = [];
 
+    constructor() {
+        this.updateStore({ type: "updateUser", id: testUser.userId, data: testUser })
+    }
     updateStore = (response) => {
         //TODO: write function to update user store.
 

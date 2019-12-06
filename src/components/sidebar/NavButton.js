@@ -11,10 +11,11 @@ export default class NavButton extends React.Component{
   }
 
   render(){
+    console.log(this.props.label);
     return(
         <div className="btnDiv" onClick={this.ocEvent}>
             <MaterialIcon className="btnIcon" icon={this.props.icon} style={{ fontSize: '24px' }}/>
-            <p className="btnText">{this.props.label}</p>
+            <p style={{ textOverflow: 'ellipsis' }} className="btnText">{this.props.label}</p>
         </div>
     );
   }
