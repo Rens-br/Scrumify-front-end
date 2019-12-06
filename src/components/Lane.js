@@ -11,7 +11,7 @@ const Lane = inject('store')(observer(class Lane extends Component{
 		return (
 			<Col id='lane'>
 				<div id='laneHeader'>
-					<p>{this.props.data.laneId.toString()}</p>
+					<p id="laneTitle">{this.props.data.laneId.toString()}</p>
 				</div>
 				<Droppable droppableId={this.props.data.laneId.toString()}>
 					{(provided, snapshot) => (

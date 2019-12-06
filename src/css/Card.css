@@ -1,10 +1,22 @@
 #card{
     background-color: #ffffff;
     margin: 10px;
+    background-color: #C4C4C4;
+    border-radius: 7.5px;
 }
 
 #cardHeader{
     display: flex;
+    min-height: 50px;
     justify-content: space-between;
-    margin: 5px;
+    margin-left: 10px;
+}
+
+#cardTitle {
+    margin-top: 10px;
+}
+
+#cardIcon {
+    margin-right: 10px;
+    margin-top: 10px;
 }

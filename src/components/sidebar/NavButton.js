@@ -7,7 +7,7 @@ import '@material/react-material-icon/dist/material-icon.css';
 
 export default class NavButton extends React.Component{
   ocEvent = () => {
-    alert('You clicked a button'+this.props.path);
+    console.log('Kappertje te duur, neem dan een chemokuur');
   }
 
   render(){

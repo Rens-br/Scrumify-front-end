@@ -3,8 +3,8 @@ import NavButton from './NavButton';
 import Divider from './Divider';
 import '../../css/bootstrap.min.css';
 import './SideBar.css';
-import NavDropdown from './NavDropdown';
 import Header from './Header';
+import ProjectList from './ProjectList';
 
 
 export default class SideBar extends React.Component{
@@ -15,14 +15,7 @@ export default class SideBar extends React.Component{
         <Divider />
         <NavButton icon="dashboard" label="Dashboard" path="/newpage" />
         <Divider />
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
-        <NavDropdown/>
+        <ProjectList/>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 #board{
-    background-color: #ff35ef;
+    /* background-color: #FFFFFF; */
     height: 100%;
     max-width: none;
     margin: 0px;
@@ -8,7 +8,7 @@
 }
 
 #row{
-    background-color: #1c7430;
+    /* border-radius: 20px; */
     height: 100%;
     flex-wrap: nowrap;
     margin: 0px;

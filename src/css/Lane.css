@@ -2,14 +2,20 @@
     margin: 10px;
     max-width: 300px;
     min-width: 300px;
-    background-color: red;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
     padding: 0px;
 }
 
 #laneHeader{
-    background-color: white;
-    height: 50px;
+    height: 40px;
     width: 100%;
+}
+
+#laneTitle{
+    margin-top: 20px;
+    margin-left: 20px;
+    font-weight: 600;
 }
 
 #cardContainer{
