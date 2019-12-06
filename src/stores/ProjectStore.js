@@ -54,19 +54,19 @@ class ProjectStore{
             ],
             workItems: [
                 {
-                    workItemId: 789123,
+                    workItemId: 783,
                     workItemTitle: "TestWorkItem1",
                     workItemDescription: "This is a workitem test.",
                     laneId: 23456
                 },
                 {
-                    workItemId: 891234,
+                    workItemId: 834,
                     workItemTitle: "TestWorkItem2",
                     workItemDescription: "This is another workitem test.",
                     laneId: 23456
                 },
                 {
-                    workItemId: 89121234,
+                    workItemId: 894,
                     workItemTitle: "TestWorkItem2",
                     workItemDescription: "This is another workitem test.",
                     laneId: 34567
