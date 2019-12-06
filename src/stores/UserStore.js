@@ -7,10 +7,10 @@ const testUser = {
     email: 'kaulorens@shemail.com',
     projects: [{
         projectId: 123456789,
-        projectName: 'Project #1',
+        projectName: 'Rens de schuld geven van alle problemen op de wereld',
     },{
         projectId: 69,
-        projectName: 'Project #2',
+        projectName: 'Het goedmaken met Rens omdat ie me low-key wel hard carryt',
     }]
 }
 
