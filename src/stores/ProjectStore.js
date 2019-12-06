@@ -67,7 +67,7 @@ class ProjectStore{
                 },
                 {
                     workItemId: 894,
-                    workItemTitle: "TestWorkItem2",
+                    workItemTitle: "TestWorkItem3",
                     workItemDescription: "This is another workitem test.",
                     laneId: 34567
                 }

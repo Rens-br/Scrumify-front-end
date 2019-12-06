@@ -4,22 +4,43 @@ import {Col, Container, Row} from 'react-bootstrap';
 import '../css/Lane.css';
 import Card from './Card';
 import {inject, observer } from 'mobx-react';
+import { DropTarget } from 'react-dnd';
 
-const Lane = inject('store')(observer(class Lane extends Component{
+const laneTarget = {
+	drop(targetProps, monitor) {
+		monitor.getItem().callback(monitor.getItem().item, targetProps)
+	},
+};
+
+export const Lane = inject('store')(observer(class Lane extends Component{
+	 moveWorkItem = (item, dest) => {
+		 this.props.store.projectStore.updateWorkItem(item.workItemId, {laneId: dest.data.laneId});
+	};
+
 	render() {
-		return (
-			<Col id='lane'>
+		const { isOver, connectDropTarget } = this.props;
+		const style = {
+			backgroundColor: isOver ? '#f0f0f0': 'white'
+		};
+
+		return connectDropTarget(
+			<div>
+			<Col id='lane' style={style}>
 				<div id='laneHeader'>
-					<p id="laneTitle">{this.props.data.laneId.toString()}</p>
+					<p id="laneTitle">{this.props.data.laneTitle}</p>
 				</div>
 				<div id='cardArea'>
-					{this.props.store.projectStore.workItems.filter(x => x.laneId === this.props.data.laneId).map((item, index) => (
-						<Card workitem={item} index={index}/>
+					{this.props.data.laneItems.map((item) => (
+						<Card workItem={item} callback={this.moveWorkItem}/>
 					))}
 				</div>
 			</Col>
+			</div>
 		);
 	}
 }));
 
-export default Lane;
+export default DropTarget('card', laneTarget, (connect, monitor) => ({
+	connectDropTarget: connect.dropTarget(),
+	isOver: monitor.isOver(),
+}))(Lane);

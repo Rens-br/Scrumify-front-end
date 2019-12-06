@@ -6,13 +6,22 @@ import Lane from './Lane';
 import {inject, observer} from 'mobx-react';
 
 const Board = inject('store')(observer(class Board extends Component {
+
+    getLaneData = (lane) => {
+        return {
+            laneId: lane.laneId,
+            laneTitle: lane.laneTitle,
+            laneItems: this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
+        }
+    };
+
     render() {
         return (
-                <Container id='board'>
-                    <Row id='row' style={{width: this.props.sprint.lanes.length * 320}}>
-                        {this.props.sprint.lanes.map((lane) => <Lane data={lane}/>)}
-                    </Row>
-                </Container>
+            <Container id='board'>
+                <Row id='row' style={{width: this.props.sprint.lanes.length * 320}}>
+                    {this.props.sprint.lanes.map((lane) => <Lane data={this.getLaneData(lane)}/>)}
+                </Row>
+            </Container>
         );
     }
 }));
