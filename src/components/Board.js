@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import '../css/Board.css';
 import Lane from './Lane';
 import {inject, observer} from 'mobx-react';
+import NewLaneButton from './NewLaneButton';
 
 const Board = inject('store')(observer(class Board extends Component {
 
@@ -18,8 +19,9 @@ const Board = inject('store')(observer(class Board extends Component {
     render() {
         return (
             <Container id='board'>
-                <Row id='row' style={{width: this.props.sprint.lanes.length * 320}}>
+                <Row id='row' style={{width: this.props.sprint.lanes.length * 320 + 45}}>
                     {this.props.sprint.lanes.map((lane) => <Lane data={this.getLaneData(lane)}/>)}
+                    <NewLaneButton />
                 </Row>
             </Container>
         );
