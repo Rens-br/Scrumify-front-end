@@ -11,7 +11,7 @@ export default class TopNavBar extends React.Component{
         <div className="TopNavBar">
         <h1 className="NavBarTitle">NavBar</h1>
         <div className="profileButton">
-          <MaterialIcon icon="account_circle" style={{ fontSize: '70px' }} className="profileIcon"/>
+          <MaterialIcon icon="account_circle" style={{ fontSize: '60px' }} className="profileIcon"/>
         </div>
         </div>
     );

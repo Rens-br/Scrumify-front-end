@@ -17,6 +17,8 @@
 .profileIcon {
     color: #EB5757;
     user-select: none;
+    margin-right: 7.5px;
+    margin-top: 5px;
 }
 
 .profileButton {

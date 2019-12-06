@@ -24,6 +24,10 @@
     color: #FFFFFF;
     user-select: none; 
     margin-top: 5px;
+    margin-right: 5px;
+    height: 100%;
+    display: block;
+    overflow-x: hidden;
     white-space: nowrap;
-    /* text-overflow: ellipsis; */
+    text-overflow: ellipsis;
 }
