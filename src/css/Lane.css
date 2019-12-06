@@ -31,6 +31,7 @@
 #cardArea{
     height: calc(100% - 60px);
     overflow: auto;
+    scrollbar-width: none;
 }
 
 #cardArea::-webkit-scrollbar {
