@@ -7,7 +7,7 @@ import {Draggable} from 'react-beautiful-dnd';
 class Card extends Component{
 	render() {
 		return (
-			<Draggable draggableId={this.props.workitem.workItemId.toString()} index={this.props.index}>
+			<Draggable draggableId={this.props.workitem} index={this.props.index}>
 				{(provided, snapshot) => (
 					<div
 						id='card'
@@ -16,7 +16,7 @@ class Card extends Component{
 						{...provided.dragHandleProps}
 					>
 						<div id='cardHeader'>
-							<p id='cardTitle'>Work Item {this.props.workitem.workItemId}</p>
+							<p id='cardTitle'>Work Item {this.props.workitem}</p>
 							<MaterialIcon id='cardIcon' icon='menu'/>
 						</div>
 					</div>

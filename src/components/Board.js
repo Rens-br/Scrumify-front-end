@@ -10,28 +10,54 @@ const Board = inject('store')(observer(class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sprint: this.props.sprint
+            sprint: this.props.sprint,
+            lanes: []
         }
     }
 
-    onDragEnd = (result) => {
-        if(result.destination){
-            this.props.store.projectStore.updateWorkItem(parseInt(result.draggableId), {laneId: parseInt(result.destination.droppableId), laneIndex: result.destination.index});
-        }
-    };
+    componentDidMount() {
+        this.getLanes(this.state.sprint)
+    }
 
-    getLane = (lane) => {
-        let laneData = lane;
-        laneData.items = this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId);
-        return laneData;
+    getLanes(sprint){
+        let newLanes = [];
+        sprint.lanes.forEach(lane => {
+            newLanes.push({
+                laneId: lane.laneId.toString(),
+                items: this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId).map(x => x.workItemId.toString())
+            })
+        })
+        this.setState({...this.state, ...{lanes: newLanes}})
+        this.forceUpdate()
+        console.log(this.state)
+    }
+
+    onDragEnd = (result) => {
+        let OldLanes = this.state.lanes;
+        let sourceLane = OldLanes.find(x => x.laneId == result.source.droppableId);
+        let destLane = OldLanes.find(x => x.laneId == result.destination.droppableId);
+
+        let newSouce = sourceLane;
+        newSouce.items = sourceLane.items.filter(x => x != result.draggableId);
+        let newDest = destLane;
+        newDest.items.push(result.draggableId);
+
+        OldLanes[OldLanes.indexOf(sourceLane)] = newSouce;
+        OldLanes[OldLanes.indexOf(destLane)] = newDest;
+
+        console.log(OldLanes)
+
+        this.setState({lanes: OldLanes})
+        console.log(this.state)
     };
 
     render() {
+        console.log(this.state.lanes)
         return (
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Container id='board'>
                     <Row id='row' style={{width: this.state.sprint.lanes.length * 320}}>
-                        {this.state.sprint.lanes.map((lane) => <Lane data={this.getLane(lane)}/>)}
+                        {this.state.lanes.map((lane) => <Lane data={lane}/>)}
                     </Row>
                 </Container>
             </DragDropContext>
