@@ -2,8 +2,6 @@ import React from 'react';
 import '../../css/bootstrap.min.css';
 import './NavDropdown.css';
 import NavButton from './NavButton';
-import Divider from './Divider';
-
 
 export default class NavDropdown extends React.Component{
     constructor() {

@@ -1,5 +1,4 @@
 import {action, decorate, observable} from 'mobx';
-import { ERROR } from 'jest-validate/build/utils';
 
 const testUser = {
     userId: 420,

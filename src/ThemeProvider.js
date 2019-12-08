@@ -40,5 +40,6 @@ export const ApplyTheme = themeN => {
     Object.keys(CurrentTheme).map(key => {
       const value = CurrentTheme[key];
       document.documentElement.style.setProperty(key, value);
+      return CurrentTheme;
     });
   };

@@ -1,6 +1,5 @@
 import React from 'react';
 import SideBar from './components/sidebar/SideBar';
-import Board from "./components/Board";
 import Content from "./components/Content";
 
 import {ThemeEnum, ApplyTheme} from './ThemeProvider';

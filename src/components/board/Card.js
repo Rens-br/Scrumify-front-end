@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import MaterialIcon from '@material/react-material-icon';
-import '../css/Card.css';
+import './Card.css';
 import {DragSource} from 'react-dnd';
 import {toJS} from 'mobx';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/Content.css'
-import Board from "./Board";
+import Board from "./board/Board";
 import { Component } from 'react';
 import {inject, observer} from 'mobx-react';
 import TopNavBar from './TopNavBar';

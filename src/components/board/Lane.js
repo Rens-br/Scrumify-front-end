@@ -1,12 +1,11 @@
 import React from 'react';
 import { Component } from 'react';
-import {Col, Container, Row} from 'react-bootstrap';
-import '../css/Lane.css';
+import { Col } from 'react-bootstrap';
+import './Lane.css';
 import Card from './Card';
-import {inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import { DropTarget } from 'react-dnd';
 import SimpleBar from 'simplebar-react';
-import {CurrentTheme} from '../ThemeProvider';
 
 const laneTarget = {
 	drop(targetProps, monitor) {

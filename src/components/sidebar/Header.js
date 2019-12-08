@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../css/bootstrap.min.css';
 import './Header.css';
-import Logo from '../../img/logo.svg';
-
 
 export default class Header extends React.Component{
   render(){

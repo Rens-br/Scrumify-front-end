@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/bootstrap.min.css';
 import './NewLaneButton.css';
 import { Col } from 'react-bootstrap';
 

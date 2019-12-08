@@ -1,7 +1,7 @@
 import {Component} from 'react';
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import '../css/Board.css';
+import { Container, Row } from 'react-bootstrap';
+import './Board.css';
 import Lane from './Lane';
 import {inject, observer} from 'mobx-react';
 import NewLaneButton from './NewLaneButton';
