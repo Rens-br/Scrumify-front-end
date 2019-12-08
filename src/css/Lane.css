@@ -3,7 +3,7 @@
     margin-top: 20px;
     max-width: 300px;
     min-width: 300px;
-    background-color: #FAFAFA;
+    background: var(--color-background-primary);
     border-radius: 10px;
     padding: 0px;
     height: 99%;
@@ -20,20 +20,20 @@
     user-select: none;
     padding: 10px;
     margin-left: 10px;
+    color: var(--color-text-primary);
 }
 
 #cardContainer{
     padding: 0;
     height: calc(100% - 50px);
-    overflow-y: scroll;
 }
 
 #cardArea{
     height: calc(100% - 60px);
     overflow: auto;
-    scrollbar-width: none;
+    margin-right: 1px;
 }
 
-#cardArea::-webkit-scrollbar {
-    display: none;
+.simplebar-scrollbar::before {
+    background: var(--color-primary);
 }

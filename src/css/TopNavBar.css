@@ -3,20 +3,20 @@
     min-height: 72px;
     max-height: 72px;
     border-bottom: 2px solid;
-    border-color: #EB5757;
-    background-color: white;
+    border-color: var(--color-primary);
+    background: var(--color-background-primary);
 }
 
 .NavBarTitle{
     margin-left: 15px;
     margin-top: 7px;
-    color: #EB5757;
+    color: var(--color-primary);
     font-weight: 600;
     user-select: none;
 }
 
 .profileIcon {
-    color: #EB5757;
+    color: var(--color-primary);
     user-select: none;
     margin-right: 7.5px;
     margin-top: 5px;

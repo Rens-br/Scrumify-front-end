@@ -29,7 +29,7 @@ export default class NavDropdown extends React.Component{
   render(){
     return(
       <div className="dropdownDiv">
-        <div onClick={this.toggleDropdown}><NavButton icon="arrow_forward_ios" label={this.props.data.projectName} /></div>
+        <NavButton onClick={this.toggleDropdown} icon="arrow_forward_ios" label={this.props.data.projectName} />
         {this.state.on && (
           <div className="dropdownBtn">
           <NavButton icon="directions_run" label="Sprints"/>

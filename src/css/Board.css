@@ -1,5 +1,5 @@
-#board{
-    background-color: #EDEDED;
+#board {
+    background: var(--color-background-dark);
     height: 100%;
     max-width: none;
     margin: 0px;
@@ -7,7 +7,7 @@
     overflow-y: hidden;
 }
 
-#row{
+#row {
     /* border-radius: 20px; */
     height: 100%;
     flex-wrap: nowrap;

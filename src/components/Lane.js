@@ -5,6 +5,8 @@ import '../css/Lane.css';
 import Card from './Card';
 import {inject, observer } from 'mobx-react';
 import { DropTarget } from 'react-dnd';
+import SimpleBar from 'simplebar-react';
+import {CurrentTheme} from '../ThemeProvider';
 
 const laneTarget = {
 	drop(targetProps, monitor) {
@@ -20,7 +22,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
-			backgroundColor: isOver ? '#FAFAFA': 'white'
+			opacity: isOver ? .8 : 1
 		};
 
 		return connectDropTarget(
@@ -29,11 +31,11 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 				<div id='laneHeader'>
 					<p id="laneTitle">{this.props.data.laneTitle}</p>
 				</div>
-				<div id='cardArea'>
+				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
 					{this.props.data.laneItems.map((item) => (
 						<Card workItem={item} callback={this.moveWorkItem}/>
 					))}
-				</div>
+				</SimpleBar>
 			</Col>
 			</div>
 		);

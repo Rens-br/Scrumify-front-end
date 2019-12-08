@@ -4,5 +4,5 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #FAFAFA;
+    background: var(--color-background-primary);
 }

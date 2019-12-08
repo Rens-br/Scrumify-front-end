@@ -7,11 +7,11 @@
 }
 
 .btnDiv:hover {
-    background-color: #D84646;
+    background: #D84646;
 }
 
 .btnIcon{
-    color: #FFFFFF;
+    color: var(--color-background-primary);
     margin-top: 12px;
     margin-left: 7px;
     margin-right: 10px;
@@ -21,7 +21,7 @@
 
 .btnText {
     font-size: 24px;
-    color: #FFFFFF;
+    color: var(--color-background-primary);
     user-select: none; 
     margin-top: 5px;
     margin-right: 5px;

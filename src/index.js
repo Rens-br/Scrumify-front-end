@@ -5,6 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import rootStore from './stores/RootStore';
 import './css/bootstrap.min.css';
 import {Provider} from 'mobx-react';
+import 'simplebar/dist/simplebar.min.css';
 
 ReactDOM.render(<Provider store={rootStore}><App /></Provider>, document.getElementById('root'));
 

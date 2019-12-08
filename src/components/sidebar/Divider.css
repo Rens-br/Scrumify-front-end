@@ -2,5 +2,5 @@
     width: 100%;
     min-height: 2px;
     display: flex;
-    background-color: #FFFFFF;
+    background: var(--color-background-primary);
 }

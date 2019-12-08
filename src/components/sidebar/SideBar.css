@@ -1,6 +1,6 @@
 #sidebar {
     width: 240px;
-    background: #EB5757;
+    background: var(--gradient-primary);
     position: fixed;
     height: 100vh;
     float: left;
