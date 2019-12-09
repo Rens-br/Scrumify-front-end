@@ -67,11 +67,11 @@ class ProjectStore{
                     sprintTitle: "testSprint2",
                     lanes: [{
                         laneId: 56789,
-                        laneTitle: "testLaneTitle1"
+                        laneTitle: "sprint2testLaneTitle1"
                     },
                         {
                             laneId: 6789,
-                            laneTitle: "testLaneTitle2"
+                            laneTitle: "sprint2testLaneTitle2"
                         }
                     ]
                 }
@@ -81,13 +81,13 @@ class ProjectStore{
                     workItemId: 123,
                     workItemTitle: "TestWorkItem1",
                     workItemDescription: "This is a workitem test.",
-                    laneId: 23456
+                    laneId: 56789
                 },
                 {
                     workItemId: 234,
                     workItemTitle: "TestWorkItem2",
                     workItemDescription: "This is another workitem test.",
-                    laneId: 23456
+                    laneId: 6789
                 },
                 {
                     workItemId: 345,

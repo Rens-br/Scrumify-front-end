@@ -5,6 +5,8 @@
     flex-shrink: 0;
     background-color: var(--color-background);
     border-bottom: 2px solid var(--color-primary);
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .tab{
@@ -43,6 +45,9 @@
     font-size: 20px;
     margin: 0 0 0 8px;
     user-select: none;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .tab#active p{

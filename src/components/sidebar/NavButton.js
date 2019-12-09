@@ -7,7 +7,6 @@ import '@material/react-material-icon/dist/material-icon.css';
 
 export default class NavButton extends React.Component{
   render(){
-    console.log(this.props.label);
     return(
         <div className="btnDiv" onClick={this.props.onClick}>
             <MaterialIcon className="btnIcon" icon={this.props.icon} style={{ fontSize: '24px' }}/>
