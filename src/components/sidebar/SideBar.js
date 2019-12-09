@@ -11,11 +11,15 @@ export default class SideBar extends React.Component{
   render(){
     return(
       <div id="sidebar">
-        <Header/>
-        <Divider />
-        <NavButton icon="dashboard" label="Dashboard" path="/newpage" />
-        <Divider />
-        <ProjectList/>
+        <div className="topbar">
+          <Header/>
+          <Divider />
+          <NavButton icon="dashboard" label="Dashboard" path="/newpage" />
+          <Divider />
+        </div>
+        <div className="bottombar">
+          <ProjectList/>
+        </div>
       </div>
     );
   }

@@ -1,0 +1,17 @@
+.newLaneButton {
+    display: flex;
+    height: 99%;
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 50px;
+    background-color: white;
+    border: 2px solid #EB5757;
+    border-radius: 7.5px;
+}
+
+#newLaneText {
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    color: #EB5757;
+    -webkit-transform: rotate(180deg);
+}

@@ -10,6 +10,24 @@ const testUser = {
     },{
         projectId: 69,
         projectName: 'Het goedmaken met Rens omdat ie me low-key wel hard carryt',
+    },{
+        projectId: 1234,
+        projectName: 'RIP JUICE WRLD',
+    },{
+        projectId: 4321,
+        projectName: 'KUT NS',
+    },{
+        projectId: 5678,
+        projectName: 'i need professional help',
+    },{
+        projectId: 8765,
+        projectName: 'get me outta here',
+    },{
+        projectId: 1010,
+        projectName: 'nog meer testprojecten',
+    },{
+        projectId: 1221,
+        projectName: 'I have no clue what im doing',
     }]
 }
 

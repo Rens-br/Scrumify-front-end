@@ -2,15 +2,27 @@
     width: 240px;
     background: var(--gradient-primary);
     position: fixed;
-    height: 100vh;
     float: left;
     position: fixed;
+}
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.topbar {
+    fill: var(--color-primar-light);
+    overflow: hidden;
+    min-height: 123px;
+    position: fixed;
+    width: 240px;
+}
+
+.bottombar {
+    margin-top: 123px;
+    height: calc(100vh - 123px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: scroll;
     scrollbar-width: none;
-}
-#sidebar::-webkit-scrollbar {
-    display: none;
 }
