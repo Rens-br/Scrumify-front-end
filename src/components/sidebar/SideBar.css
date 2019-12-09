@@ -26,3 +26,7 @@
     overflow-y: scroll;
     scrollbar-width: none;
 }
+
+.bottombar::-webkit-scrollbar {
+    display: none;
+}
