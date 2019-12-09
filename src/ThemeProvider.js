@@ -1,45 +1,75 @@
-import { ERROR } from "jest-validate/build/utils";
-
-const lightTheme = {
-    "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
-    "--color-primary": "#EB5757",
+const Themes = [{
     "--color-background-primary": "#FAFAFA",
     "--color-background-dark": "#EDEDED",
     "--color-text-primary": "#000000",
     "--color-text-secondary": "#FAFAFA"
-}
-
-const darkTheme = {
-    "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
-    "--color-primary": "#EB5757",
+},{
     "--color-background-primary": "#18181B",
     "--color-background-dark": "#0E0E10",
     "--color-text-primary": "#FAFAFA",
     "--color-text-secondary": "#000000"
-}
+}];
+
+const Highlights = [{
+    //RED
+    "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
+    "--color-primary": "#EB5757",
+},{
+    //GREEN
+    "--gradient-primary": "linear-gradient(#388E3C,#43A047)",
+    "--color-primary": "#388E3C",
+},{
+    //BLUE
+    "--gradient-primary": "linear-gradient(#1976D2,#1E88E5)",
+    "--color-primary": "#1976D2",
+},{
+    //ORANGE
+    "--gradient-primary": "linear-gradient(#E64A19,#F4511E)",
+    "--color-primary": "#E64A19",
+}];
+
 
 export const ThemeEnum = {
     LIGHT: 0,
     DARK: 1
-}
+};
 
-export let CurrentTheme = lightTheme;
+export const HighlightEnum = {
+    RED: 0,
+    GREEN: 1,
+    BLUE: 2,
+    ORANGE: 3
+};
 
-export const ApplyTheme = themeN => {
-    switch(themeN){
-        case ThemeEnum.LIGHT:
-                CurrentTheme = lightTheme;
-            break;
-        case ThemeEnum.DARK:
-                CurrentTheme = darkTheme;
-            break;
-        default:
-            throw ERROR('Unknown theme');
-    }
+export let CurrentTheme = {...Themes[0]};
+export let CurrentHighlight = {...Highlights[0]};
 
-    Object.keys(CurrentTheme).map(key => {
-      const value = CurrentTheme[key];
-      document.documentElement.style.setProperty(key, value);
-      return CurrentTheme;
-    });
+export const SetTheme = theme => {
+    CurrentTheme = Themes[theme];
+    ApplyStyle();
   };
+
+export const NextTheme = () => {
+    CurrentTheme = Themes[(Themes.indexOf(CurrentTheme) + 1) % Themes.length];
+    ApplyStyle();
+};
+
+export const SetHighlight = highlight => {
+    CurrentHighlight = Highlights[highlight];
+    ApplyStyle();
+};
+
+export const NextHighlight = () => {
+    CurrentHighlight = Highlights[(Highlights.indexOf(CurrentHighlight) + 1) % Highlights.length];
+    ApplyStyle();
+};
+
+const ApplyStyle = () => {
+    const AppStyle = {...CurrentTheme, ...CurrentHighlight};
+
+    Object.keys(AppStyle).map(key => {
+        const value = AppStyle[key];
+        document.documentElement.style.setProperty(key, value);
+        return AppStyle;
+    });
+};
