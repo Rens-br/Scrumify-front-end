@@ -4,12 +4,14 @@ import Board from "./board/Board";
 import { Component } from 'react';
 import {inject, observer} from 'mobx-react';
 import TopNavBar from './TopNavBar';
+import TabBar from './TabBar';
 
 const Content = inject('store')(observer(class Content extends Component{
     render() {
         return (
             <div id='content'>
 				<TopNavBar />
+				<TabBar/>
                 <Board sprint={this.props.store.projectStore.sprints[0]}/>
             </div>
         );

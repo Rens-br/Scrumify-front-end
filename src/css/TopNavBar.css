@@ -2,8 +2,6 @@
     display: flex;
     min-height: 72px;
     max-height: 72px;
-    border-bottom: 2px solid;
-    border-color: var(--color-primary);
     background: var(--color-background-primary);
 }
 
