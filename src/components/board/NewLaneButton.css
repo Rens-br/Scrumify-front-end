@@ -11,7 +11,7 @@
 }
 
 .newLaneButton:hover {
-    background: #D84646;
+    background: var(--color-primary-light);
 }
 
 #newLaneText {
