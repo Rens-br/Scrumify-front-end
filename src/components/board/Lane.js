@@ -6,6 +6,7 @@ import Card from './Card';
 import { inject, observer } from 'mobx-react';
 import { DropTarget } from 'react-dnd';
 import SimpleBar from 'simplebar-react';
+import MaterialIcon from '@material/react-material-icon';
 
 const laneTarget = {
 	drop(targetProps, monitor) {
@@ -27,8 +28,9 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		return connectDropTarget(
 			<div>
 			<Col id='lane' style={style}>
-				<div id='laneHeader'>
-					<p id="laneTitle">{this.props.data.laneTitle}</p>
+				<div className='laneHeader'>
+					<p>{this.props.data.laneTitle}</p>
+					<MaterialIcon icon='more_vert'/>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
 					{this.props.data.laneItems.map((item) => (

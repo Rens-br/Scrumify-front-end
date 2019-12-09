@@ -9,18 +9,26 @@
     height: 99%;
 }
 
-#laneHeader{
+.laneHeader{
+    display: flex;
     height: 50px;
     width: 100%;
+    justify-content: space-between;
+    user-select: none;
 }
 
-#laneTitle{
+.laneHeader p{
     font-size: 20px;
     font-weight: 600;
-    user-select: none;
     padding: 10px;
     margin-left: 10px;
     color: var(--color-text-primary);
+}
+
+.laneHeader i{
+    color: var(--color-text-primary);
+    align-self: center;
+    margin-right: 10px;
 }
 
 #cardContainer{

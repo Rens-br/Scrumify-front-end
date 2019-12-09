@@ -10,6 +10,7 @@
 }
 
 .tab{
+    justify-content: space-between;
     align-content: center;
     flex: 200px;
     flex-grow: 0;
@@ -20,6 +21,7 @@
     align-self: flex-end;
     display: flex;
     border-radius: 3px;
+    user-select: none;
 }
 
 .tab:hover{
@@ -44,7 +46,6 @@
     font-weight: bold;
     font-size: 20px;
     margin: 0 0 0 8px;
-    user-select: none;
     overflow-x: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -56,6 +57,12 @@
 
 .tab#active p:hover{
     color: var(--color-primary-light);
+}
+
+.tab i{
+    align-self: center;
+    margin-right: 4px;
+    color: var(--color-primary);
 }
 
 .addTab{
