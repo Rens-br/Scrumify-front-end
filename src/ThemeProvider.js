@@ -11,6 +11,12 @@ const Themes = [{
 }];
 
 const Highlights = [{
+    //PINK
+    "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
+    "--color-primary": "#eb5757",
+    "--color-primary-dark": "#eb494e",
+    "--color-primary-light": "#f08080",
+},{
     //RED
     "--gradient-primary": "linear-gradient(#d32f2f,#e53935)",
     "--color-primary": "#d32f2f",

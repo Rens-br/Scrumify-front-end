@@ -3,7 +3,6 @@
     background: var(--gradient-primary);
     position: fixed;
     float: left;
-    position: fixed;
 }
 #sidebar::-webkit-scrollbar {
     display: none;
