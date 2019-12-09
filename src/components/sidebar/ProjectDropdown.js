@@ -32,7 +32,7 @@ export default class ProjectDropdown extends React.Component {
     return (
       <div id="project">
         <ListItem button onClick={this.openProjectDropDown} key={"Project"}>
-          <ListItemIcon> <ArrowDropDownIcon style={{ color: '#FFFFFF' }}/> </ListItemIcon>
+          <ListItemIcon> <ArrowDropDownIcon/> </ListItemIcon>
           <ListItemText style={{ color: '#FFFFFF' }} primary={"Project"} />
         </ListItem>
 
@@ -40,11 +40,11 @@ export default class ProjectDropdown extends React.Component {
         {this.state.on && (
           <div className="SideBarStyle">
             <ListItem>
-              <ListItemIcon> <ArrowDropDownIcon style={{ color: '#FFFFFF' }}/> </ListItemIcon>
+              <ListItemIcon> <ArrowDropDownIcon/> </ListItemIcon>
               <ListItemText primary={"Backlogs"} />
             </ListItem>
             <ListItem>
-              <ListItemIcon> <ArrowDropDownIcon style={{ color: '#FFFFFF' }}/> </ListItemIcon>
+              <ListItemIcon> <ArrowDropDownIcon/> </ListItemIcon>
               <ListItemText primary={"Sprints"} />
             </ListItem>
           </div>

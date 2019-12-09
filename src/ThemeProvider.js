@@ -12,20 +12,28 @@ const Themes = [{
 
 const Highlights = [{
     //RED
-    "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
-    "--color-primary": "#EB5757",
+    "--gradient-primary": "linear-gradient(#d32f2f,#e53935)",
+    "--color-primary": "#d32f2f",
+    "--color-primary-dark": "#c62828",
+    "--color-primary-light": "#e53935",
 },{
     //GREEN
     "--gradient-primary": "linear-gradient(#388E3C,#43A047)",
     "--color-primary": "#388E3C",
+    "--color-primary-dark": "#2E7D32",
+    "--color-primary-light": "#43A047",
 },{
     //BLUE
     "--gradient-primary": "linear-gradient(#1976D2,#1E88E5)",
     "--color-primary": "#1976D2",
+    "--color-primary-dark": "#1565C0",
+    "--color-primary-light": "#1E88E5",
 },{
     //ORANGE
     "--gradient-primary": "linear-gradient(#E64A19,#F4511E)",
     "--color-primary": "#E64A19",
+    "--color-primary-dark": "#D84315",
+    "--color-primary-light": "#F4511E",
 }];
 
 
