@@ -10,7 +10,7 @@ class SocketStore{
 	}
 
 	connect = () => {
-		this.socket = io.connect('http://dev.api.scrumify.nl');
+		this.socket = io.connect('https://dev.api.scrumify.nl');
 
 		this.socket.on('connect', () => {
 			console.log('connected')
