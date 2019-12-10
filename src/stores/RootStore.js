@@ -1,12 +1,12 @@
 import { observable, decorate } from 'mobx';
 
 import ProjectStore from './ProjectStore';
-import userStore from './UserStore';
+import UserStore from './UserStore';
 import SocketStore from './SocketStore';
 
 class RootStore{
     projectStore = new ProjectStore(this);
-    userStore = userStore;
+    userStore = new UserStore(this);
     socketStore = new SocketStore(this);
 }
 

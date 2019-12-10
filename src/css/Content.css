@@ -10,6 +10,7 @@
 .spinner{
     align-self: center;
     margin-top: 25%;
+    color: var(--color-primary);
 }
 
 @media only screen and (max-width: 600px) {
