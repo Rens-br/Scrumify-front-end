@@ -23,7 +23,7 @@ const Board = inject('store')(observer(class Board extends Component {
     render() {
         return (
             <Container id='board'>
-                <Row id='row' style={{width: this.props.sprint.Lanes.length * 320 + 80}}>
+                <Row id='row' style={{width: this.props.sprint.Lanes.length * 320 + 65}}>
                     {this.props.sprint.Lanes.map((lane, index) => <Lane key={index} data={this.getLaneData(lane)}/>)}
                     <NewLaneButton onClick={this.addLane} />
                 </Row>
