@@ -40,6 +40,18 @@ const Highlights = [{
     "--color-primary": "#E64A19",
     "--color-primary-dark": "#D84315",
     "--color-primary-light": "#F4511E",
+},{
+    //YELLOW
+    "--gradient-primary": "linear-gradient(#FFB300,#FFC107)",
+    "--color-primary": "#FFB300",
+    "--color-primary-dark": "#FFA000",
+    "--color-primary-light": "#FFC107",
+},{
+    //YELLOW
+    "--gradient-primary": "linear-gradient(#d32f2f,#388E3C,#1976D2,#FFB300)",
+    "--color-primary": "#FFB300",
+    "--color-primary-dark": "#FFA000",
+    "--color-primary-light": "#FFC107",
 }];
 
 
