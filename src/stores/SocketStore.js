@@ -30,6 +30,11 @@ class SocketStore{
 			console.log(projectObject);
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		});
+
+		this.socket.on('updateProject', (updateObject) => {
+			console.log(updateObject);
+			this.rootStore.projectStore.updateStore(updateObject);
+		})
 	};
 
 	getUser = (userId) => {
