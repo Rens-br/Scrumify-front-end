@@ -29,3 +29,15 @@
 .bottombar::-webkit-scrollbar {
     display: none;
 }
+
+@media only screen and (max-width: 600px) {
+    #sidebar {
+        width: 60px;
+    }
+    .topbar {
+        width: 60px;
+    }
+    .bottombar {
+        width: 60px;
+    }
+}

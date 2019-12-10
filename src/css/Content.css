@@ -6,3 +6,9 @@
     flex-direction: column;
     background: var(--color-background-primary);
 }
+
+@media only screen and (max-width: 600px) {
+    #content {
+        margin-left: 60px;
+    }
+}
