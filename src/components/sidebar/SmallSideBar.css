@@ -1,4 +1,14 @@
 .smallSideBar {
     height: 100vh;
     width: 50px;
+    background: var(--gradient-primary);
+    position: fixed;
+    float: left;
+}
+
+.collapseIcon {
+    color: var(--color-background-primary);
+    user-select: none;
+    margin-left: 4px;
+    margin-top: 5px;
 }

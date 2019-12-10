@@ -12,31 +12,48 @@ export default class SideBar extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isDesktop: false
+      isDesktop: true
     };
-    this.updatePredicate = this.updatePredicate.bind(this);
+    // this.updatePredicate = this.updatePredicate.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
-  componentDidMount(){
-    this.updatePredicate();
-    window.addEventListener("resize" , this.updatePredicate);
-  }
+  // componentDidMount(){
+  //   this.updatePredicate();
+  //   window.addEventListener("resize" , this.updatePredicate);
+  // }
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updatePredicate);
-  }
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updatePredicate);
+  // }
 
-  updatePredicate(){
-    this.setState({ isDesktop: window.innerWidth > 1450 });
+  // updatePredicate(){
+  //   this.setState({ isDesktop: window.innerWidth > 1450 });
+  // }
+
+  toggleSidebar(){
+    if (this.state.isDesktop) {
+      this.setState({
+        isDesktop: false
+      })
+    } else {
+      this.setState({
+        isDesktop: true
+      })
+    }
+    console.log("toggleSidebar clicked");
   }
 
   render(){
     const isDesktop = this.state.isDesktop;
     return(
+      <div>
       {isDesktop && (
       <div id="sidebar">
         <div className="topbar">
           <Header/>
+          <Divider />
+          <NavButton icon="dehaze" label="Minimize sidebar" onClick={this.toggleSidebar}/>
           <Divider />
           <NavButton icon="dashboard" label="Dashboard" path="/newpage" />
           <Divider />
@@ -47,7 +64,7 @@ export default class SideBar extends React.Component{
         </div>
         )}
       {!isDesktop && (
-        <SmallSideBar/>
+        <SmallSideBar onClick={this.toggleSidebar}/>
       )}
       </div>
     );

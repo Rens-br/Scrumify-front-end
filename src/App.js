@@ -12,7 +12,7 @@ function App() {
 
     return (
         <div className="App">
-            <DndProvider backend={HTML5Backend}>
+            <DndProvider className="App" backend={HTML5Backend}>
                 <SideBar />
                 <Content/>
             </DndProvider>

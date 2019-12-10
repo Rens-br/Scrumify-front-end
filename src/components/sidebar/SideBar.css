@@ -3,6 +3,7 @@
     background: var(--gradient-primary);
     position: fixed;
     float: left;
+    display: flex;
 }
 #sidebar::-webkit-scrollbar {
     display: none;
@@ -11,13 +12,13 @@
 .topbar {
     fill: var(--color-primar-light);
     overflow: hidden;
-    min-height: 123px;
+    min-height: 173px;
     position: fixed;
     width: 240px;
 }
 
 .bottombar {
-    margin-top: 123px;
+    margin-top: 173px;
     height: calc(100vh - 123px);
     display: flex;
     flex-direction: column;
