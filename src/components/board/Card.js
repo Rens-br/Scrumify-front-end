@@ -18,9 +18,9 @@ export class Card extends Component{
 	render() {
 		return this.props.connectDragSource(
 			<div id="card">
-				<div id='cardHeader'>
-					<p id='cardTitle'>{this.props.workItem.workItemTitle}</p>
-					<MaterialIcon id='cardIcon' icon='menu'/>
+				<div className='cardHeader'>
+					<p>{this.props.workItem.workItemTitle}</p>
+					<MaterialIcon icon='more_vert'/>
 				</div>
 			</div>
 		);

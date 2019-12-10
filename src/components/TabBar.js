@@ -4,23 +4,29 @@ import './TabBar.css';
 import MaterialIcon from '@material/react-material-icon';
 
 class TabBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			selected: 0
+		}
+	}
+
+	tabClicked = (index, callBack) => {
+		if(index !== this.state.selected){
+			this.setState({selected: index});
+			callBack(index);
+		}
+	};
 
 	render() {
 		return (
 			<div className='tabBar'>
-				<div className='tab'>
-					<p>Sprint 1</p>
-				</div>
-				<div className='tab' id='active'>
-					<p>Sprint 2</p>
-				</div>
-				<div className='tab'>
-					<p>Sprint 3</p>
-				</div>
-				<div className='tab'>
-					<p>Sprint 4</p>
-				</div>
-				<div className='addTab'>
+				{this.props.tabs.map((x, index) =>
+					<div key={index} onClick={() => this.tabClicked(index, this.props.onTabClicked)} id={index === this.state.selected ? 'active' : ''} className='tab'>
+						<p>{x}</p>
+						{index === this.state.selected ? <MaterialIcon icon='more_vert'/> : null}
+					</div>)}
+				<div className='addTab' onClick={this.props.onAddClicked}>
 					<MaterialIcon icon='add'/>
 				</div>
 			</div>

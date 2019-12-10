@@ -7,10 +7,9 @@ import { inject, observer } from 'mobx-react';
 
 const ProjectList = inject('store')(observer(class ProjectList extends React.Component{
   render(){
-    console.log(this.props.store.userStore.projects);
     return(
         <div className="projectListDiv">
-          {this.props.store.userStore.projects.map((project) => <NavDropdown data={project}/>)}
+          {this.props.store.userStore.projects.map((project, index) => <NavDropdown key={index} data={project}/>)}
         </div> 
     );
   }

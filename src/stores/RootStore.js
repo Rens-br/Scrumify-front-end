@@ -1,18 +1,19 @@
-import { observable, decorate } from 'mobx'
+import { observable, decorate } from 'mobx';
 
-import projectStore from './ProjectStore'
+import projectStore from './ProjectStore';
 import userStore from './UserStore';
+import socketStore from './SocketStore';
 
 class RootStore{
     projectStore = projectStore;
     userStore = userStore;
-
-    //TODO: add other stores to rootStore
+    socketStore = socketStore;
 }
 
 decorate(RootStore, {
     projectStore: observable,
-    userStore: observable
+    userStore: observable,
+    socketStore: observable
 })
 
 const rootStore = window.store = new RootStore();
