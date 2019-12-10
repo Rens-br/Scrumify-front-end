@@ -14,40 +14,37 @@ export default class SideBar extends React.Component{
     this.state = {
       isDesktop: true
     };
-    // this.updatePredicate = this.updatePredicate.bind(this);
+
     this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
-  // componentDidMount(){
-  //   this.updatePredicate();
-  //   window.addEventListener("resize" , this.updatePredicate);
-  // }
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updatePredicate);
-  // }
-
-  // updatePredicate(){
-  //   this.setState({ isDesktop: window.innerWidth > 1450 });
-  // }
+  componentDidMount(){
+    if(window.innerWidth < 1450){
+      this.setState({isDesktop: false});
+      document.getElementById('sidebarContainer').style.flex = '50px 0 0';
+    } 
+  }
 
   toggleSidebar(){
     if (this.state.isDesktop) {
       this.setState({
         isDesktop: false
       })
+      document.getElementById('sidebarContainer').style.flex = '50px 0 0';
     } else {
       this.setState({
         isDesktop: true
       })
+      document.getElementById('sidebarContainer').style.flex = '240px 0 0';
     }
+
     console.log("toggleSidebar clicked");
   }
 
   render(){
     const isDesktop = this.state.isDesktop;
     return(
-      <div>
+      <div id="sidebarContainer" style={{ flex: '240px 0 0' }}>
       {isDesktop && (
       <div id="sidebar">
         <div className="topbar">

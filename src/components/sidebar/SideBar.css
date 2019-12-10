@@ -1,5 +1,4 @@
 #sidebar {
-    width: 240px;
     background: var(--gradient-primary);
     position: fixed;
     float: left;
