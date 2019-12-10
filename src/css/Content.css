@@ -8,7 +8,6 @@
 }
 
 .spinner{
-    align-self: center;
     margin: auto;
     color: var(--color-primary);
 }

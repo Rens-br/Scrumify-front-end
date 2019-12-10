@@ -24,12 +24,12 @@ class SocketStore{
 		this.socket.on('receiveUserData', (userObject) => {
 			console.log(userObject);
 			this.rootStore.userStore.updateStore({ type: 'updateUser', id: userObject.id, data: userObject });
-		})
+		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
 			console.log(projectObject);
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
-		})
+		});
 	};
 
 	getUser = (userId) => {
@@ -39,12 +39,18 @@ class SocketStore{
 	getProject = (projectId) => {
 		this.socket.emit('getProject', projectId);
 	}
+
+	createSprint = (projectId, title) => {
+		this.socket.emit('createSprint', {ProjectId: projectId, title: title});
+	}
 }
 
 decorate(SocketStore, {
 	socket: observable,
 	io: observable,
-	getUser: action
+	getUser: action,
+	getProject: action,
+	createSprint: action
 });
 
 export default SocketStore;

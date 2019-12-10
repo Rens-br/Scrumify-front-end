@@ -71,14 +71,14 @@ class ProjectStore{
             case 'updateLane':
                 foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
                 if (foundSprint){ 
-                    const tempArray = foundSprint.lanes;
+                    const tempArray = foundSprint.Lanes;
                     const foundLane = tempArray.find(ln => ln.laneId === response.data.laneId);
                     if(foundLane)
                         tempArray[tempArray.indexOf(foundLane)] = response.data;
                     else
                         tempArray.push(response.data);
 
-                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = tempArray;
+                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = tempArray;
                 }
                 else{
                     throw Error("Sprint not found")
@@ -88,7 +88,7 @@ class ProjectStore{
             case 'removeLane':
                 foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
                 if (foundSprint){ 
-                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = foundSprint.lanes.filter(ln => ln.laneId !== response.data.projectId);
+                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = foundSprint.Lanes.filter(ln => ln.laneId !== response.data.projectId);
                 }
                 break;
         
@@ -110,8 +110,7 @@ class ProjectStore{
 
     
     addSprint = (title) => {
-        //TODO: Send add sprint to socket using provided sprint title
-        throw Error("Not implemented");
+        this.rootStore.socketStore.createSprint(this.projectId, title);
     };
 
     

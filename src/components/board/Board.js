@@ -12,15 +12,15 @@ const Board = inject('store')(observer(class Board extends Component {
         return {
             laneId: lane.laneId,
             laneTitle: lane.laneTitle,
-            laneItems: this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
+            laneItems: this.props.store.projectStore.workItems === undefined ? [] : this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
         }
     };
 
     render() {
         return (
             <Container id='board'>
-                <Row id='row' style={{width: this.props.sprint.lanes.length * 320 + 80}}>
-                    {this.props.sprint.lanes.map((lane, index) => <Lane key={index} data={this.getLaneData(lane)}/>)}
+                <Row id='row' style={{width: this.props.sprint.Lanes.length * 320 + 80}}>
+                    {this.props.sprint.Lanes.map((lane, index) => <Lane key={index} data={this.getLaneData(lane)}/>)}
                     <NewLaneButton />
                 </Row>
             </Container>

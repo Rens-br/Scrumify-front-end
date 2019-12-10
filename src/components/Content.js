@@ -20,6 +20,10 @@ const Content = inject('store')(observer(class Content extends Component{
 		this.setState({...this.state, ...{sprint: index}});
 	};
 
+	addSprint = () => {
+		this.props.store.projectStore.addSprint('new sprint')
+	};
+
 	render() {
 
 		if(this.props.store.projectStore.projectId !== undefined) {
@@ -27,7 +31,7 @@ const Content = inject('store')(observer(class Content extends Component{
 				<div id='content'>
 					<TopNavBar/>
 					<TabBar tabs={toJS(this.props.store.projectStore.sprints.map(x => x.sprintTitle))}
-							onTabClicked={this.changeSprint}/>
+							onTabClicked={this.changeSprint} onAddClicked={this.addSprint}/>
 					<Board sprint={this.props.store.projectStore.sprints[this.state.sprint]}/>
 				</div>
 			);
