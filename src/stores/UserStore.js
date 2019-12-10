@@ -1,36 +1,5 @@
 import {action, decorate, observable} from 'mobx';
 
-const testUser = {
-    userId: 420,
-    name: 'Kaulo Rens',
-    email: 'kaulorens@shemail.com',
-    projects: [{
-        projectId: 123456789,
-        projectName: 'Rens de schuld geven van alle problemen in de wereld',
-    },{
-        projectId: 69,
-        projectName: 'Het goedmaken met Rens omdat ie me low-key wel hard carryt',
-    },{
-        projectId: 1234,
-        projectName: 'RIP JUICE WRLD',
-    },{
-        projectId: 4321,
-        projectName: 'KUT NS',
-    },{
-        projectId: 5678,
-        projectName: 'i need professional help',
-    },{
-        projectId: 8765,
-        projectName: 'get me outta here',
-    },{
-        projectId: 1010,
-        projectName: 'nog meer testprojecten',
-    },{
-        projectId: 1221,
-        projectName: 'I have no clue what im doing',
-    }]
-}
-
 class UserStore{
     //Values stored in user store
     userId = 0;
@@ -38,8 +7,10 @@ class UserStore{
     email = "";
     projects = [];
 
-    constructor() {
-        this.updateStore({ type: "updateUser", id: testUser.userId, data: testUser })
+    rootStore
+
+    constructor(root) {
+        this.rootStore = root;
     }
     updateStore = (response) => {
         //TODO: write function to update user store.
@@ -86,4 +57,4 @@ decorate(UserStore, {
     leaveProject: action,
 });
 
-export default new UserStore();
+export default UserStore;

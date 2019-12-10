@@ -2,7 +2,7 @@ import projectStore from "./ProjectStore";
 
 //Test objects used when testing the project store
 const testData = {
-  id: 123456789,
+  projectId: 123456789,
   name: "TestProjectName",
   companyId: 123456,
   users: [{

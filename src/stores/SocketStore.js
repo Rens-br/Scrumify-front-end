@@ -17,6 +17,8 @@ class SocketStore{
 
 		this.socket.on('connect', () => {
 			console.log('connected');
+
+			this.getUser('1')
 		});
 
 		this.socket.on('receiveUserData', (userObject) => {
@@ -25,7 +27,8 @@ class SocketStore{
 		})
 
 		this.socket.on('receiveProjectData', (projectObject) => {
-			this.rootStore.projectStore.updateStore({ type: 'updateProject', id: projectObject.projectId, data: projectObject });
+			console.log(projectObject);
+			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		})
 	};
 

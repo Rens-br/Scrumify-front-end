@@ -10,4 +10,5 @@
 .spinner{
     align-self: center;
     margin-top: 25%;
+    color: var(--color-primary);
 }

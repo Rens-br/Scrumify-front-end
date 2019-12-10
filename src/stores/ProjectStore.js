@@ -3,8 +3,8 @@ import SocketStore from './SocketStore';
 
 class ProjectStore{
     //All values that are stored in the project store
-    id = 0;
-    name = "";
+    projectId = undefined;
+    projectName = "";
     companyId = 0;
     users = {};
     sprints = {};
@@ -20,8 +20,9 @@ class ProjectStore{
 
     //Loads a new project into the store
     loadProjectIntoStore = (data) => {
-        this.id = data.id;
-        this.name = data.name;
+        console.log(data)
+        this.projectId = data.projectId;
+        this.projectName = data.projectName;
         this.companyId = data.companyId;
         this.users = data.users;
         this.sprints = data.sprints;
@@ -35,7 +36,7 @@ class ProjectStore{
 
         switch (response.type) {
             case 'updateProject':
-                this.name = response.data.name;
+                this.projectName = response.data.projectName;
                 break;
 
             case 'updateWorkItem':
@@ -49,7 +50,7 @@ class ProjectStore{
                 break;
 
             case 'removeWorkItem':
-                this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.id);
+                this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.projectId);
                 break;
 
             case 'updateSprint':
@@ -64,11 +65,11 @@ class ProjectStore{
                 break;
 
             case 'removeSprint':
-                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.id);
+                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.projectId);
                 break;
 
             case 'updateLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
                 if (foundSprint){ 
                     const tempArray = foundSprint.lanes;
                     const foundLane = tempArray.find(ln => ln.laneId === response.data.laneId);
@@ -85,9 +86,9 @@ class ProjectStore{
                 break;
 
             case 'removeLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
                 if (foundSprint){ 
-                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = foundSprint.lanes.filter(ln => ln.laneId !== response.data.id);
+                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = foundSprint.lanes.filter(ln => ln.laneId !== response.data.projectId);
                 }
                 break;
         
@@ -114,8 +115,8 @@ class ProjectStore{
     };
 
     
-    addLane = (name) => {
-        //TODO: Send add lane to socket using provided lane name
+    addLane = (projectName) => {
+        //TODO: Send add lane to socket using provided lane projectName
         throw Error("Not implemented");
     };
 
@@ -132,8 +133,8 @@ class ProjectStore{
     };
 
     
-    updateLaneName = (laneId, name) => {
-        //TODO: Send update lane to socket using provided laneId and name
+    updateLaneName = (laneId, projectName) => {
+        //TODO: Send update lane to socket using provided laneId and projectName
         throw Error("Not implemented");
     };
 
@@ -164,8 +165,8 @@ class ProjectStore{
 }
 
 decorate(ProjectStore, {
-    id: observable,
-    name: observable,
+    projectId: observable,
+    projectName: observable,
     companyId: observable,
     users: observable,
     sprints: observable,
