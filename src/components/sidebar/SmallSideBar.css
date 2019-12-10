@@ -13,3 +13,7 @@
     margin-top: 15px;
     margin-bottom: 13px;
 }
+
+#toggleBtn:hover {
+    background-color: var(--color-primary-light);
+}
