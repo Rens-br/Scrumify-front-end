@@ -22,7 +22,7 @@ class TabBar extends Component {
 		return (
 			<div className='tabBar'>
 				{this.props.tabs.map((x, index) =>
-					<div onClick={() => this.tabClicked(index, this.props.onTabClicked)} id={index === this.state.selected ? 'active' : ''} className='tab'>
+					<div key={index} onClick={() => this.tabClicked(index, this.props.onTabClicked)} id={index === this.state.selected ? 'active' : ''} className='tab'>
 						<p>{x}</p>
 						{index === this.state.selected ? <MaterialIcon icon='more_vert'/> : null}
 					</div>)}

@@ -33,8 +33,8 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					<MaterialIcon icon='more_vert'/>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
-					{this.props.data.laneItems.map((item) => (
-						<Card workItem={item} callback={this.moveWorkItem}/>
+					{this.props.data.laneItems.map((item, index) => (
+						<Card key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}
 				</SimpleBar>
 			</Col>
