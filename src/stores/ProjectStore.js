@@ -69,7 +69,7 @@ class ProjectStore{
                 break;
 
             case 'updateLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.sprintId);
                 if (foundSprint){ 
                     const tempArray = foundSprint.Lanes;
                     const foundLane = tempArray.find(ln => ln.laneId === response.data.laneId);
@@ -114,9 +114,8 @@ class ProjectStore{
     };
 
     
-    addLane = (projectName) => {
-        //TODO: Send add lane to socket using provided lane projectName
-        throw Error("Not implemented");
+    addLane = (sprintId, title) => {
+        this.rootStore.socketStore.createLane(this.projectId, sprintId, title)
     };
 
     
