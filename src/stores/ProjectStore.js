@@ -1,4 +1,5 @@
 import {action, decorate, observable} from 'mobx'
+import SocketStore from './SocketStore';
 
 class ProjectStore{
     //All values that are stored in the project store
@@ -9,136 +10,10 @@ class ProjectStore{
     sprints = {};
     workItems = {};
 
-    constructor(){
-        this.loadProjectIntoStore({
-            id: 123456789,
-            name: "TestProjectName",
-            companyId: 123456,
-            users: [{
-                userId: 1234567,
-                userName: "TestUserName1",
-                userEmail: "testemail1@email.com"
-            },
-                {
-                    userId: 12345678,
-                    userName: "TestUserName2",
-                    userEmail: "testemail2@email.com"
-                }
-            ],
-            sprints: [{
-                sprintId: 1234567891,
-                sprintTitle: "testSprint1",
-                lanes: [{
-                    laneId: 23456,
-                    laneTitle: "testLaneTitle1"
-                },
-                    {
-                        laneId: 34567,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34561,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34562,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34563,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34564,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34565,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34566,
-                        laneTitle: "testLaneTitle2"
-                    }
-                ]
-            },
-                {
-                    sprintId: 456789,
-                    sprintTitle: "testSprint2",
-                    lanes: [{
-                        laneId: 56789,
-                        laneTitle: "sprint2testLaneTitle1"
-                    },
-                        {
-                            laneId: 6789,
-                            laneTitle: "sprint2testLaneTitle2"
-                        }
-                    ]
-                }
-            ],
-            workItems: [
-                {
-                    workItemId: 123,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 56789
-                },
-                {
-                    workItemId: 234,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 6789
-                },
-                {
-                    workItemId: 345,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 456,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 567,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 678,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 789,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 891,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 912,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 2134,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                }
-            ]
-        });
+    rootStore = null;
+
+    constructor(root){
+        this.rootStore = root;
     }
 
     //All actions that are used to modify the store
@@ -223,8 +98,7 @@ class ProjectStore{
 
     
     getProject = (projectId) => {
-        //TODO: Request project from socket using provided projectId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.getProject(projectId)
     };
 
     
@@ -311,4 +185,4 @@ decorate(ProjectStore, {
     removeWorkItem: action,
 });
 
-export default new ProjectStore();
+export default ProjectStore;

@@ -7,8 +7,8 @@ import './style.css';
 
 export default class ProjectDropdown extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       on: false,
     }
@@ -18,12 +18,12 @@ export default class ProjectDropdown extends React.Component {
     if (this.state.on) {
       this.setState({
         on: false,
-      })
+      });
       console.log(this.state.on);
     } else {
       this.setState({
         on: true,
-      })
+      });
       console.log(this.state.on);
     }
   };

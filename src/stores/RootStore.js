@@ -1,13 +1,13 @@
 import { observable, decorate } from 'mobx';
 
-import projectStore from './ProjectStore';
+import ProjectStore from './ProjectStore';
 import userStore from './UserStore';
-import socketStore from './SocketStore';
+import SocketStore from './SocketStore';
 
 class RootStore{
-    projectStore = projectStore;
+    projectStore = new ProjectStore(this);
     userStore = userStore;
-    socketStore = socketStore;
+    socketStore = new SocketStore(this);
 }
 
 decorate(RootStore, {

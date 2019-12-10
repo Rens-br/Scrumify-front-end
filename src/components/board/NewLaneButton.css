@@ -15,13 +15,14 @@
     background: var(--color-primary-light);
 }
 
-#newLaneText {
+.newLaneButton p{
     writing-mode: vertical-lr;
     text-orientation: sideways;
-    color: #fafafa;
+    color: var(--color-text-secondary);
     font-size: 20px;
     text-align: center;
     font-weight: bold;
     -moz-user-select: none;
     -webkit-user-select: none;
+    margin: 0;
 }

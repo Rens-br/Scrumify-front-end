@@ -5,6 +5,7 @@ import '../../css/bootstrap.min.css';
 import './SideBar.css';
 import Header from './Header';
 import ProjectList from './ProjectList';
+import SmallSideBar from './SmallSideBar';
 
 
 export default class SideBar extends React.Component{
@@ -43,8 +44,12 @@ export default class SideBar extends React.Component{
         <div className="bottombar">
           <ProjectList/>
         </div>
-      </div>
+        </div>
+        )}
+      {!isDesktop && (
+        <SmallSideBar/>
       )}
+      </div>
     );
   }
 }
