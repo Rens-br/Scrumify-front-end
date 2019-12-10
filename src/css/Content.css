@@ -11,9 +11,3 @@
     margin: auto;
     color: var(--color-primary);
 }
-
-@media only screen and (max-width: 600px) {
-    #content {
-        margin-left: 60px;
-    }
-}
