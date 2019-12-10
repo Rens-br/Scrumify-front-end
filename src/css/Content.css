@@ -9,7 +9,7 @@
 
 .spinner{
     align-self: center;
-    margin-top: 25%;
+    margin: auto;
     color: var(--color-primary);
 }
 
