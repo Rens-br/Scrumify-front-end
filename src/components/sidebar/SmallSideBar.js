@@ -9,7 +9,9 @@ export default class SmallSideBar extends React.Component{
   render(){
     return(
         <div className="smallSideBar" onClick={this.props.onClick}>
-            <MaterialIcon className="collapseIcon" icon="dehaze" style={{ fontSize: '40px' }} />
+            <div id="toggleBtn">
+                <MaterialIcon className="collapseIcon" icon="dehaze" style={{ fontSize: '40px' }} />
+            </div>
             <Divider style={{ width: '50px' }} />
         </div>
     );
