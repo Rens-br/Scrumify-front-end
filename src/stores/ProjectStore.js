@@ -86,9 +86,9 @@ class ProjectStore{
                 break;
 
             case 'removeLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.projectId);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.sprintId);
                 if (foundSprint){ 
-                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = foundSprint.Lanes.filter(ln => ln.laneId !== response.data.projectId);
+                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = foundSprint.Lanes.filter(ln => ln.laneId !== response.data.laneId);
                 }
                 break;
         
@@ -131,9 +131,8 @@ class ProjectStore{
     };
 
     
-    updateLaneName = (laneId, projectName) => {
-        //TODO: Send update lane to socket using provided laneId and projectName
-        throw Error("Not implemented");
+    updateLaneName = (laneId, title) => {
+        this.rootStore.socketStore.updateLane(this.projectId, laneId, title)
     };
 
     

@@ -52,6 +52,10 @@ class SocketStore{
 	createLane = (projectId, sprintId, title) => {
 		this.socket.emit('createLane', {ProjectId: projectId, SprintId: sprintId, title: title})
 	};
+
+	updateLane = (projectId, laneId, title) => {
+		this.socket.emit('updateLane', {ProjectId: projectId, LaneId: laneId, title: title});
+	}
 }
 
 decorate(SocketStore, {

@@ -21,15 +21,24 @@
 .laneHeader p{
     font-size: 20px;
     font-weight: 600;
-    padding: 10px;
     margin-left: 10px;
     color: var(--color-text-primary);
 }
 
-.laneHeader i{
+.headerIcons{
     color: var(--color-text-primary);
     align-self: center;
+    margin-top: 10px;
     margin-right: 10px;
+}
+
+.headerIcons i{
+    margin-left: 8px;
+}
+
+.laneTitle {
+    margin: 10px;
+    width: calc(100% - 100px);
 }
 
 #cardContainer{

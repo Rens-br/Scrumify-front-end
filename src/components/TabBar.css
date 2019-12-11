@@ -56,10 +56,6 @@
     color: var(--color-primary);
 }
 
-.tab#active p:hover{
-    color: var(--color-primary-light);
-}
-
 .tab i{
     align-self: center;
     margin-right: 4px;
