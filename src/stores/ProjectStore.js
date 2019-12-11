@@ -1,5 +1,4 @@
 import {action, decorate, observable} from 'mobx'
-import SocketStore from './SocketStore';
 
 class ProjectStore{
     //All values that are stored in the project store
@@ -20,7 +19,6 @@ class ProjectStore{
 
     //Loads a new project into the store
     loadProjectIntoStore = (data) => {
-        console.log(data)
         this.projectId = data.projectId;
         this.projectName = data.projectName;
         this.companyId = data.companyId;
@@ -40,7 +38,6 @@ class ProjectStore{
                 break;
 
             case 'updateWorkItem':
-                console.log(response.data)
                 const tempWorkItems = this.workItems;
                 foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
                 if(foundWorkItem){

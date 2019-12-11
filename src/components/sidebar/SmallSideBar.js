@@ -4,9 +4,14 @@ import './SmallSideBar.css';
 import MaterialIcon from '@material/react-material-icon';
 import Divider from './Divider';
 import SbIcon from './SbIcon';
+import {inject, observer} from 'mobx-react';
 
 
-export default class SmallSideBar extends React.Component{
+const SmallSideBar = inject('store')(observer(class SmallSideBar extends React.Component{
+  loadSprints = () => {
+    this.props.store.projectStore.getProject(this.props.store.projectStore.projectId);
+  };
+
   render(){
     return(
         <div className="smallSideBar">
@@ -18,8 +23,16 @@ export default class SmallSideBar extends React.Component{
             </div>
 
             <SbIcon icon="dashboard"/>
-            <SbIcon icon="directions_run"/>
-            <SbIcon icon="list_alt"/>
+            <Divider style={{ width: '50px' }} />
+            {this.props.store.projectStore.projectId!==undefined && (
+              <SbIcon icon="directions_run" onClick={this.loadSprints}/>
+            )}
+            {this.props.store.projectStore.projectId!==undefined && (
+              <SbIcon icon="list_alt"/>
+            )}
+            {this.props.store.projectStore.projectId!==undefined && (
+              <Divider style={{ width: '50px' }} />
+            )}
 
             <div className="sbContainer"></div>
 
@@ -31,3 +44,6 @@ export default class SmallSideBar extends React.Component{
     );
   }
 }
+));
+
+export default SmallSideBar;

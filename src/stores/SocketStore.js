@@ -2,7 +2,6 @@ import {action, decorate, observable} from 'mobx';
 import io  from 'socket.io-client';
 
 class SocketStore{
-	//Values stored in user store
 	socket = null;
 	rootStore = null;
 
@@ -13,7 +12,6 @@ class SocketStore{
 
 	connect = () => {
 		this.socket = io.connect('https://dev.api.scrumify.nl',{reconnectionDelay: 100});
-		console.log(this.socket);
 
 		this.socket.on('connect', () => {
 			console.log('connected');
@@ -22,17 +20,14 @@ class SocketStore{
 		});
 
 		this.socket.on('receiveUserData', (userObject) => {
-			console.log(userObject);
 			this.rootStore.userStore.updateStore({ type: 'updateUser', id: userObject.id, data: userObject });
 		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
-			console.log(projectObject);
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		});
 
 		this.socket.on('updateProject', (updateObject) => {
-			console.log(updateObject);
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
 	};
@@ -62,12 +57,10 @@ class SocketStore{
 	};
 
 	updateWorkItem = (projectId, workItemId, workItem) => {
-		console.log(workItem)
 		this.socket.emit('updateWorkItem', {ProjectId: projectId, WorkItemId: workItemId, data: workItem})
 	};
 
 	removeSprint = (projectId, sprintId) => {
-		console.log(sprintId)
 		this.socket.emit('removeSprint', {ProjectId: projectId, SprintId: sprintId});
 	};
 

@@ -21,9 +21,6 @@
     min-height: 52px;
     max-height: 52px;
     max-width: 50px;
-    /* position: fixed;
-    display: flex;
-    align-self: flex-end; */
     overflow: hidden;
     width: 50px;
 }

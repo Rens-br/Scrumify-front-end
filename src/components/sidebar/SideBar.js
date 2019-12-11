@@ -38,7 +38,6 @@ export default class SideBar extends React.Component{
       document.getElementById('sidebarContainer').style.flex = '240px 0 0';
     }
 
-    console.log("toggleSidebar clicked");
   }
 
   render(){
