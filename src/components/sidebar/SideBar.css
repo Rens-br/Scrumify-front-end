@@ -18,7 +18,8 @@
 
 .bottombar {
     margin-top: 123px;
-    height: calc(100vh - 123px);
+    height: calc(100vh - 173px);
+    margin-bottom: 50px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -39,4 +40,5 @@
     width: 240px;
     background-color: var(--color-primary);
 }
+
 

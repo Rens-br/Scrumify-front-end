@@ -1,30 +1,60 @@
 .smallSideBar {
     height: 100vh;
-    width: 50px;
+    max-width: 50px;
+    min-width: 50px;
     background: var(--color-primary);
     position: fixed;
     float: left;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .collapseIcon {
     color: var(--color-background-primary);
     user-select: none;
-    margin-left: 4px;
-    margin-top: 15px;
-    margin-bottom: 13px;
+    margin-left: 10px;
+    margin-top: 13px;
 }
 
 #toggleBtn {
     min-height: 52px;
-    position: fixed;
-    align-self: flex-end;
+    max-height: 52px;
+    max-width: 50px;
+    /* position: fixed;
+    display: flex;
+    align-self: flex-end; */
     overflow: hidden;
-    position: fixed;
-    width: 240px;
-    background-color: var(--color-primary);
+    width: 50px;
 }
 
 #toggleBtn:hover {
     background-color: var(--color-primary-light);
+}
+
+.headerImg {
+    margin-bottom: 10px;
+}
+
+.sbIcon {
+    display: flex;
+    color: var(--color-background-primary);
+    margin-top: 12px;
+    margin-left: 11px;
+    margin-bottom: 14px;
+    user-select: none;
+}
+
+.sbBtn:hover {
+    background-color: var(--color-primary-light);
+}
+
+#logo {
+    width: 50px;
+    height: 73px;
+}
+
+.sbContainer{
+    display: flex;
+    height: calc(100vh - 50px);
 }
