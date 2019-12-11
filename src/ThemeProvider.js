@@ -70,28 +70,53 @@ export const HighlightEnum = {
 export let CurrentTheme = {...Themes[0]};
 export let CurrentHighlight = {...Highlights[0]};
 
+let CurrentThemeIndex = 0;
+let CurrentHighlightIndex = 0;
+
+export const LoadTheme = () => {
+    let themeJson = localStorage.getItem('theme');
+
+    if(themeJson){
+        let themeHolder = JSON.parse(themeJson);
+        SetTheme(themeHolder.theme);
+        SetHighlight(themeHolder.highlight);
+    }
+    else{
+        SetTheme(0);
+        SetHighlight(0);
+    }
+}
+
 export const SetTheme = theme => {
     CurrentTheme = Themes[theme];
+    CurrentThemeIndex = theme;
     ApplyStyle();
   };
 
 export const NextTheme = () => {
-    CurrentTheme = Themes[(Themes.indexOf(CurrentTheme) + 1) % Themes.length];
+    let index = (Themes.indexOf(CurrentTheme) + 1) % Themes.length
+    CurrentTheme = Themes[index];
+    CurrentThemeIndex = index;
     ApplyStyle();
 };
 
 export const SetHighlight = highlight => {
     CurrentHighlight = Highlights[highlight];
+    CurrentHighlightIndex = highlight;
     ApplyStyle();
 };
 
 export const NextHighlight = () => {
-    CurrentHighlight = Highlights[(Highlights.indexOf(CurrentHighlight) + 1) % Highlights.length];
+    let index = (Highlights.indexOf(CurrentHighlight) + 1) % Highlights.length;
+    CurrentHighlight = Highlights[index];
+    CurrentHighlightIndex = index;
     ApplyStyle();
 };
 
 const ApplyStyle = () => {
     const AppStyle = {...CurrentTheme, ...CurrentHighlight};
+
+    localStorage.setItem('theme', JSON.stringify({theme: CurrentThemeIndex, highlight: CurrentHighlightIndex}))
 
     Object.keys(AppStyle).map(key => {
         const value = AppStyle[key];
