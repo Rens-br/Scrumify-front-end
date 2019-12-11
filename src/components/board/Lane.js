@@ -21,7 +21,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 	 };
 
 	 changeLaneTitle = (title) => {
-		this.props.store.projectStore.updateLaneName(this.props.data.laneId, title);
+		this.props.store.projectStore.updateLaneName(this.props.data.sprintId, this.props.data.laneId, title);
 	 };
 
 	render() {
@@ -34,7 +34,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 			<div>
 			<Col id='lane' style={style}>
 				<div className='laneHeader'>
-					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{"font-size": "20px","font-weight": "600"}}/>
+					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{"fontSize": "20px","fontWeight": "600"}}/>
 					<div className='headerIcons'>
 						<MaterialIcon icon='add'/>
 						<MaterialIcon icon='more_vert'/>

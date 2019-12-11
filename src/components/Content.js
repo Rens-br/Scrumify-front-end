@@ -24,13 +24,17 @@ const Content = inject('store')(observer(class Content extends Component{
 		this.props.store.projectStore.addSprint('new sprint')
 	};
 
+	changeSprintTitle = (index, title) => {
+		this.props.store.projectStore.updateSprintTitle(this.props.store.projectStore.sprints[index].sprintId, title);
+	};
+
 	render() {
 
 		if(this.props.store.projectStore.projectId !== undefined) {
 			return (
 				<div id='content'>
 					<TopNavBar/>
-					<TabBar tabs={toJS(this.props.store.projectStore.sprints.map(x => x.sprintTitle))}
+					<TabBar onChangeTab={this.changeSprintTitle} tabs={toJS(this.props.store.projectStore.sprints.map(x => x.sprintTitle))}
 							onTabClicked={this.changeSprint} onAddClicked={this.addSprint}/>
 					<Board sprint={this.props.store.projectStore.sprints[this.state.sprint]}/>
 				</div>

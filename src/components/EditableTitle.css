@@ -2,7 +2,6 @@
     border: none;
     border-bottom: 2px solid var(--color-primary);
     background: none;
-    margin: -1px 9px 9px;
     width: 100%;
 }
 
@@ -11,4 +10,8 @@
     text-overflow: ellipsis;
     overflow-x: hidden;
     white-space: nowrap;
+}
+
+input:focus{
+    outline: none;
 }

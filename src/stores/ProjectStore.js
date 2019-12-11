@@ -57,10 +57,10 @@ class ProjectStore{
                 const tempArray = this.sprints;
                 foundSprint = tempArray.find(sp => sp.sprintId === response.data.sprintId);
                 if(foundSprint)
-                    tempArray[tempArray.indexOf(foundSprint)] = response.data;
+                    tempArray[tempArray.indexOf(foundSprint)] = {...foundSprint, ...response.data};
                 else
                     tempArray.push(response.data);
-                
+
                     this.sprints = tempArray;
                 break;
 
@@ -118,7 +118,7 @@ class ProjectStore{
         this.rootStore.socketStore.createLane(this.projectId, sprintId, title)
     };
 
-    
+
     addWorkItem = (workItem) => {
         //TODO: Send add workItem to socket using provided workItem object
         throw Error(Error("Not implemented"));
@@ -126,12 +126,13 @@ class ProjectStore{
 
     
     updateSprintTitle = (sprintId, title) => {
-        //TODO: Send update sprint to socket using provided sprintId and title
-        throw Error("Not implemented");
+        this.sprints.find(x => x.sprintId === sprintId).sprintTitle = title;
+        this.rootStore.socketStore.updateSprint(this.projectId, sprintId, title)
     };
 
     
-    updateLaneName = (laneId, title) => {
+    updateLaneName = (sprintId, laneId, title) => {
+        this.sprints.find(x => x.sprintId === sprintId).Lanes.find(x => x.laneId === laneId).laneTitle = title;
         this.rootStore.socketStore.updateLane(this.projectId, laneId, title)
     };
 

@@ -37,8 +37,14 @@
 }
 
 .laneTitle {
-    margin: 10px;
-    width: calc(100% - 100px);
+     margin: 10px;
+     width: calc(100% - 100px);
+}
+
+.laneTitle input{
+    margin: -1px 9px 0;
+    align-self: flex-start;
+    justify-self: start;
 }
 
 #cardContainer{

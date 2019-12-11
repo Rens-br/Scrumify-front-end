@@ -10,6 +10,7 @@ const Board = inject('store')(observer(class Board extends Component {
 
     getLaneData = (lane) => {
         return {
+            sprintId: this.props.sprint.sprintId,
             laneId: lane.laneId,
             laneTitle: lane.laneTitle,
             laneItems: this.props.store.projectStore.workItems === undefined ? [] : this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
