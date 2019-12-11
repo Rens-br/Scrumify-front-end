@@ -3,6 +3,7 @@ import '../../css/bootstrap.min.css';
 import './SmallSideBar.css';
 import MaterialIcon from '@material/react-material-icon';
 import Divider from './Divider';
+import SbIcon from './SbIcon';
 
 
 export default class SmallSideBar extends React.Component{
@@ -16,18 +17,9 @@ export default class SmallSideBar extends React.Component{
               <Divider style={{ width: '50px' }} />
             </div>
 
-            <div className="sbBtn">
-              <MaterialIcon style={{ fontSize: '24px' }} className="sbIcon" icon="dashboard" />
-              <Divider style={{ width: '50px' }} />
-            </div>
-            <div className="sbBtn">
-              <MaterialIcon style={{ fontSize: '24px' }} className="sbIcon" icon="dashboard" />
-              <Divider style={{ width: '50px' }} />
-            </div>
-            <div className="sbBtn">
-              <MaterialIcon style={{ fontSize: '24px' }} className="sbIcon" icon="dashboard" />
-              <Divider style={{ width: '50px' }} />
-            </div>
+            <SbIcon icon="dashboard"/>
+            <SbIcon icon="directions_run"/>
+            <SbIcon icon="list_alt"/>
 
             <div className="sbContainer"></div>
 

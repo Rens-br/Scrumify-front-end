@@ -1,0 +1,12 @@
+.sbIcon {
+    display: flex;
+    color: var(--color-background-primary);
+    margin-top: 12px;
+    margin-left: 11px;
+    margin-bottom: 14px;
+    user-select: none;
+}
+
+.sbBtn:hover {
+    background-color: var(--color-primary-light);
+}
