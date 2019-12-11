@@ -11,7 +11,7 @@ function App() {
     SetTheme(ThemeEnum.LIGHT);
 
     return (
-        <div style={{display:'flex'}} className="App">
+        <div style={{display:'flex', maxWidth: '100%'}} className="App">
             <DndProvider backend={HTML5Backend}>
                 <SideBar />
                 <Content/>

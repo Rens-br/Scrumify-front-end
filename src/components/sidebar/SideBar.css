@@ -1,23 +1,23 @@
 #sidebar {
-    background: var(--gradient-primary);
+    background: var(--color-primary);
     position: fixed;
     float: left;
     display: flex;
+    width: 240px;
 }
 #sidebar::-webkit-scrollbar {
     display: none;
 }
 
 .topbar {
-    fill: var(--color-primar-light);
     overflow: hidden;
-    min-height: 173px;
+    min-height: 123px;
     position: fixed;
     width: 240px;
 }
 
 .bottombar {
-    margin-top: 173px;
+    margin-top: 123px;
     height: calc(100vh - 123px);
     display: flex;
     flex-direction: column;
@@ -29,3 +29,14 @@
 .bottombar::-webkit-scrollbar {
     display: none;
 }
+
+.footer {
+    min-height: 52px;
+    position: fixed;
+    align-self: flex-end;
+    overflow: hidden;
+    position: fixed;
+    width: 240px;
+    background-color: var(--color-primary);
+}
+

@@ -50,15 +50,17 @@ export default class SideBar extends React.Component{
         <div className="topbar">
           <Header/>
           <Divider />
-          <NavButton icon="dehaze" label="Minimize sidebar" onClick={this.toggleSidebar}/>
-          <Divider />
           <NavButton icon="dashboard" label="Dashboard" path="/newpage" />
           <Divider />
         </div>
         <div className="bottombar">
           <ProjectList/>
         </div>
+        <div className="footer">
+          <Divider />
+          <NavButton style={{backgroundColor: "red"}} icon="dehaze" label="Minimize sidebar" onClick={this.toggleSidebar}/>
         </div>
+      </div>
         )}
       {!isDesktop && (
         <SmallSideBar onClick={this.toggleSidebar}/>

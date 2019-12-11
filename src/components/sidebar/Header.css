@@ -14,11 +14,12 @@
     fill: var(--color-background-primary);
 }
 
-.title {
+.headerTitle {
     color: var(--color-background-primary);
     font-size: 35px;
     font-weight: 600;
-    margin-left: 10px;
-    margin-top: 10px;
+    padding-top: 10px;
+    padding-left: 5px;
     user-select: none; 
+    text-align: left;
 }
