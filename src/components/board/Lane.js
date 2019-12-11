@@ -24,19 +24,23 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		this.props.store.projectStore.updateLaneName(this.props.data.sprintId, this.props.data.laneId, title);
 	 };
 
+	 addWorkItem = () => {
+		this.props.store.projectStore.addWorkItem(this.props.data.laneId, 'new workitem');
+	 };
+
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
 			opacity: isOver ? .8 : 1
 		};
-
+		console.log(this.props.data.laneItems)
 		return connectDropTarget(
 			<div>
 			<Col id='lane' style={style}>
 				<div className='laneHeader'>
 					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{"fontSize": "20px","fontWeight": "600"}}/>
 					<div className='headerIcons'>
-						<MaterialIcon icon='add'/>
+						<MaterialIcon onClick={this.addWorkItem} icon='add'/>
 						<MaterialIcon icon='more_vert'/>
 					</div>
 				</div>

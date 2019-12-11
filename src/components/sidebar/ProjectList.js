@@ -4,7 +4,6 @@ import './ProjectList.css';
 import NavDropdown from './NavDropdown';
 import { inject, observer } from 'mobx-react';
 
-
 const ProjectList = inject('store')(observer(class ProjectList extends React.Component{
   loadSprints = (projectId) => {
     this.props.store.projectStore.getProject(projectId);

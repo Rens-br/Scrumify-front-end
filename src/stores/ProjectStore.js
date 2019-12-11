@@ -42,11 +42,13 @@ class ProjectStore{
             case 'updateWorkItem':
                 const tempWorkItems = this.workItems;
                 foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
-                if(foundWorkItem)
-                    tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = response.data;
-                else
+                if(foundWorkItem){
+                    tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = {...foundWorkItem, ...response.data};
+                } else{
                     tempWorkItems.push(response.data);
-                    this.sprints = tempWorkItems;
+                }
+                    this.workItems = tempWorkItems;
+                    console.log(this.workItems)
                 break;
 
             case 'removeWorkItem':
@@ -115,13 +117,12 @@ class ProjectStore{
 
     
     addLane = (sprintId, title) => {
-        this.rootStore.socketStore.createLane(this.projectId, sprintId, title)
+        this.rootStore.socketStore.createLane(this.projectId, sprintId, title);
     };
 
 
-    addWorkItem = (workItem) => {
-        //TODO: Send add workItem to socket using provided workItem object
-        throw Error(Error("Not implemented"));
+    addWorkItem = (laneId, workItem) => {
+        this.rootStore.socketStore.addWorkItem(this.projectId, laneId, workItem);
     };
 
     
