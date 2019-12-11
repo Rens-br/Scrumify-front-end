@@ -40,6 +40,7 @@ class ProjectStore{
                 break;
 
             case 'updateWorkItem':
+                console.log(response.data)
                 const tempWorkItems = this.workItems;
                 foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
                 if(foundWorkItem){
@@ -48,7 +49,6 @@ class ProjectStore{
                     tempWorkItems.push(response.data);
                 }
                     this.workItems = tempWorkItems;
-                    console.log(this.workItems)
                 break;
 
             case 'removeWorkItem':
@@ -141,6 +141,7 @@ class ProjectStore{
     updateWorkItem = (workItemId, workItem) => {
         let oldItem = this.workItems.find(x => x.workItemId === workItemId);
         this.workItems[this.workItems.indexOf(oldItem)] = {...oldItem, ...workItem};
+        this.rootStore.socketStore.updateWorkItem(this.projectId, workItemId, workItem);
         //TODO: Send update workItem to socket using provided workItemId and workItem object
     };
 

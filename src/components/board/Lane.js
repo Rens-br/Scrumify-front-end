@@ -33,7 +33,6 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		const style = {
 			opacity: isOver ? .8 : 1
 		};
-		console.log(this.props.data.laneItems)
 		return connectDropTarget(
 			<div>
 			<Col id='lane' style={style}>

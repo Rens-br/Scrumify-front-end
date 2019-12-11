@@ -61,6 +61,11 @@ class SocketStore{
 		this.socket.emit('updateSprint', {ProjectId: projectId, SprintId: sprintId, title: title})
 	};
 
+	updateWorkItem = (projectId, workItemId, workItem) => {
+		console.log(workItem)
+		this.socket.emit('updateWorkItem', {ProjectId: projectId, WorkItemId: workItemId, data: workItem})
+	};
+
 	removeSprint = (projectId, sprintId) => {
 		console.log(sprintId)
 		this.socket.emit('removeSprint', {ProjectId: projectId, SprintId: sprintId});
