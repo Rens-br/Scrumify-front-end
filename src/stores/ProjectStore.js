@@ -67,7 +67,7 @@ class ProjectStore{
                 break;
 
             case 'removeSprint':
-                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.projectId);
+                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.sprintId);
                 break;
 
             case 'updateLane':
@@ -146,8 +146,7 @@ class ProjectStore{
 
     
     removeSprint = (sprintId) => {
-        //TODO: Send remove sprint to socket using provided sprintId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeSprint(this.projectId, sprintId);
     };
 
     

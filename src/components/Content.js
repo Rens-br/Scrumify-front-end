@@ -28,6 +28,10 @@ const Content = inject('store')(observer(class Content extends Component{
 		this.props.store.projectStore.updateSprintTitle(this.props.store.projectStore.sprints[index].sprintId, title);
 	};
 
+	removeSprint = (index) => {
+		this.props.store.projectStore.removeSprint(this.props.store.projectStore.sprints[index].sprintId);
+	};
+
 	render() {
 
 		if(this.props.store.projectStore.projectId !== undefined) {
@@ -35,8 +39,8 @@ const Content = inject('store')(observer(class Content extends Component{
 				<div id='content'>
 					<TopNavBar/>
 					<TabBar onChangeTab={this.changeSprintTitle} tabs={toJS(this.props.store.projectStore.sprints.map(x => x.sprintTitle))}
-							onTabClicked={this.changeSprint} onAddClicked={this.addSprint}/>
-					<Board sprint={this.props.store.projectStore.sprints[this.state.sprint]}/>
+							onTabClicked={this.changeSprint} onAddClicked={this.addSprint} onRemoveTab={this.removeSprint}/>
+					{this.props.store.projectStore.sprints[this.state.sprint] && <Board sprint={this.props.store.projectStore.sprints[this.state.sprint]}/>}
 				</div>
 			);
 		}
