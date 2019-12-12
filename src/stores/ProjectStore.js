@@ -49,7 +49,7 @@ class ProjectStore{
                 break;
 
             case 'removeWorkItem':
-                this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.projectId);
+                this.workItems = this.workItems.filter(wi => wi.workItemId !== response.data.workItemId);
                 break;
 
             case 'updateSprint':

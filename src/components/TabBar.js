@@ -19,6 +19,12 @@ class TabBar extends Component {
 		}
 	};
 
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevState.selected >= this.props.tabs.length) {
+			this.tabClicked(0, this.props.onTabClicked);
+		}
+	}
+
 	render() {
 		return (
 			<div className='tabBar'>
