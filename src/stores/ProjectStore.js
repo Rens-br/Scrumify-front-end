@@ -141,22 +141,18 @@ class ProjectStore{
         this.rootStore.socketStore.updateWorkItem(this.projectId, workItemId, workItem);
         //TODO: Send update workItem to socket using provided workItemId and workItem object
     };
-
     
     removeSprint = (sprintId) => {
         this.rootStore.socketStore.removeSprint(this.projectId, sprintId);
     };
-
     
     removeLane = (laneId) => {
-        //TODO: Send remove lane to socket using provided laneId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeLane(this.projectId, laneId);
     };
 
     
     removeWorkItem = (workItemId) => {
-        //TODO: Send remove workItem to socket using provided workItemId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeWorkItem(this.projectId, workItemId);
     }
 }
 

@@ -3,6 +3,7 @@
     border-bottom: 2px solid var(--color-primary);
     background: none;
     width: 100%;
+    color: var(--color-text-primary);
 }
 
 .title {

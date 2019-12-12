@@ -28,6 +28,7 @@ class SocketStore{
 		});
 
 		this.socket.on('updateProject', (updateObject) => {
+			console.log(updateObject)
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
 	};
@@ -64,9 +65,19 @@ class SocketStore{
 		this.socket.emit('removeSprint', {ProjectId: projectId, SprintId: sprintId});
 	};
 
+	removeLane = (projectId, laneId) => {
+		this.socket.emit('removeLane', {ProjectId: projectId, LaneId: laneId})
+	};
+
+	removeWorkItem = (projectId, workItemId) => {
+		this.socket.emit('removeWorkItem', {ProjectId: projectId, WorkItemId: workItemId});
+	};
+
 	addWorkItem = (projectId, laneId, title) => {
 		this.socket.emit('createWorkItem', {ProjectId: projectId, LaneId: laneId, title: title})
-	}
+	};
+
+
 }
 
 decorate(SocketStore, {

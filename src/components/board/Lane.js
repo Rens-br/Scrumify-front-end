@@ -8,6 +8,7 @@ import { DropTarget } from 'react-dnd';
 import SimpleBar from 'simplebar-react';
 import MaterialIcon from '@material/react-material-icon';
 import EditableTitle from '../EditableTitle';
+import DropDownMenu from '../sidebar/DropDownMenu';
 
 const laneTarget = {
 	drop(targetProps, monitor) {
@@ -28,6 +29,24 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		this.props.store.projectStore.addWorkItem(this.props.data.laneId, 'new workitem');
 	 };
 
+	 menuOptionClicked = (index) => {
+	 	switch (index) {
+			case 0:
+					this.props.store.projectStore.removeLane(this.props.data.laneId);
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			default:
+				break;
+		}
+	 };
+
+	 removeWorkItem = (workItemId) => {
+		this.props.store.projectStore.removeWorkItem(workItemId);
+	 };
+
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
@@ -40,12 +59,12 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{"fontSize": "20px","fontWeight": "600"}}/>
 					<div className='headerIcons'>
 						<MaterialIcon onClick={this.addWorkItem} icon='add'/>
-						<MaterialIcon icon='more_vert'/>
+						<DropDownMenu options={['Remove', 'Edit', 'Clear']} onOptionClick={this.menuOptionClicked}/>
 					</div>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
 					{this.props.data.laneItems.map((item, index) => (
-						<Card key={index} workItem={item} callback={this.moveWorkItem}/>
+						<Card onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}
 				</SimpleBar>
 			</Col>
