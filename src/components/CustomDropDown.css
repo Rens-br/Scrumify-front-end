@@ -3,11 +3,12 @@
     flex: 300px;
     flex-shrink: 0;
     flex-grow: 0;
-    border-radius: 50px;
+    border-radius: 5px;
     border: 2px solid var(--color-primary);
     margin: 10px;
     justify-content: space-between;
     user-select: none;
+    margin-left: 15px;
 }
 
 .customDropDown p{
