@@ -1,0 +1,10 @@
+.ddItemContainer {
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid var(--color-primary);
+    margin-bottom: -1.5px;
+}
+
+.ddItem {
+    
+}

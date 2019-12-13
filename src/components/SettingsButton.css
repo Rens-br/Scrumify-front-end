@@ -3,3 +3,7 @@
     user-select: none;
     margin-top: 6px;
 }
+
+.settingsBtnIcon:hover {
+    color: var(--color-primary-light);
+}

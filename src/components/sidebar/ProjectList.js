@@ -35,7 +35,7 @@ const ProjectList = inject('store')(observer(class ProjectList extends React.Com
           {this.state.isAddingProject && (
             <div className="newProjectBtn">
               <MaterialIcon icon="fiber_new" style={{ fontSize: '24px' }} className="newProjectIcon"/>
-              <EditableTitle startEditing isLocked={this.props.isStatic} title="New Project" titleChanged={(title) => this.onNewProjectCreation(title)} className="newProjectBtnText" />
+              <EditableTitle startEditing isLocked={this.props.isStatic} titleChanged={(title) => this.onNewProjectCreation(title)} className="newProjectBtnText" />
             </div>
           )}
           <Divider />
