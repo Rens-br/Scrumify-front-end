@@ -4,6 +4,7 @@
     height: 50px;
     display: flex;
     text-overflow: ellipsis;
+    background-color: var(--color-primary-dark);
 }
 
 .newProjectIcon {
@@ -31,5 +32,4 @@
     margin-top: -1px;
     margin-left: -1px;
     color: var(--color-text-secondary);
-    background-color: var(--color-primary-dark);
 }
