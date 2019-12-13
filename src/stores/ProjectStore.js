@@ -112,6 +112,11 @@ class ProjectStore{
     };
 
     
+    addProject = (title) => {
+        this.rootStore.socketStore.createProject(this.projectId, title);
+    };
+
+
     addLane = (sprintId, title) => {
         this.rootStore.socketStore.createLane(this.projectId, sprintId, title);
     };

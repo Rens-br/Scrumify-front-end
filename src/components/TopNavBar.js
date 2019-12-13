@@ -14,10 +14,10 @@ export default class TopNavBar extends React.Component{
           <CustomDropDown/>
           <div className="profileButton">
             <div onClick={NextTheme} className="profileButton">
-              <MaterialIcon icon="account_circle" style={{ fontSize: '60px' }} className="profileIcon"/>
+              <MaterialIcon icon="account_circle" style={{ fontSize: '50px' }} className="profileIcon"/>
             </div>
             <div onClick={NextHighlight} className="profileButton">
-              <MaterialIcon icon="account_circle" style={{ fontSize: '60px' }} className="profileIcon"/>
+              <MaterialIcon icon="account_circle" style={{ fontSize: '50px' }} className="profileIcon"/>
             </div></div>
         </div>
     );

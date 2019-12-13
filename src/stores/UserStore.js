@@ -23,7 +23,7 @@ class UserStore{
                 this.projects = response.data.projects;
                 break;
             case 'updateProject':
-                let foundProject = this.projects.find(proj => proj.projectId === response.id);
+                let foundProject = this.projects.find(proj => proj.projectId === response.projectId);
                 if(foundProject)
                     this.projects[this.projects.indexOf(foundProject)] = {...foundProject, ...response.data};
                 else

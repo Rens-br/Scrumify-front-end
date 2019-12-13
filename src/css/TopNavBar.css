@@ -1,7 +1,7 @@
 .TopNavBar {
     display: flex;
-    min-height: 72px;
-    max-height: 72px;
+    min-height: 62px;
+    max-height: 62px;
     background: var(--color-background-primary);
 }
 

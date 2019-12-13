@@ -19,8 +19,14 @@ class SocketStore{
 			this.getUser('1')
 		});
 
+		this.socket.on("error", (error) => console.log(error))
+
 		this.socket.on('receiveUserData', (userObject) => {
 			this.rootStore.userStore.updateStore({ type: 'updateUser', id: userObject.id, data: userObject });
+		});
+
+		this.socket.on('updateUser', (userObject) => {
+			this.rootStore.userStore.updateStore(userObject);
 		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
@@ -81,6 +87,10 @@ class SocketStore{
 
 	addWorkItem = (projectId, laneId, title) => {
 		this.socket.emit('createWorkItem', {ProjectId: projectId, LaneId: laneId, title: title})
+	};
+
+	createProject = (projectId, title) => {
+		this.socket.emit('createProject', {ProjectId: projectId, title: title});
 	};
 
 

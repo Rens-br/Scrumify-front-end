@@ -11,14 +11,14 @@
 
 .topbar {
     overflow: hidden;
-    min-height: 123px;
+    min-height: 113px;
     position: fixed;
     width: 240px;
 }
 
 .bottombar {
-    margin-top: 123px;
-    height: calc(100vh - 173px);
+    margin-top: 113px;
+    height: calc(100vh - 163px);
     margin-bottom: 50px;
     display: flex;
     flex-direction: column;
