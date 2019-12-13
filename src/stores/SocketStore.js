@@ -70,6 +70,8 @@ class SocketStore{
 	};
 
 	updateWorkItem = (projectId, workItemId, workItem) => {
+		console.log(workItemId);
+		console.log(workItem);
 		this.socket.emit('updateWorkItem', {ProjectId: projectId, WorkItemId: workItemId, data: workItem})
 	};
 

@@ -9,12 +9,13 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 	constructor(props) {
 		super(props);
 		this.state = {
-			workItem: this.getWorkItemFromStore(props.store.clientStore.currentWorkItem)
+			workItems: props.store.projectStore.workItems,
+			workItemIndex: this.getWorkItemIndex(props.store.clientStore.currentWorkItem),
 		};
 	}
 
-	getWorkItemFromStore = (workItemId) => {
-		return this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId);
+	getWorkItemIndex = (workItemId) => {
+		return this.props.store.projectStore.workItems.indexOf(this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId));
 	};
 
 	render() {
@@ -23,8 +24,8 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 				<div className='window'>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
-							<p className='headerId'>#{this.state.workItem.workItemId}</p>
-							<EditableTitle title={this.state.workItem.workItemTitle} titleChanged={(title) => console.log('edit')} className='tabTitle' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
+							<p className='headerId'>#{this.state.workItems[this.state.workItemIndex].workItemId}</p>
+							<EditableTitle title={this.state.workItems[this.state.workItemIndex].workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(this.state.workItems[this.state.workItemIndex].workItemId, {title: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
 						</div>
 						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
 							<MaterialIcon icon='close'/>
