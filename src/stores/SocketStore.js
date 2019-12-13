@@ -24,6 +24,7 @@ class SocketStore{
 		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
+			console.log(projectObject)
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		});
 
@@ -38,6 +39,7 @@ class SocketStore{
 	};
 
 	getProject = (projectId) => {
+		console.log(projectId)
 		this.socket.emit('getProject', projectId);
 	};
 

@@ -7,6 +7,7 @@ import TopNavBar from './TopNavBar';
 import TabBar from './TabBar';
 import {toJS} from 'mobx';
 import {Spinner} from 'react-bootstrap';
+import WorkItemWindow from './WorkItemWindow';
 
 const Content = inject('store')(observer(class Content extends Component{
 	constructor(props) {

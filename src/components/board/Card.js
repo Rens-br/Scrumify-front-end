@@ -1,6 +1,5 @@
 import React from 'react';
 import { Component } from 'react';
-import MaterialIcon from '@material/react-material-icon';
 import './Card.css';
 import {DragSource} from 'react-dnd';
 import {toJS} from 'mobx';
@@ -16,15 +15,38 @@ const cardSource = {
 };
 
 export class Card extends Component{
+	constructor(props) {
+		super(props);
+		this.state = {
+			wasClicked: false,
+			isOpen: false,
+			timeout: 200,
+		};
+	}
+
+
 	menuItemClicked = (index) => {
 		if(index === 0){
 			this.props.onRemove(this.props.workItem.workItemId);
 		}
 	};
 
+	clickedCard = () => {
+		if(this.state.wasClicked){
+			this.setState({wasClicked: false, isOpen: true})
+		}
+		else{
+			this.setState({wasClicked: true});
+
+			setTimeout(() => {
+				this.setState({wasClicked: false})
+			}, this.state.timeout);
+		}
+	};
+
 	render() {
 		return this.props.connectDragSource(
-			<div id="card">
+			<div onClick={this.clickedCard} id="card">
 				<div className='cardHeader'>
 					<p>{this.props.workItem.workItemTitle}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>

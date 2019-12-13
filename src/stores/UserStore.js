@@ -7,7 +7,7 @@ class UserStore{
     email = "";
     projects = [];
 
-    rootStore
+    rootStore = null;
 
     constructor(root) {
         this.rootStore = root;
