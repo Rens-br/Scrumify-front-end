@@ -25,13 +25,16 @@ const ProjectList = inject('store')(observer(class ProjectList extends React.Com
       this.setState({ isAddingProject: false });
       this.props.store.projectStore.addProject(title);
     }
-  }
+  };
 
+  onOpenProject = (index) => {
+    this.props.store.clientStore.setCurrentProjectIndex(index === this.props.store.clientStore.currentProjectIndex ? undefined : index);
+  };
 
   render(){
     return(
         <div className="projectListDiv">
-          {this.props.store.userStore.projects.map((project, index) => <NavDropdown onSprintsClick={this.loadSprints} key={index} data={project}/>)}
+          {this.props.store.userStore.projects.map((project, index) => <NavDropdown openDropdown={() => this.onOpenProject(index)} isOn={index === this.props.store.clientStore.currentProjectIndex} onSprintsClick={this.loadSprints} key={index} data={project}/>)}
           {this.state.isAddingProject && (
             <div className="newProjectBtn">
               <MaterialIcon icon="fiber_new" style={{ fontSize: '24px' }} className="newProjectIcon"/>
