@@ -11,7 +11,7 @@ class SocketStore{
 	}
 
 	connect = () => {
-		this.socket = io.connect('https://dev.api.scrumify.nl',{reconnectionDelay: 100});
+		this.socket = io.connect(process.env.REACT_APP_API_URL,{reconnectionDelay: 100});
 
 		this.socket.on('connect', () => {
 			console.log('connected');
