@@ -8,7 +8,7 @@ class EditableTitle extends Component {
 		this.state = {
 			title: this.props.title,
 			wasClicked: false,
-			isEditing: false,
+			isEditing: this.props.startEditing,
 			timeout: 200,
 		}
 	}

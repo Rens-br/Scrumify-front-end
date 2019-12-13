@@ -3,6 +3,7 @@ import './WorkItemWindow.css'
 import MaterialIcon from '@material/react-material-icon';
 import TabBar from './TabBar';
 import {inject, observer} from 'mobx-react';
+import EditableTitle from './EditableTitle';
 
 const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
 	constructor(props) {
@@ -22,8 +23,8 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 				<div className='window'>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
-							<p className='headerId'>#12345</p>
-							<p className='headerName'>Als backend wil ik een verzoek om een nieuwe workitem te creeëren afhandelen</p>
+							<p className='headerId'>#{this.state.workItem.workItemId}</p>
+							<EditableTitle title={this.state.workItem.workItemTitle} titleChanged={(title) => console.log('edit')} className='tabTitle' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
 						</div>
 						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
 							<MaterialIcon icon='close'/>
