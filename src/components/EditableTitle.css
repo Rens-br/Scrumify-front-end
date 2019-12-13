@@ -2,7 +2,7 @@
     border: none;
     border-bottom: 2px solid var(--color-primary);
     background: none;
-    width: 100%;
+    min-width: 50px;
     color: var(--color-text-primary);
 }
 
@@ -11,6 +11,7 @@
     text-overflow: ellipsis;
     overflow-x: hidden;
     white-space: nowrap;
+    user-select: none;
 }
 
 input:focus{

@@ -49,7 +49,7 @@ export class Card extends Component{
 		return this.props.connectDragSource(
 			<div onClick={this.clickedCard} id="card">
 				<div className='cardHeader'>
-					<p>{this.props.workItem.workItemId}</p>
+					<p>{this.props.workItem.workItemTitle}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
 			</div>

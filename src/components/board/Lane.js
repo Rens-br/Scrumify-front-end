@@ -60,7 +60,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 			<div>
 			<Col id='lane' style={style}>
 				<div className='laneHeader'>
-					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{"fontSize": "20px","fontWeight": "600"}}/>
+					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{maxWidth: '90%', fontSize: "20px","fontWeight": "600"}}/>
 					<div className='headerIcons'>
 						<MaterialIcon onClick={this.addWorkItem} icon='add'/>
 						<DropDownMenu options={['Remove', 'Edit', 'Clear']} onOptionClick={this.menuOptionClicked}/>
