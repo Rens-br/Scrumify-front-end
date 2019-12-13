@@ -33,7 +33,8 @@ export class Card extends Component{
 
 	clickedCard = () => {
 		if(this.state.wasClicked){
-			this.setState({wasClicked: false, isOpen: true})
+			this.setState({wasClicked: false});
+			this.props.onDoubleClick(this.props.workItem.workItemId);
 		}
 		else{
 			this.setState({wasClicked: true});
@@ -48,7 +49,7 @@ export class Card extends Component{
 		return this.props.connectDragSource(
 			<div onClick={this.clickedCard} id="card">
 				<div className='cardHeader'>
-					<p>{this.props.workItem.workItemTitle}</p>
+					<p>{this.props.workItem.workItemId}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
 			</div>

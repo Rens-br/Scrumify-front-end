@@ -103,8 +103,7 @@ class ProjectStore{
 
     
     getWorkItem = (workItemId) => {
-        //TODO: Request workItem from socket using provided workItemId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.getWorkItem(this.projectId, workItemId);
     };
 
     

@@ -62,6 +62,7 @@
     margin: 10px;
     padding: 2.5px;
     color: var(--color-text-secondary);
+    user-select: none;
 }
 
 .closeBtn i{

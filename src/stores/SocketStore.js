@@ -24,12 +24,12 @@ class SocketStore{
 		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
-			console.log(projectObject)
+			console.log(projectObject);
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		});
 
 		this.socket.on('updateProject', (updateObject) => {
-			console.log(updateObject)
+			console.log(updateObject);
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
 	};
@@ -41,6 +41,10 @@ class SocketStore{
 	getProject = (projectId) => {
 		console.log(projectId)
 		this.socket.emit('getProject', projectId);
+	};
+
+	getWorkItem = (projectId, workItemId) => {
+		this.socket.emit('getWorkItem', {ProjectId: projectId, WorkItemId: workItemId})
 	};
 
 	createSprint = (projectId, title) => {

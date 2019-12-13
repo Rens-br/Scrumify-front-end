@@ -2,8 +2,20 @@ import React, {Component} from 'react';
 import './WorkItemWindow.css'
 import MaterialIcon from '@material/react-material-icon';
 import TabBar from './TabBar';
+import {inject, observer} from 'mobx-react';
 
-class WorkItemWindow extends Component {
+const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			workItem: this.getWorkItemFromStore(props.store.clientStore.currentWorkItem)
+		};
+	}
+
+	getWorkItemFromStore = (workItemId) => {
+		return this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId);
+	};
+
 	render() {
 		return (
 			<div className='backdrop'>
@@ -13,7 +25,7 @@ class WorkItemWindow extends Component {
 							<p className='headerId'>#12345</p>
 							<p className='headerName'>Als backend wil ik een verzoek om een nieuwe workitem te creeëren afhandelen</p>
 						</div>
-						<div className='closeBtn'>
+						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
 							<MaterialIcon icon='close'/>
 						</div>
 					</div>
@@ -32,6 +44,6 @@ class WorkItemWindow extends Component {
 			</div>
 		);
 	}
-}
+}));
 
 export default WorkItemWindow;

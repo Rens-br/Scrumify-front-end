@@ -42,6 +42,7 @@ const Content = inject('store')(observer(class Content extends Component{
 					<TabBar onChangeTab={this.changeSprintTitle} tabs={toJS(this.props.store.projectStore.sprints.map(x => x.sprintTitle))}
 							onTabClicked={this.changeSprint} onAddClicked={this.addSprint} onRemoveTab={this.removeSprint}/>
 					{this.props.store.projectStore.sprints[this.state.sprint] && <Board sprint={this.props.store.projectStore.sprints[this.state.sprint]}/>}
+					{this.props.store.clientStore.isWorkItemOpen && <WorkItemWindow/>}
 				</div>
 			);
 		}

@@ -47,6 +47,10 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		this.props.store.projectStore.removeWorkItem(workItemId);
 	 };
 
+	 workItemClicked = (workItemId) => {
+		this.props.store.clientStore.openWorkItem(workItemId);
+	 };
+
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
@@ -64,7 +68,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
 					{this.props.data.laneItems.map((item, index) => (
-						<Card onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
+						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}
 				</SimpleBar>
 			</Col>
