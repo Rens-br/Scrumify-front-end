@@ -10,6 +10,7 @@ class UserStore{
     name = "";
     email = "";
     projects = [];
+    organizations = [];
 
     rootStore = null;
 
@@ -34,6 +35,7 @@ class UserStore{
                 this.name = response.data.name;
                 this.email = response.data.email;
                 this.projects = response.data.projects;
+                this.organizations = response.data.organizations;
                 break;
             case 'updateProject':
                 let foundProject = this.projects.find(proj => proj.projectId === response.projectId);
@@ -63,6 +65,11 @@ class UserStore{
         //TODO: Write function to leave a project.
         throw Error('Not implemented!');
     }
+
+    setCurrentOrganization = (id) => {
+        this.currentOrganization = id;
+        console.log(id);
+	};
 }
 
 decorate(UserStore, {
@@ -70,6 +77,7 @@ decorate(UserStore, {
     name: observable,
     email: observable,
     projects: observable,
+    organizations: observable,
     updateStore: action,
     updateUser: action,
     leaveProject: action,
