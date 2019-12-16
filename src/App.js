@@ -6,14 +6,16 @@ import { LoadTheme } from './ThemeProvider';
 
 import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import LoginScreen from "./components/LoginScreen";
 
 function App() {
     LoadTheme();
 
     return (
-        <div style={{display:'flex', maxWidth: '100%'}} className="App">
+        <div style={{display:'flex', maxWidth: '100%', height:'100%'}} className="App">
             <DndProvider backend={HTML5Backend}>
-                <SideBar />
+                {/*<LoginScreen/>*/}
+                <SideBar/>
                 <Content/>
             </DndProvider>
         </div>

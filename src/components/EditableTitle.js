@@ -54,7 +54,7 @@ class EditableTitle extends Component {
 		if(this.state.isEditing && !this.props.isLocked){
 			return (
 				<div className={this.props.className}>
-					<input onChange={(event) =>this.setState({title: event.target.value})} autoFocus onBlur={this.stopEditing} value={this.state.title} style={this.props.style} className='inputField'/>
+					<input placeholder={this.props.placeholder ? this.props.placeholder : ''} onChange={(event) =>this.setState({title: event.target.value})} autoFocus onBlur={this.stopEditing} value={this.state.title} style={this.props.style} className='inputField'/>
 				</div>
 			)
 		}else{

@@ -51,6 +51,7 @@ const Content = inject('store')(observer(class Content extends Component{
 				<div id='content'>
 					<TopNavBar/>
 					<Spinner className='spinner' animation='border'/>
+					{/*this.props.store.clientStore.isWorkItemOpen && <WorkItemWindow/>*/}
 				</div>
 			)
 		}

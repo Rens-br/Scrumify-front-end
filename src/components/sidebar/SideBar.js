@@ -29,12 +29,12 @@ export default class SideBar extends React.Component{
     if (this.state.isDesktop) {
       this.setState({
         isDesktop: false
-      })
+      });
       document.getElementById('sidebarContainer').style.flex = '50px 0 0';
     } else {
       this.setState({
         isDesktop: true
-      })
+      });
       document.getElementById('sidebarContainer').style.flex = '240px 0 0';
     }
 

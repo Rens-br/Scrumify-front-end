@@ -1,15 +1,26 @@
 import { observable, action, decorate } from 'mobx';
 
+export const Screens ={
+	DASHBOARD: 0,
+	SPRINTS: 1,
+	BACKLOG: 2,
+};
+
 class ClientStore{
 	isWorkItemOpen = false;
-	currentWorkItem = undefined;
+	currentWorkItem = 789123;
 	currentProjectIndex = undefined;
+	currentScreen = undefined;
 
 	rootStore = null;
 
 	constructor(root){
 		this.rootStore = root;
 	}
+
+	setCurrentScreen = (screen) => {
+		this.currentScreen = screen;
+	};
 
 	setCurrentProjectIndex = (index) => {
 		this.currentProjectIndex = index;
@@ -30,7 +41,9 @@ class ClientStore{
 decorate(ClientStore, {
 	isWorkItemOpen: observable,
 	currentProjectIndex: observable,
+	currentScreen: observable,
 	setCurrentProjectIndex: action,
+	setCurrentScreen: action,
 	openWorkItem: action
 });
 

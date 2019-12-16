@@ -1,19 +1,21 @@
-import React, {Component} from 'react';
+import React, {Component, useMemo} from 'react';
 import './WorkItemWindow.css'
 import MaterialIcon from '@material/react-material-icon';
 import TabBar from './TabBar';
 import {inject, observer} from 'mobx-react';
 import EditableTitle from './EditableTitle';
+import SimpleBar from "simplebar-react";
+import RichText from "./RichText";
 
 const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			value: 'test',
 			workItems: props.store.projectStore.workItems,
 			workItemIndex: this.getWorkItemIndex(props.store.clientStore.currentWorkItem),
 		};
 	}
-
 	getWorkItemIndex = (workItemId) => {
 		return this.props.store.projectStore.workItems.indexOf(this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId));
 	};
@@ -25,7 +27,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
 							<p className='headerId'>#{this.state.workItems[this.state.workItemIndex].workItemId}</p>
-							<EditableTitle title={this.state.workItems[this.state.workItemIndex].workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(this.state.workItems[this.state.workItemIndex].workItemId, {title: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
+							<EditableTitle placeholder='Task' title={this.state.workItems[this.state.workItemIndex].workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(this.state.workItems[this.state.workItemIndex].workItemId, {title: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
 						</div>
 						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
 							<MaterialIcon icon='close'/>
@@ -35,7 +37,13 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 					<div className='windowContent'>
 						<div className='workItemInformation'>
 							<div className='top'>
-								<div className='workItemDescription'></div>
+								<div className='workItemDescription'>
+									<h1>Description</h1>
+									<div id='divider'/>
+									<SimpleBar style={{margin:'10px', maxHeight: '220px'}}>
+										<RichText/>
+									</SimpleBar>
+								</div>
 								<div className='workItemOptions'></div>
 							</div>
 							<div className='bottom'>

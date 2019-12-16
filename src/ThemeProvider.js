@@ -13,42 +13,42 @@ const Themes = [{
 const Highlights = [{
     //PINK
     "--gradient-primary": "linear-gradient(#eb5757,#f08080)",
+    "--gradient-overlay": "linear-gradient(#eb5757D0,#f0808090)",
     "--color-primary": "#eb5757",
     "--color-primary-dark": "#eb494e",
     "--color-primary-light": "#f08080",
 },{
     //RED
     "--gradient-primary": "linear-gradient(#d32f2f,#e53935)",
+    "--gradient-overlay": "linear-gradient(#d32f2fD0,#e5393590)",
     "--color-primary": "#d32f2f",
     "--color-primary-dark": "#c62828",
     "--color-primary-light": "#e53935",
 },{
     //GREEN
     "--gradient-primary": "linear-gradient(#388E3C,#43A047)",
+    "--gradient-overlay": "linear-gradient(#388E3CD0,#43A04790)",
     "--color-primary": "#388E3C",
     "--color-primary-dark": "#2E7D32",
     "--color-primary-light": "#43A047",
 },{
     //BLUE
     "--gradient-primary": "linear-gradient(#1976D2,#1E88E5)",
+    "--gradient-overlay": "linear-gradient(#1976D2D0,#1E88E590)",
     "--color-primary": "#1976D2",
     "--color-primary-dark": "#1565C0",
     "--color-primary-light": "#1E88E5",
 },{
     //ORANGE
     "--gradient-primary": "linear-gradient(#E64A19,#F4511E)",
+    "--gradient-overlay": "linear-gradient(#E64A19D0,#F4511E90)",
     "--color-primary": "#E64A19",
     "--color-primary-dark": "#D84315",
     "--color-primary-light": "#F4511E",
 },{
     //YELLOW
     "--gradient-primary": "linear-gradient(#FFB300,#FFC107)",
-    "--color-primary": "#FFB300",
-    "--color-primary-dark": "#FFA000",
-    "--color-primary-light": "#FFC107",
-},{
-    //YELLOW
-    "--gradient-primary": "linear-gradient(#d32f2f,#388E3C,#1976D2,#FFB300)",
+    "--gradient-overlay": "linear-gradient(#FFB300D0,#FFC10790)",
     "--color-primary": "#FFB300",
     "--color-primary-dark": "#FFA000",
     "--color-primary-light": "#FFC107",
