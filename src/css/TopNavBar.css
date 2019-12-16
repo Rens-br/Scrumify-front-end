@@ -2,7 +2,7 @@
     display: flex;
     min-height: 62px;
     max-height: 62px;
-    background: var(--color-background-primary);
+    background: var(--color-background-dark);
 }
 
 .NavBarTitle{
