@@ -1,6 +1,10 @@
 import {action, decorate, observable} from 'mobx';
 
 class UserStore{
+    loggedIn = false;
+    message = '';
+    loginCallback = null;
+
     //Values stored in user store
     userId = 0;
     name = "";
@@ -13,9 +17,18 @@ class UserStore{
         this.rootStore = root;
     }
     updateStore = (response) => {
-        //TODO: write function to update user store.
-
         switch(response.type){
+            case 'authenticateUser':
+                this.loggedIn = response.data.succes;
+                this.loginMessage = response.data.message;
+
+                if(response.data.userId !== undefined){
+                    this.userId = response.data.userId;
+                    this.rootStore.socketStore.getUser(this.userId);
+                }
+
+                this.loginCallback(response.data);
+                break;
             case 'updateUser': 
                 this.userId = response.data.userId;
                 this.name = response.data.name;
@@ -34,12 +47,17 @@ class UserStore{
                 break;
             default: throw Error("Response type not found ;)");
         }
-    }
+    };
+
+    authenticateUser = (credentials, callback) => {
+        this.loginCallback = callback;
+        this.rootStore.socketStore.sendLogin(credentials);
+    };
 
     updateUser = (user) => {
         //TODO: Write function to update user/profile information.
         throw Error('Not implemented!');
-    } 
+    };
 
     leaveProject = (projectId) => {
         //TODO: Write function to leave a project.

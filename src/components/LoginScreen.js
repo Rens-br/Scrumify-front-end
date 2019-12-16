@@ -2,14 +2,19 @@ import React, {Component} from 'react';
 import './LoginScreen.css'
 import CustomInputField from "./CustomInputField";
 import CustomButton from "./CustomButton";
+import {inject, observer} from "mobx-react";
 
-class LoginScreen extends Component {
+const LoginScreen = inject('store')(observer(class LoginScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isLogin: true,
             isForgotPassword: false,
-            isSmall: window.innerWidth <= 1000
+            isSmall: window.innerWidth <= 1000,
+            userName: '',
+            email: '',
+            pass: '',
+            pass2: '',
         }
     }
 
@@ -21,6 +26,14 @@ class LoginScreen extends Component {
         window.removeEventListener('resize', this.onResize);
     }
 
+    onLoginUser = () => {
+        this.props.store.userStore.authenticateUser({email: this.state.email, password: this.state.pass}, this.loginCallback)
+    };
+
+    loginCallback = (response) => {
+        console.log(response);
+    };
+
     onResize = () => {
         this.setState({isSmall: window.innerWidth <= 1000})
     };
@@ -30,9 +43,9 @@ class LoginScreen extends Component {
             <div>
                 <h1>Welcome</h1>
                 <p>Login to gain access to al your boards and projects.</p>
-                <CustomInputField icon='person' placeholder='Username' valueChanged={() => console.log('nameChanged')}/>
-                <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={() => console.log('password')}/>
-                <CustomButton label='Sign-in' onClick={() => console.log('Login clicked')}/>
+                <CustomInputField icon='email' placeholder='Email' value={this.state.email} valueChanged={(value) => this.setState({email: value})}/>
+                <CustomInputField icon='lock' isPassword placeholder='Password' value={this.state.pass} valueChanged={(value) => this.setState({pass: value})}/>
+                <CustomButton label='Sign-in' onClick={() => this.onLoginUser()}/>
                 <p className='bottomText' id='clickable' onClick={() => this.setState({isForgotPassword: true})}>Forgot password?</p>
                 <div style={{display: 'flex', justifyContent: 'center'}}>
                     <p className='bottomText'>Dont have an account yet?</p>
@@ -89,6 +102,6 @@ class LoginScreen extends Component {
             </div>
         );
     }
-}
+}));
 
 export default LoginScreen;

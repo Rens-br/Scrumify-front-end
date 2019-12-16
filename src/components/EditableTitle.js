@@ -29,14 +29,12 @@ class EditableTitle extends Component {
 	stopEditing = () => {
 		this.setState({wasClicked: false, isEditing: false});
 
-		if(this.state.title === this.props.title) return;
-
-		if(this.state.title === ""){
-			this.setState({title: this.props.title})
+		if(this.state.title === "" || this.state.title === this.props.title){
+			this.setState({title: this.props.title});
+			if(this.props.onStopEditing)this.props.onStopEditing();
 		}else{
 			this.props.titleChanged(this.state.title);
 		}
-
 	};
 
 	static getDerivedStateFromProps(props, state) {

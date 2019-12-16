@@ -9,6 +9,7 @@ import SimpleBar from 'simplebar-react';
 import MaterialIcon from '@material/react-material-icon';
 import EditableTitle from '../EditableTitle';
 import DropDownMenu from '../sidebar/DropDownMenu';
+import NewCard from "./NewCard";
 
 const laneTarget = {
 	drop(targetProps, monitor) {
@@ -70,6 +71,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					{this.props.data.laneItems.map((item, index) => (
 						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}
+					<NewCard/>
 				</SimpleBar>
 			</Col>
 			</div>

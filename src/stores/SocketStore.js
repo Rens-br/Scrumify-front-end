@@ -19,7 +19,11 @@ class SocketStore{
 			this.getUser('1')
 		});
 
-		this.socket.on("error", (error) => console.log(error))
+		this.socket.on('authentication', (response) => {
+			this.rootStore.userStore.updateStore({ type: 'authenticateUser', data: response })
+		});
+
+		this.socket.on("error", (error) => console.log(error));
 
 		this.socket.on('receiveUserData', (userObject) => {
 			this.rootStore.userStore.updateStore({ type: 'updateUser', id: userObject.id, data: userObject });
@@ -38,6 +42,11 @@ class SocketStore{
 			console.log(updateObject);
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
+	};
+
+	sendLogin = (credentials) => {
+		console.log('send login');
+		this.socket.emit('login', credentials);
 	};
 
 	getUser = (userId) => {
