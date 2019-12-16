@@ -1,7 +1,7 @@
 .settingsBtnIcon {
     color: var(--color-primary);
     user-select: none;
-    margin-top: 6px;
+    margin-top: 12px;
 }
 
 .settingsBtnIcon:hover {

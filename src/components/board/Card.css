@@ -1,14 +1,11 @@
 #card{
     margin: 12px;
     background: var(--color-background-primary);
-    border: 2px solid var(--color-primary);
-    border-radius: 5px;
+    /* border: 2px solid var(--color-primary);*/
+    border-radius: 2px;
     min-height: 100px;
     max-height: 100px;
-}
-
-#card:hover{
-    border: 2px solid var(--color-primary-light);
+    box-shadow: 4px 4px 4px #d9d9d9;
 }
 
 .cardHeader{
@@ -27,5 +24,4 @@
 .cardHeader i{
     margin-right: 10px;
     margin-top: 10px;
-    color: var(--color-primary);
 }
