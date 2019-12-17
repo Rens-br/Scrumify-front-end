@@ -8,7 +8,7 @@ export default class SettingsButton extends React.Component{
   render(){
     return(
         <div className="settingsBtnDiv">
-            <MaterialIcon icon="build" style={{ fontSize: '35px' }} className="settingsBtnIcon"/>
+            <MaterialIcon icon="build" style={{ fontSize: '30px' }} className="settingsBtnIcon"/>
         </div>
     );
   }
