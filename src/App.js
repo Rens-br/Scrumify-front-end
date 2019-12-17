@@ -4,6 +4,7 @@ import { LoadTheme } from "./ThemeProvider";
 import ProtectedRoute from "./components/Routing/ProtectedRoute";
 import LoginScreen from "./components/LoginScreen";
 import NotFound from "./components/NotFound";
+import './App.css'
 
 function App() {
   LoadTheme();
