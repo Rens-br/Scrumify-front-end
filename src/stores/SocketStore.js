@@ -45,16 +45,21 @@ class SocketStore{
 		})
 	};
 
+	disconnect = () => {
+		this.socket.disconnect();
+		console.log('disconnected');
+	};
+
 	sendLogin = (credentials) => {
 		this.socket.emit('login', credentials);
 	};
 
 	sendSession = () => {
-		let oldSession = localStorage.getItem('sessionId');
+		let oldSession = sessionStorage.getItem('sessionId');
 		if(oldSession !== undefined){
 			this.socket.emit('restoreSession', oldSession);
 		}
-		localStorage.setItem('sessionId', this.socket.id);
+		sessionStorage.setItem('sessionId', this.socket.id);
 	};
 
 	getUser = (userId) => {

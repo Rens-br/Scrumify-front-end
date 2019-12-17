@@ -18,7 +18,15 @@ const laneTarget = {
 };
 
 export const Lane = inject('store')(observer(class Lane extends Component{
-	 moveWorkItem = (item, dest) => {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isAdding: false
+		}
+	}
+
+
+	moveWorkItem = (item, dest) => {
 		 this.props.store.projectStore.updateWorkItem(item.workItemId, {laneId: dest.data.laneId});
 	 };
 
@@ -27,7 +35,12 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 	 };
 
 	 addWorkItem = () => {
-		this.props.store.projectStore.addWorkItem(this.props.data.laneId, 'new workitem');
+	 	this.setState({isAdding: true});
+	 };
+
+	 createWorkItem = (title) => {
+	 	this.setState({isAdding: false});
+		 this.props.store.projectStore.addWorkItem(this.props.data.laneId, title);
 	 };
 
 	 menuOptionClicked = (index) => {
@@ -68,7 +81,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					</div>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
-					<NewCard/>
+					{this.state.isAdding && <NewCard onCreateWorkItem={(title) => this.createWorkItem(title)} onCancel={() => this.setState({isAdding: false})}/>}
 					{this.props.data.laneItems.map((item, index) => (
 						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}

@@ -11,12 +11,19 @@ export default class NewCard extends Component{
 		};
 	}
 
+	onNewWorkItem = () => {
+		if(this.state.cardTitle === ''){
+			this.props.onCancel();
+		}
+		else{
+			this.props.onCreateWorkItem(this.state.cardTitle);
+		}
+	};
+
 	render() {
 		return (
-			<div onClick={this.clickedCard} id="card">
-				<div className='cardHeader'>
-					<EditableTitle onStopEditing={() => this.setState({isAddingProject: false})} placeholder='Project title' startEditing isLocked={this.props.isStatic} titleChanged={(title) => this.onNewProjectCreation(title)} className='newCardTitle'/>
-				</div>
+			<div onClick={this.clickedCard} className="newCard">
+					<EditableTitle onStopEditing={() => this.onNewWorkItem()} placeholder='Work item title' startEditing isLocked={this.props.isStatic} title={this.state.cardTitle} titleChanged={(title) => this.props.onCreateWorkItem(title)}/>
 			</div>
 		);
 	}
