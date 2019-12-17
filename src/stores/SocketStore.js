@@ -45,6 +45,11 @@ class SocketStore{
 		})
 	};
 
+	disconnect = () => {
+		this.socket.disconnect();
+		console.log('disconnected');
+	};
+
 	sendLogin = (credentials) => {
 		this.socket.emit('login', credentials);
 	};
