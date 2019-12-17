@@ -1,11 +1,6 @@
 import React from "react";
-import SideBar from "./components/sidebar/SideBar";
-import Content from "./components/Content";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LoadTheme } from "./ThemeProvider";
-import { DndProvider } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
-
 import ProtectedRoute from "./components/Routing/ProtectedRoute";
 import LoginScreen from "./components/LoginScreen";
 import NotFound from "./components/NotFound";
