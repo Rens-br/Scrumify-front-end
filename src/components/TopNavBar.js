@@ -3,22 +3,33 @@ import '../css/bootstrap.min.css';
 import '../css/TopNavBar.css';
 import MaterialIcon from '@material/react-material-icon';
 import '@material/react-material-icon/dist/material-icon.css';
-import { NextTheme, NextHighlight } from '../ThemeProvider';
+import { NextHighlight } from '../ThemeProvider';
 import CustomDropDown from './CustomDropDown';
+import {inject, observer} from 'mobx-react';
+import {Redirect} from "react-router-dom";
 
-export default class TopNavBar extends React.Component{
+const TopNavBar = inject('store')(observer(class TopNavBar extends React.Component{
+  logOut(){
+    sessionStorage.setItem("sessionId", "");
+    this.props.store.socketStore.disconnect();
+    return <Redirect to="/login" />;
+  }
+
   render(){
     return(
         <div className="TopNavBar">
           <CustomDropDown/>
           <div className="profileButton">
-            <div onClick={NextTheme} className="profileButton">
-              <MaterialIcon icon="account_circle" style={{ fontSize: '50px' }} className="profileIcon"/>
+            <div onClick={this.logOut.bind(this)} className="profileButton">
+              <MaterialIcon icon="exit_to_app" style={{ fontSize: '50px' }} className="profileIcon"/>
             </div>
             <div onClick={NextHighlight} className="profileButton">
-              <MaterialIcon icon="account_circle" style={{ fontSize: '50px' }} className="profileIcon"/>
+              <MaterialIcon icon="color_lens" style={{ fontSize: '50px' }} className="profileIcon"/>
             </div></div>
         </div>
     );
   }
 }
+));
+
+export default TopNavBar;
