@@ -1,9 +1,0 @@
-.settingsBtnIcon {
-    color: var(--color-primary);
-    user-select: none;
-    margin-top: 16px;
-}
-
-.settingsBtnIcon:hover {
-    color: var(--color-primary-light);
-}

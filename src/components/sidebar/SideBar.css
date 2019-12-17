@@ -11,15 +11,15 @@
 
 .topbar {
     overflow: hidden;
-    min-height: 113px;
+    min-height: 114px;
     position: fixed;
     width: 240px;
 }
 
 .bottombar {
-    margin-top: 113px;
-    height: calc(100vh - 163px);
-    margin-bottom: 50px;
+    margin-top: 114px;
+    height: calc(100vh - 218px);
+    margin-bottom: 104px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -32,7 +32,7 @@
 }
 
 .footer {
-    min-height: 52px;
+    min-height: 104px;
     position: fixed;
     align-self: flex-end;
     overflow: hidden;

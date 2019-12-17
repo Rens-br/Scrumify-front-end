@@ -57,6 +57,8 @@ export default class SideBar extends React.Component{
         </div>
         <div className="footer">
           <Divider />
+          <NavButton icon="tune" label="Settings"/>
+          <Divider />
           <NavButton style={{fontSize: '40px'}} icon="navigate_before" label="Minimize sidebar" onClick={this.toggleSidebar}/>
         </div>
       </div>
