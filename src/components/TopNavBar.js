@@ -21,10 +21,10 @@ const TopNavBar = inject('store')(observer(class TopNavBar extends React.Compone
           <CustomDropDown/>
           <div className="profileButton">
             <div onClick={this.logOut.bind(this)} className="profileButton">
-              <MaterialIcon icon="exit_to_app" style={{ fontSize: '50px' }} className="profileIcon"/>
+              <MaterialIcon icon="exit_to_app" style={{ fontSize: '40px' }} className="profileIcon"/>
             </div>
             <div onClick={NextHighlight} className="profileButton">
-              <MaterialIcon icon="color_lens" style={{ fontSize: '50px' }} className="profileIcon"/>
+              <MaterialIcon icon="color_lens" style={{ fontSize: '40px' }} className="profileIcon"/>
             </div></div>
         </div>
     );
