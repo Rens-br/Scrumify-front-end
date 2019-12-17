@@ -1,9 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LoadTheme } from "./ThemeProvider";
-
-import './App.css'
-
 import ProtectedRoute from "./components/Routing/ProtectedRoute";
 import LoginScreen from "./components/LoginScreen";
 import NotFound from "./components/NotFound";
