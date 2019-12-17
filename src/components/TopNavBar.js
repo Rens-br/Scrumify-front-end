@@ -12,7 +12,7 @@ const TopNavBar = inject('store')(observer(class TopNavBar extends React.Compone
   logOut(){
     sessionStorage.setItem("sessionId", "");
     this.props.store.socketStore.disconnect();
-    return <Redirect to="/login" />;
+    window.location.reload();
   }
 
   render(){
