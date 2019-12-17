@@ -23,20 +23,19 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 	};
 
 	getOrganizationName() {
-		let org = this.props.store.userStore.organizations[this.props.store.userStore.currentOrganization - 1];
+		let org = this.props.store.userStore.organizations.find(x => x.id === this.props.store.userStore.currentOrganization);
+		console.log(this.props.store.userStore.organizations);
 		return org ? org.name : 'unknown'
 	}
 
 	render() {
 		return (
 			<div className='customDropDown' onClick={this.toggleDropdown}>
-				{/* TODO: fix selecting organizations from dropdown */}
 				<DropdownItem label={this.getOrganizationName()} />
 				<MaterialIcon icon='keyboard_arrow_down'/>
 				{this.state.dropdownToggled && (
 					<div className="extendedDropdown">
-				{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem" label={obj.name} key={obj.id} onClick={() => this.onSelect(obj.id)}/>)}
-						{/*<DropdownItem onClick={this.props.store.userStore.setCurrentOrganization(null)} label="Empty" key={0}/>*/}
+						{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem" label={obj.name} key={obj.id} onClick={() => this.onSelect(obj.id)}/>)}
 					</div>
 				)}
 			</div>
