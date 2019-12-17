@@ -68,10 +68,10 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					</div>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
+					<NewCard/>
 					{this.props.data.laneItems.map((item, index) => (
 						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
 					))}
-					<NewCard/>
 				</SimpleBar>
 			</Col>
 			</div>

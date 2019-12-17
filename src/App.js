@@ -19,13 +19,6 @@ function App() {
       className="App"
     >
       <Router>
-        <DndProvider backend={HTML5Backend}>
-          {/* Moved to ./components/Routing/ProtectedRoute*/}
-          {/* <AllRoutes /> */}
-          {/*<LoginScreen/>*/}
-          {/* <SideBar />
-          <Content /> */}
-        </DndProvider>
         <Switch>
           <Route exact path="/" component={ProtectedRoute} />
           <Route exact path="/login" component={LoginScreen} />

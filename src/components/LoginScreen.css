@@ -28,6 +28,10 @@
     color: var(--color-text-primary);
 }
 
+.loginScreen .left .warning{
+    color: var(--danger);
+}
+
 .bottomText {
     width: auto;
     font-size: .9rem;

@@ -14,12 +14,13 @@ class SocketStore{
 		this.socket = io.connect(process.env.REACT_APP_API_URL,{reconnectionDelay: 100});
 
 		this.socket.on('connect', () => {
-			console.log('connected');
-
+			console.log(this.socket.id);
+			this.sendSession();
 			this.getUser('1')
 		});
 
 		this.socket.on('authentication', (response) => {
+			console.log(response);
 			this.rootStore.userStore.updateStore({ type: 'authenticateUser', data: response })
 		});
 
@@ -45,8 +46,15 @@ class SocketStore{
 	};
 
 	sendLogin = (credentials) => {
-		console.log('send login');
 		this.socket.emit('login', credentials);
+	};
+
+	sendSession = () => {
+		let oldSession = localStorage.getItem('sessionId');
+		if(oldSession !== undefined){
+			this.socket.emit('restoreSession', oldSession);
+		}
+		localStorage.setItem('sessionId', this.socket.id);
 	};
 
 	getUser = (userId) => {

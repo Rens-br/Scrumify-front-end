@@ -5,10 +5,10 @@ import { Redirect } from "react-router-dom";
 import LoginScreen from "../LoginScreen";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
-class ProtectedRoute extends Component {
+import {inject, observer} from "mobx-react";
+const ProtectedRoute = inject('store')(observer(class ProtectedRoute extends Component {
   render() {
-    let authenticated = false;
-    if (!authenticated) {
+    if (!this.props.store.userStore.loggedIn) {
       return <Redirect to="/login" component={LoginScreen} />;
     }
     return (
@@ -18,5 +18,5 @@ class ProtectedRoute extends Component {
       </DndProvider>
     );
   }
-}
+}));
 export default ProtectedRoute;

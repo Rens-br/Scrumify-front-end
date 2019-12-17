@@ -1,9 +1,9 @@
 import {action, decorate, observable} from 'mobx';
+import { Redirect } from 'react-router-dom';
 
 class UserStore{
     loggedIn = false;
-    message = '';
-    loginCallback = null;
+    loginMessage = '';
 
     //Values stored in user store
     userId = 0;
@@ -18,6 +18,7 @@ class UserStore{
     constructor(root) {
         this.rootStore = root;
     }
+
     updateStore = (response) => {
         switch(response.type){
             case 'authenticateUser':
@@ -29,7 +30,6 @@ class UserStore{
                     this.rootStore.socketStore.getUser(this.userId);
                 }
 
-                this.loginCallback(response.data);
                 break;
             case 'updateUser': 
                 this.userId = response.data.userId;
@@ -52,8 +52,7 @@ class UserStore{
         }
     };
 
-    authenticateUser = (credentials, callback) => {
-        this.loginCallback = callback;
+    authenticateUser = (credentials) => {
         this.rootStore.socketStore.sendLogin(credentials);
     };
 
@@ -80,6 +79,8 @@ decorate(UserStore, {
     projects: observable,
     organizations: observable,
     currentOrganization: observable,
+    loggedIn: observable,
+    loginMessage: observable,
     updateStore: action,
     updateUser: action,
     leaveProject: action,
