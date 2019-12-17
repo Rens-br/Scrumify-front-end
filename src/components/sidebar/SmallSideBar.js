@@ -36,6 +36,10 @@ const SmallSideBar = inject('store')(observer(class SmallSideBar extends React.C
 
             <div className="sbContainer"></div>
 
+            <div id="settingsBtn">
+                <Divider style={{ width:'50px' }} />
+                <MaterialIcon className="settingsIcon" icon="tune" style={{ fontSize: '24px' }}/>
+            </div>
             <div id="toggleBtn" onClick={this.props.onClick}>
                 <Divider style={{ width: '50px' }} />
                 <MaterialIcon className="collapseIcon" icon="navigate_next" style={{ fontSize: '24px' }} />

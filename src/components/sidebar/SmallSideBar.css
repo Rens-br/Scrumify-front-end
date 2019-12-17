@@ -49,3 +49,17 @@
     display: flex;
     height: calc(100vh - 50px);
 }
+
+.settingsIcon {
+    color: var(--color-background-primary);
+    margin-left: 11px;
+    margin-top: 11px;
+}
+
+#settingsBtn {
+    min-height: 52px;
+}
+
+#settingsBtn:hover {
+    background-color: var(--color-primary-light);
+}
