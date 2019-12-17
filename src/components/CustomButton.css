@@ -1,6 +1,6 @@
 .customButton{
     background: var(--color-primary);
-    border-radius: 5px;
+    border-radius: 2px;
     padding: 5px;
     margin: 10px;
 }

@@ -56,7 +56,7 @@ class SocketStore{
 
 	sendSession = () => {
 		let oldSession = sessionStorage.getItem('sessionId');
-		if(oldSession !== undefined){
+		if(oldSession !== '' && oldSession !== undefined){
 			this.socket.emit('restoreSession', oldSession);
 		}
 		sessionStorage.setItem('sessionId', this.socket.id);

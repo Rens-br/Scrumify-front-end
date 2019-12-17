@@ -54,7 +54,7 @@ const LoginScreen = inject('store')(observer(class LoginScreen extends Component
                 <p style={{marginBottom: this.props.store.userStore.loginMessage === '' ? '60px' : '20px'}}>Login to gain access to al your boards and projects.</p>
                 {this.props.store.userStore.loginMessage && <p className='warning'>{this.props.store.userStore.loginMessage}</p>}
                 <CustomInputField icon='email' placeholder='Email' value={this.state.email} valueChanged={(value) => this.setState({email: value})}/>
-                <CustomInputField icon='lock' isPassword placeholder='Password' value={this.state.pass} valueChanged={(value) => this.setState({pass: value})}/>
+                <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={(value) => this.setState({pass: value})} onSubmit={this.onLoginUser}/>
                 <CustomButton label='Sign-in' onClick={() => this.onLoginUser()}/>
                 <p className='bottomText' id='clickable' onClick={() => this.setState({isForgotPassword: true})}>Forgot password?</p>
                 <div style={{display: 'flex', justifyContent: 'center'}}>

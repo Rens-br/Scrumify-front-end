@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/bootstrap.min.css';
-import '../css/TopNavBar.css';
+import './TopNavBar.css';
 import MaterialIcon from '@material/react-material-icon';
 import '@material/react-material-icon/dist/material-icon.css';
 import { NextHighlight } from '../ThemeProvider';
