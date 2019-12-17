@@ -11,6 +11,7 @@ class UserStore{
     email = "";
     projects = [];
     organizations = [];
+    currentOrganization = 1;
 
     rootStore = null;
 
@@ -78,6 +79,7 @@ decorate(UserStore, {
     email: observable,
     projects: observable,
     organizations: observable,
+    currentOrganization: observable,
     updateStore: action,
     updateUser: action,
     leaveProject: action,

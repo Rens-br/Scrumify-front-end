@@ -14,9 +14,9 @@ function App() {
     return (
         <div style={{display:'flex', maxWidth: '100%', height:'100%'}} className="App">
             <DndProvider backend={HTML5Backend}>
-                <LoginScreen/>
-                {/*<SideBar/>*/}
-                {/*<Content/>*/}
+                {/*<LoginScreen/>*/}
+                <SideBar/>
+                <Content/>
             </DndProvider>
         </div>
     );
