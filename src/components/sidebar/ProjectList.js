@@ -34,7 +34,7 @@ const ProjectList = inject('store')(observer(class ProjectList extends React.Com
   render(){
     return(
         <div className="projectListDiv">
-          {this.props.store.userStore.projects.map((project, index) => <NavDropdown openDropdown={() => this.onOpenProject(index)} isOn={index === this.props.store.clientStore.currentProjectIndex} onSprintsClick={this.loadSprints} key={index} data={project}/>)}
+          {this.props.store.userStore.projects.filter(x => x.organizationId === this.props.store.userStore.currentOrganization).map((project, index) => <NavDropdown openDropdown={() => this.onOpenProject(index)} isOn={index === this.props.store.clientStore.currentProjectIndex} onSprintsClick={this.loadSprints} key={index} data={project}/>)}
           {this.state.isAddingProject && (
             <div className="newProjectBtn">
               <MaterialIcon icon="fiber_new" style={{ fontSize: '24px' }} className="newProjectIcon"/>

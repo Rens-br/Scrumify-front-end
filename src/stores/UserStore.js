@@ -37,7 +37,6 @@ class UserStore{
                 this.email = response.data.email;
                 this.projects = response.data.projects;
                 this.organizations = response.data.organizations;
-                console.log(this.organizations);
                 break;
             case 'updateProject':
                 let foundProject = this.projects.find(proj => proj.projectId === response.projectId);

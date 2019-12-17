@@ -39,14 +39,11 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 							<div className='top'>
 								<div className='workItemDescription'>
 									<h1>Description</h1>
-									<div id='divider'/>
 									<SimpleBar style={{margin:'10px', maxHeight: '220px'}}>
 										<RichText/>
 									</SimpleBar>
 								</div>
 								<div className='workItemOptions'></div>
-							</div>
-							<div className='bottom'>
 							</div>
 						</div>
 					</div>
