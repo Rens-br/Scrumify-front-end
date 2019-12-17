@@ -35,7 +35,7 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 				<MaterialIcon icon='keyboard_arrow_down'/>
 				{this.state.dropdownToggled && (
 					<div className="extendedDropdown">
-				{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem" label={obj.name} key={obj.id} onClick={() => this.onSelegitct(obj.id)}/>)}
+				{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem" label={obj.name} key={obj.id} onClick={() => this.onSelect(obj.id)}/>)}
 						{/*<DropdownItem onClick={this.props.store.userStore.setCurrentOrganization(null)} label="Empty" key={0}/>*/}
 					</div>
 				)}
