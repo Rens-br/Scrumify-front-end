@@ -29,8 +29,8 @@ const LoginScreen = inject('store')(observer(class LoginScreen extends Component
         window.removeEventListener('resize', this.onResize);
     };
 
-    onLoginUser = () => {
-        this.props.store.userStore.authenticateUser({email: this.state.email, password: this.state.pass}, this.loginCallback)
+    onLoginUser = (value) => {
+        this.props.store.userStore.authenticateUser({email: this.state.email, password: value ? value : this.state.pass}, this.loginCallback);
     };
 
     loginCallback = (response) => {

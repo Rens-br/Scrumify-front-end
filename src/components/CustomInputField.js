@@ -36,7 +36,7 @@ class CustomInputField extends Component {
 
     handleKeyDown = (event) => {
         if (event.key === 'Enter' && this.props.onSubmit) {
-            this.props.onSubmit();
+            this.props.onSubmit(this.state.value);
         }
     };
 
