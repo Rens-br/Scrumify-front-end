@@ -1,0 +1,102 @@
+.tabBar{
+    display: flex;
+    flex: 52px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: var(--color-background-dark);
+    border-bottom: 2px solid #ccc;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tab{
+    justify-content: space-between;
+    align-content: center;
+    flex: 200px;
+    flex-grow: 0;
+    min-width: 100px;
+    margin: 5px;
+    height:80%;
+    color: var(--color-text-primary);
+    background: var(--color-background-primary);
+    align-self: flex-end;
+    display: flex;
+    border-radius: 2px;
+    user-select: none;
+    /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); */
+    box-shadow: 4px 4px 4px #d9d9d9;
+}
+
+.tab:hover{
+    background: white;
+}
+
+.tab#active{
+    height: 100%;
+    margin-bottom: -2px;
+    background: var(--color-background-primary);
+    border: 2px solid #ccc;
+    border-bottom: 2px solid var(--color-background-primary);
+    border-radius: 2px 2px 0 0;
+    color: var(--color-primary);
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.tab p{
+    color: var(--color-text-primary);
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0 0 0 8px;
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tab#active p{
+    color: var(--color-primary);
+}
+
+.tab i{
+    align-self: center;
+    margin-right: 4px;
+    color: var(--color-primary);
+}
+
+.tabTitle {
+    margin: 0px;
+    width: calc(100% - 50px);
+    text-align: left;
+}
+
+.tabTitle input{
+    margin-top: 4px;
+    margin-left: 7px;
+    color: var(--color-primary);
+}
+
+.addTab{
+    justify-content: center;
+    flex: 40px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 5px;
+    height:80%;
+    background: var(--color-primary-dark);
+    align-self: flex-end;
+    display: flex;
+    border-radius: 2px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.addTab i{
+    color: var(--color-background-primary);
+    user-select: none;
+    line-height: 40px;
+}
+
+.addTab:hover{
+    background: var(--color-primary-light);
+}

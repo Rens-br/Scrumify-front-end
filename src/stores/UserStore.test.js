@@ -12,6 +12,14 @@ const testUser = {
     },{
         projectId: 69,
         projectName: 'Road to global elite',
+    }],
+    organizations: [{
+        id: 1234321,
+        name: "Test1",
+        phone: 642042069,
+        city: "Eindhoven",
+        addres: "Rachelsmolen 1",
+        email: "test1@test1.com",
     }]
 }
 

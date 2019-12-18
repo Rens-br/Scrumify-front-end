@@ -1,0 +1,19 @@
+.customButton{
+    background: var(--color-primary);
+    border-radius: 2px;
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.customButton h2{
+    font-size: 1rem;
+    text-align: center;
+    user-select: none;
+    margin: 2.5px;
+    color: var(--color-text-secondary)
+}
+
+.customButton:hover{
+    background: var(--color-primary-light);
+}

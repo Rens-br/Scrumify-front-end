@@ -1,0 +1,18 @@
+.sbIcon {
+    display: flex;
+    color: var(--color-background-primary);
+    margin-top: 12.5px;
+    margin-left: 11px;
+    margin-bottom: 12.5px;
+    user-select: none;
+    height: 50px;
+}
+
+.sbBtn {
+    max-height: 50px;
+    min-height: 50px;
+}
+
+.sbBtn:hover {
+    background-color: var(--color-primary-light);
+}

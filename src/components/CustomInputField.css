@@ -1,0 +1,20 @@
+.customInput{
+    border: 2px solid var(--color-primary);
+    border-radius: 2px;
+    display: flex;
+    padding: 5px;
+    margin: 10px;
+}
+
+.customInput input{
+    flex: 1;
+    border: none;
+    background: none;
+    min-width: 50px;
+    padding: 0;
+    color: var(--color-text-primary);
+}
+
+.customInput i{
+    color: var(--color-primary);
+}

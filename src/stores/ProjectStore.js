@@ -2,151 +2,43 @@ import {action, decorate, observable} from 'mobx'
 
 class ProjectStore{
     //All values that are stored in the project store
-    id = 0;
-    name = "";
+    projectId = undefined;
+    projectName = "";
     companyId = 0;
     users = {};
     sprints = {};
-    workItems = {};
+    workItems = [{
+        workItemId: 78912,
+        workItemTitle: "TestWorkItem1",
+        workItemDescription: "This is a workitem test.",
+        laneId: 23456
+    },
+        {
+            workItemId: 891234,
+            workItemTitle: "TestWorkItem2",
+            workItemDescription: "This is another workitem test.",
+            laneId: 23456
+        },
+        {
+            workItemId: 89121234,
+            workItemTitle: "TestWorkItem2",
+            workItemDescription: "This is another workitem test.",
+            laneId: 34567
+        }
+    ];
 
-    constructor(){
-        this.loadProjectIntoStore({
-            id: 123456789,
-            name: "TestProjectName",
-            companyId: 123456,
-            users: [{
-                userId: 1234567,
-                userName: "TestUserName1",
-                userEmail: "testemail1@email.com"
-            },
-                {
-                    userId: 12345678,
-                    userName: "TestUserName2",
-                    userEmail: "testemail2@email.com"
-                }
-            ],
-            sprints: [{
-                sprintId: 1234567891,
-                sprintTitle: "testSprint1",
-                lanes: [{
-                    laneId: 23456,
-                    laneTitle: "testLaneTitle1"
-                },
-                    {
-                        laneId: 34567,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34561,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34562,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34563,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34564,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34565,
-                        laneTitle: "testLaneTitle2"
-                    },
-                    {
-                        laneId: 34566,
-                        laneTitle: "testLaneTitle2"
-                    }
-                ]
-            },
-                {
-                    sprintId: 456789,
-                    sprintTitle: "testSprint2",
-                    lanes: [{
-                        laneId: 56789,
-                        laneTitle: "testLaneTitle1"
-                    },
-                        {
-                            laneId: 6789,
-                            laneTitle: "testLaneTitle2"
-                        }
-                    ]
-                }
-            ],
-            workItems: [
-                {
-                    workItemId: 123,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 234,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 345,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 456,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 567,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 678,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 789,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                },
-                {
-                    workItemId: 891,
-                    workItemTitle: "TestWorkItem1",
-                    workItemDescription: "This is a workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 912,
-                    workItemTitle: "TestWorkItem2",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 23456
-                },
-                {
-                    workItemId: 2134,
-                    workItemTitle: "TestWorkItem3",
-                    workItemDescription: "This is another workitem test.",
-                    laneId: 34567
-                }
-            ]
-        });
+    rootStore = null;
+
+    constructor(root){
+        this.rootStore = root;
     }
 
     //All actions that are used to modify the store
 
     //Loads a new project into the store
     loadProjectIntoStore = (data) => {
-        this.id = data.id;
-        this.name = data.name;
+        this.projectId = data.projectId;
+        this.projectName = data.projectName;
         this.companyId = data.companyId;
         this.users = data.users;
         this.sprints = data.sprints;
@@ -155,54 +47,57 @@ class ProjectStore{
 
     //Updates the currently loaded project 
     updateStore = (response) => {
+        console.log(response)
+
         let foundSprint;
         let foundWorkItem;
 
         switch (response.type) {
             case 'updateProject':
-                this.name = response.data.name;
+                this.projectName = response.data.projectName;
                 break;
 
             case 'updateWorkItem':
                 const tempWorkItems = this.workItems;
                 foundWorkItem = tempWorkItems.find(wi => wi.workItemId === response.data.workItemId);
-                if(foundWorkItem)
-                    tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = response.data;
-                else
+                if(foundWorkItem){
+                    tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = {...foundWorkItem, ...response.data};
+                } else{
                     tempWorkItems.push(response.data);
-                    this.sprints = tempWorkItems;
+                }
+                    this.workItems = tempWorkItems;
                 break;
 
             case 'removeWorkItem':
-                this.workItems = this.sprints.filter(wi => wi.workItemId !== response.data.id);
+                this.workItems = this.workItems.filter(wi => wi.workItemId !== response.data.workItemId);
                 break;
 
             case 'updateSprint':
                 const tempArray = this.sprints;
                 foundSprint = tempArray.find(sp => sp.sprintId === response.data.sprintId);
                 if(foundSprint)
-                    tempArray[tempArray.indexOf(foundSprint)] = response.data;
+                    tempArray[tempArray.indexOf(foundSprint)] = {...foundSprint, ...response.data};
                 else
                     tempArray.push(response.data);
-                
+
                     this.sprints = tempArray;
                 break;
 
             case 'removeSprint':
-                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.id);
+                this.sprints = this.sprints.filter(sp => sp.sprintId !== response.data.sprintId);
                 break;
 
             case 'updateLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.sprintId);
                 if (foundSprint){ 
-                    const tempArray = foundSprint.lanes;
+                    const tempArray = foundSprint.Lanes;
                     const foundLane = tempArray.find(ln => ln.laneId === response.data.laneId);
                     if(foundLane)
                         tempArray[tempArray.indexOf(foundLane)] = response.data;
                     else
                         tempArray.push(response.data);
 
-                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = tempArray;
+                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = tempArray;
                 }
                 else{
                     throw Error("Sprint not found")
@@ -210,9 +105,9 @@ class ProjectStore{
                 break;
 
             case 'removeLane':
-                foundSprint = this.sprints.find(sp => sp.sprintId === response.id);
+                foundSprint = this.sprints.find(sp => sp.sprintId === response.sprintId);
                 if (foundSprint){ 
-                    this.sprints[this.sprints.indexOf(foundSprint)].lanes = foundSprint.lanes.filter(ln => ln.laneId !== response.data.id);
+                    this.sprints[this.sprints.indexOf(foundSprint)].Lanes = foundSprint.Lanes.filter(ln => ln.laneId !== response.data.laneId);
                 }
                 break;
         
@@ -223,75 +118,71 @@ class ProjectStore{
 
     
     getProject = (projectId) => {
-        //TODO: Request project from socket using provided projectId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.getProject(projectId)
     };
 
     
     getWorkItem = (workItemId) => {
-        //TODO: Request workItem from socket using provided workItemId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.getWorkItem(this.projectId, workItemId);
     };
 
     
     addSprint = (title) => {
-        //TODO: Send add sprint to socket using provided sprint title
-        throw Error("Not implemented");
+        this.rootStore.socketStore.createSprint(this.projectId, title);
     };
 
     
-    addLane = (name) => {
-        //TODO: Send add lane to socket using provided lane name
-        throw Error("Not implemented");
+    addProject = (title, organizationId) => {
+        this.rootStore.socketStore.createProject(this.projectId, title, organizationId);
     };
 
-    
-    addWorkItem = (workItem) => {
-        //TODO: Send add workItem to socket using provided workItem object
-        throw Error(Error("Not implemented"));
+
+    addLane = (sprintId, title) => {
+        this.rootStore.socketStore.createLane(this.projectId, sprintId, title);
+    };
+
+
+    addWorkItem = (laneId, workItem) => {
+        this.rootStore.socketStore.addWorkItem(this.projectId, laneId, workItem);
     };
 
     
     updateSprintTitle = (sprintId, title) => {
-        //TODO: Send update sprint to socket using provided sprintId and title
-        throw Error("Not implemented");
+        this.sprints.find(x => x.sprintId === sprintId).sprintTitle = title;
+        this.rootStore.socketStore.updateSprint(this.projectId, sprintId, title)
     };
 
     
-    updateLaneName = (laneId, name) => {
-        //TODO: Send update lane to socket using provided laneId and name
-        throw Error("Not implemented");
+    updateLaneName = (sprintId, laneId, title) => {
+        this.sprints.find(x => x.sprintId === sprintId).Lanes.find(x => x.laneId === laneId).laneTitle = title;
+        this.rootStore.socketStore.updateLane(this.projectId, laneId, title)
     };
 
     
     updateWorkItem = (workItemId, workItem) => {
         let oldItem = this.workItems.find(x => x.workItemId === workItemId);
         this.workItems[this.workItems.indexOf(oldItem)] = {...oldItem, ...workItem};
+        this.rootStore.socketStore.updateWorkItem(this.projectId, workItemId, workItem);
         //TODO: Send update workItem to socket using provided workItemId and workItem object
     };
-
     
     removeSprint = (sprintId) => {
-        //TODO: Send remove sprint to socket using provided sprintId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeSprint(this.projectId, sprintId);
     };
-
     
     removeLane = (laneId) => {
-        //TODO: Send remove lane to socket using provided laneId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeLane(this.projectId, laneId);
     };
 
     
     removeWorkItem = (workItemId) => {
-        //TODO: Send remove workItem to socket using provided workItemId
-        throw Error("Not implemented");
+        this.rootStore.socketStore.removeWorkItem(this.projectId, workItemId);
     }
 }
 
 decorate(ProjectStore, {
-    id: observable,
-    name: observable,
+    projectId: observable,
+    projectName: observable,
     companyId: observable,
     users: observable,
     sprints: observable,
@@ -311,4 +202,4 @@ decorate(ProjectStore, {
     removeWorkItem: action,
 });
 
-export default new ProjectStore();
+export default ProjectStore;

@@ -1,0 +1,16 @@
+.ddItemContainer {
+    width: 100%;
+    height: 38px;
+}
+
+.ddItemContainer:hover {
+    background-color: var(--color-background-dark);
+    border-radius: 2px;
+}
+
+.ddItem {
+    margin-top: 0px;
+    margin-left: 15px;
+    font-size: 20px;
+    color: var(--color-text-primary);
+}

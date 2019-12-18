@@ -1,8 +1,15 @@
 #content{
     position: relative;
-    margin-left: 240px;
+    /* margin-left: 240px; */
     height: 100vh;
     display: flex;
     flex-direction: column;
     background: var(--color-background-primary);
+    flex: 1;
+    min-width: 0;
+}
+
+.spinner{
+    margin: auto;
+    color: var(--color-primary);
 }

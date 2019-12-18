@@ -1,4 +1,4 @@
 .dropdownBtn {
-    background: rgb(187, 67, 67);
+    background: var(--color-primary-dark);
 }
 

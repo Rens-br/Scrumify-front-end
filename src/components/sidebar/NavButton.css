@@ -1,13 +1,13 @@
 .btnDiv {
     text-align: left;
-    width: 100%;
+    width: 240px;
     height: 50px;
     display: flex;
     text-overflow: ellipsis;
 }
 
 .btnDiv:hover {
-    background: #D84646;
+    background-color: var(--color-primary-light);
 }
 
 .btnIcon{
@@ -16,14 +16,14 @@
     margin-left: 7px;
     margin-right: 10px;
     user-select: none;
-    
+    width: 20px;
 }
 
 .btnText {
-    font-size: 24px;
+    font-size: 20px;
     color: var(--color-background-primary);
     user-select: none; 
-    margin-top: 5px;
+    margin-top: 7px;
     margin-right: 5px;
     height: 100%;
     display: block;

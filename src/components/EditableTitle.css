@@ -1,0 +1,19 @@
+.inputField{
+    border: none;
+    border-bottom: 2px solid var(--color-primary);
+    background: none;
+    min-width: 50px;
+    color: var(--color-text-primary);
+}
+
+.title {
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    white-space: nowrap;
+    user-select: none;
+}
+
+input:focus{
+    outline: none;
+}

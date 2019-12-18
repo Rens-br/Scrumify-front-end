@@ -1,40 +1,48 @@
 import {action, decorate, observable} from 'mobx';
-
-const testUser = {
-    userId: 420,
-    name: 'Kaulo Rens',
-    email: 'kaulorens@shemail.com',
-    projects: [{
-        projectId: 123456789,
-        projectName: 'Rens de schuld geven van alle problemen in de wereld',
-    },{
-        projectId: 69,
-        projectName: 'Het goedmaken met Rens omdat ie me low-key wel hard carryt',
-    }]
-}
+import { Redirect } from 'react-router-dom';
 
 class UserStore{
+    loggedIn = false;
+    loginMessage = '';
+
     //Values stored in user store
     userId = 0;
     name = "";
     email = "";
     projects = [];
+    organizations = [];
+    currentOrganization = undefined;
 
-    constructor() {
-        this.updateStore({ type: "updateUser", id: testUser.userId, data: testUser })
+    rootStore = null;
+
+    constructor(root) {
+        this.rootStore = root;
     }
+
     updateStore = (response) => {
-        //TODO: write function to update user store.
+        console.log(response)
 
         switch(response.type){
-            case 'updateUser': 
+            case 'authenticateUser':
+                this.loggedIn = response.data.succes;
+                this.loginMessage = response.data.message;
+
+                if(response.data.userId !== undefined){
+                    this.userId = response.data.userId;
+                    this.rootStore.socketStore.getUser(this.userId);
+                }
+
+                break;
+            case 'updateUser':
+                this.currentOrganization = response.data.organizations[0].id;
                 this.userId = response.data.userId;
                 this.name = response.data.name;
                 this.email = response.data.email;
                 this.projects = response.data.projects;
+                this.organizations = response.data.organizations;
                 break;
             case 'updateProject':
-                let foundProject = this.projects.find(proj => proj.projectId === response.id);
+                let foundProject = this.projects.find(proj => proj.projectId === response.projectId);
                 if(foundProject)
                     this.projects[this.projects.indexOf(foundProject)] = {...foundProject, ...response.data};
                 else
@@ -45,17 +53,26 @@ class UserStore{
                 break;
             default: throw Error("Response type not found ;)");
         }
-    }
+    };
+
+    setLoginWarning = (msg) => {
+        this.loginMessage = msg;
+    };
 
     updateUser = (user) => {
         //TODO: Write function to update user/profile information.
         throw Error('Not implemented!');
-    } 
+    };
 
     leaveProject = (projectId) => {
         //TODO: Write function to leave a project.
         throw Error('Not implemented!');
     }
+
+    setCurrentOrganization = (id) => {
+        this.currentOrganization = id;
+        console.log(id);
+	};
 }
 
 decorate(UserStore, {
@@ -63,9 +80,13 @@ decorate(UserStore, {
     name: observable,
     email: observable,
     projects: observable,
+    organizations: observable,
+    currentOrganization: observable,
+    loggedIn: observable,
+    loginMessage: observable,
     updateStore: action,
     updateUser: action,
     leaveProject: action,
 });
 
-export default new UserStore();
+export default UserStore;

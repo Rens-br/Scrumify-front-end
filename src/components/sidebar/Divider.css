@@ -1,6 +1,7 @@
 .dividerDiv {
     width: 100%;
     min-height: 2px;
+    max-height: 2px;
     display: flex;
     background: var(--color-background-primary);
 }

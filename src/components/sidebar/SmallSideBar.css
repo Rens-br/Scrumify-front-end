@@ -1,0 +1,65 @@
+.smallSideBar {
+    height: 100vh;
+    max-width: 50px;
+    min-width: 50px;
+    background: var(--color-primary);
+    position: fixed;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.collapseIcon {
+    color: var(--color-background-primary);
+    user-select: none;
+    margin-left: 10px;
+    margin-top: 13px;
+}
+
+#toggleBtn {
+    min-height: 52px;
+    max-height: 52px;
+    max-width: 50px;
+    overflow: hidden;
+    width: 50px;
+}
+
+#toggleBtn:hover {
+    background-color: var(--color-primary-light);
+}
+
+.smallHeaderImg {
+    width: 40px;
+    height: 50px;
+    margin-left: 7px;
+    margin-top: 7.5px;
+    margin-bottom: 2.5px;
+    margin-right: 10px;
+    user-select: none;
+    fill: var(--color-background-primary);
+}
+
+#logo {
+    width: 50px;
+    max-height: 60px;
+}
+
+.sbContainer{
+    display: flex;
+    height: calc(100vh - 50px);
+}
+
+.settingsIcon {
+    color: var(--color-background-primary);
+    margin-left: 11px;
+    margin-top: 11px;
+}
+
+#settingsBtn {
+    min-height: 52px;
+}
+
+#settingsBtn:hover {
+    background-color: var(--color-primary-light);
+}

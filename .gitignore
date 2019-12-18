@@ -59,7 +59,7 @@ typings/
 
 # next.js build output
 .next
-
+package-lock
 # dependencies
 /node_modules
 /.pnp

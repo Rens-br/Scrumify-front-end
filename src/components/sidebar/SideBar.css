@@ -1,16 +1,44 @@
 #sidebar {
-    width: 240px;
-    background: var(--gradient-primary);
+    background: var(--color-primary);
     position: fixed;
-    height: 100vh;
     float: left;
+    display: flex;
+    width: 240px;
+}
+#sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.topbar {
+    overflow: hidden;
+    min-height: 114px;
     position: fixed;
+    width: 240px;
+}
+
+.bottombar {
+    margin-top: 114px;
+    height: calc(100vh - 218px);
+    margin-bottom: 104px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     overflow-y: scroll;
     scrollbar-width: none;
 }
-#sidebar::-webkit-scrollbar {
+
+.bottombar::-webkit-scrollbar {
     display: none;
 }
+
+.footer {
+    min-height: 104px;
+    position: fixed;
+    align-self: flex-end;
+    overflow: hidden;
+    position: fixed;
+    width: 240px;
+    background-color: var(--color-primary);
+}
+
+

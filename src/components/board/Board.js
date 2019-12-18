@@ -10,18 +10,23 @@ const Board = inject('store')(observer(class Board extends Component {
 
     getLaneData = (lane) => {
         return {
+            sprintId: this.props.sprint.sprintId,
             laneId: lane.laneId,
             laneTitle: lane.laneTitle,
-            laneItems: this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
+            laneItems: this.props.store.projectStore.workItems === undefined ? [] : this.props.store.projectStore.workItems.filter(x => x.laneId === lane.laneId)
         }
+    };
+
+    addLane = () => {
+        this.props.store.projectStore.addLane(this.props.sprint.sprintId, 'new lane');
     };
 
     render() {
         return (
             <Container id='board'>
-                <Row id='row' style={{width: this.props.sprint.lanes.length * 320 + 80}}>
-                    {this.props.sprint.lanes.map((lane) => <Lane data={this.getLaneData(lane)}/>)}
-                    <NewLaneButton />
+                <Row id='row' style={{width: this.props.sprint.Lanes.length * 320 + 65}}>
+                    {this.props.sprint.Lanes.map((lane, index) => <Lane key={index} data={this.getLaneData(lane)}/>)}
+                    <NewLaneButton onClick={this.addLane} />
                 </Row>
             </Container>
         );
