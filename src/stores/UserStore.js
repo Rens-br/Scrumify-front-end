@@ -11,7 +11,7 @@ class UserStore{
     email = "";
     projects = [];
     organizations = [];
-    currentOrganization = 1;
+    currentOrganization = undefined;
 
     rootStore = null;
 
@@ -31,7 +31,8 @@ class UserStore{
                 }
 
                 break;
-            case 'updateUser': 
+            case 'updateUser':
+                this.currentOrganization = response.data.organizations[0].id;
                 this.userId = response.data.userId;
                 this.name = response.data.name;
                 this.email = response.data.email;
