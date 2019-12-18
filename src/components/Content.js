@@ -43,7 +43,12 @@ const Content = inject("store")(
 
       render() {
         if (this.props.store.clientStore.currentScreen === 0) {
-          return <Dashboard />;
+          return (
+            <div id="content">
+              <TopNavBar />
+              <Dashboard />
+            </div>
+          );
         } else if (this.props.store.clientStore.currentScreen === 1) {
           if (this.props.store.projectStore.projectId !== undefined) {
             return (
