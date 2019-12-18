@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import "./Dashboard.css";
+import DashboardProjecList from "./DashboardProjectList";
 class Dashboard extends Component {
   render() {
     return (
@@ -12,13 +13,7 @@ class Dashboard extends Component {
                 <h4>Your projects</h4>
                 <SearchBar placeholder="Search for a project" />
                 <div className="project-list mt-5">
-                  <ul>
-                    <li>Test 1</li>
-                    <li>Test 2</li>
-                    <li>Test 3</li>
-                    <li>Test 4</li>
-                    <li>Test 5</li>
-                  </ul>
+                  <DashboardProjecList />
                 </div>
               </div>
             </div>
@@ -54,3 +49,20 @@ class Dashboard extends Component {
   }
 }
 export default Dashboard;
+// {this.props.store.userStore.projects
+//   .filter(
+//     x =>
+//       x.organizationId ===
+//       this.props.store.userStore.currentOrganization
+//   )
+//   .map((project, index) => (
+//     <NavDropdown
+//       openDropdown={() => this.onOpenProject(index)}
+//       isOn={
+//         index === this.props.store.clientStore.currentProjectIndex
+//       }
+//       onSprintsClick={this.loadSprints}
+//       key={index}
+//       data={project}
+//     />
+//   ))}
