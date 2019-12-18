@@ -3,8 +3,8 @@ import React, { Component } from "react";
 class SearchBar extends Component {
   render() {
     return (
-      <div className="search-bar">
-        <form action="" method="post">
+      <div className="search-bar-div">
+        <form className="search-bar" action="" method="post">
           <input
             name="search"
             type="text"

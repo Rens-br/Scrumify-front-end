@@ -118,8 +118,8 @@ class SocketStore{
 		this.socket.emit('createWorkItem', {ProjectId: projectId, LaneId: laneId, title: title})
 	};
 
-	createProject = (projectId, title) => {
-		this.socket.emit('createProject', {ProjectId: projectId, title: title});
+	createProject = (projectId, title, organizationId) => {
+		this.socket.emit('createProject', {ProjectId: projectId, title: title, OrganizationId: organizationId});
 	};
 
 

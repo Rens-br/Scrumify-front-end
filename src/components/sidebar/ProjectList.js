@@ -23,7 +23,7 @@ const ProjectList = inject('store')(observer(class ProjectList extends React.Com
   onNewProjectCreation = (title) => {
     if(title !== ""){
       this.setState({ isAddingProject: false });
-      this.props.store.projectStore.addProject(title);
+      this.props.store.projectStore.addProject(title, this.props.store.userStore.currentOrganization);
     }
   };
 
