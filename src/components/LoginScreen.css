@@ -1,0 +1,40 @@
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+#inputField {
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+    /* border: solid 2px var(--color-primary);
+    border-radius: 2px; */
+    height: 35px;
+    flex-direction: column;
+}
+
+.inputTb {
+    border: solid 2px var(--color-primary);
+    border-radius: 2px;
+    width: 100%;
+    min-height: 35px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.loginBtn {
+    border-radius: 2px;
+    margin-top: 30px;
+    border: solid 2px var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-background-light);
+}
+
+.input-feedback {
+    color: red;
+}

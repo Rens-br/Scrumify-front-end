@@ -17,13 +17,14 @@ h4 {
   flex: 1;
 }
 
-input[type="text"] {
+.txtInput {
   box-shadow: none;
   border: 1px solid gray;
   border-radius: 2px;
   padding: 4px;
   width: 90%;
 }
+
 .search-btn {
   padding: 4px;
   border: none;
@@ -37,29 +38,3 @@ input[type="text"] {
   padding: 12px;
   border: 1px solid black;
 }
-/* #dashboard {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: white;
-}
-.search-row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.col {
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
-@media (min-width: 1200px) {
-  .search-bar {
-    width: 100%;
-  }
-} */
