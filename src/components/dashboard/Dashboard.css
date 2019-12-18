@@ -6,7 +6,7 @@ h4 {
   color: white;
   padding: 8px;
   width: 100%;
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--color-primary);
 }
 .mt-5 {
@@ -20,7 +20,7 @@ h4 {
 input[type="text"] {
   box-shadow: none;
   border: 1px solid gray;
-  border-radius: 4px;
+  border-radius: 2px;
   padding: 4px;
   width: 90%;
 }
