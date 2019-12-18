@@ -8,6 +8,7 @@ import TabBar from "./TabBar";
 import { toJS } from "mobx";
 import WorkItemWindow from "./WorkItemWindow";
 import Dashboard from "./dashboard/Dashboard";
+import { Spinner } from "react-bootstrap";
 
 const Content = inject("store")(
   observer(
@@ -41,41 +42,79 @@ const Content = inject("store")(
       };
 
       render() {
-        if (this.props.store.projectStore.projectId !== undefined) {
-          return (
-            <div id="content">
-              <TopNavBar />
-              <TabBar
-                onChangeTab={this.changeSprintTitle}
-                tabs={toJS(
-                  this.props.store.projectStore.sprints.map(x => x.sprintTitle)
-                )}
-                onTabClicked={this.changeSprint}
-                onAddClicked={this.addSprint}
-                onRemoveTab={this.removeSprint}
-              />
-              {this.props.store.projectStore.sprints[this.state.sprint] && (
-                <Board
-                  sprint={
-                    this.props.store.projectStore.sprints[this.state.sprint]
-                  }
+        if (this.props.store.clientStore.currentScreen === 0) {
+          return <Dashboard />;
+        } else if (this.props.store.clientStore.currentScreen === 1) {
+          if (this.props.store.projectStore.projectId !== undefined) {
+            return (
+              <div id="content">
+                <TopNavBar />
+                <TabBar
+                  onChangeTab={this.changeSprintTitle}
+                  tabs={toJS(
+                    this.props.store.projectStore.sprints.map(
+                      x => x.sprintTitle
+                    )
+                  )}
+                  onTabClicked={this.changeSprint}
+                  onAddClicked={this.addSprint}
+                  onRemoveTab={this.removeSprint}
                 />
-              )}
-              {this.props.store.clientStore.isWorkItemOpen && (
-                <WorkItemWindow />
-              )}
-            </div>
-          );
-        } else {
-          return (
-            <div id="content">
-              <TopNavBar />
-              <Dashboard />
-              {/* <Spinner className='spinner' animation='border'/> */}
-              {/*this.props.store.clientStore.isWorkItemOpen && <WorkItemWindow/>*/}
-            </div>
-          );
+                {this.props.store.projectStore.sprints[this.state.sprint] && (
+                  <Board
+                    sprint={
+                      this.props.store.projectStore.sprints[this.state.sprint]
+                    }
+                  />
+                )}
+                {this.props.store.clientStore.isWorkItemOpen && (
+                  <WorkItemWindow />
+                )}
+              </div>
+            );
+          } else {
+            return <Spinner className="spinner" animation="border" />;
+          }
         }
+        // else {
+        //   return <h2>JE KANKER MOEDER</h2>;
+        // }
+
+        // if (this.props.store.projectStore.projectId !== undefined) {
+        //   return (
+        //     <div id="content">
+        //       <TopNavBar />
+        //       <TabBar
+        //         onChangeTab={this.changeSprintTitle}
+        //         tabs={toJS(
+        //           this.props.store.projectStore.sprints.map(x => x.sprintTitle)
+        //         )}
+        //         onTabClicked={this.changeSprint}
+        //         onAddClicked={this.addSprint}
+        //         onRemoveTab={this.removeSprint}
+        //       />
+        //       {this.props.store.projectStore.sprints[this.state.sprint] && (
+        //         <Board
+        //           sprint={
+        //             this.props.store.projectStore.sprints[this.state.sprint]
+        //           }
+        //         />
+        //       )}
+        //       {this.props.store.clientStore.isWorkItemOpen && (
+        //         <WorkItemWindow />
+        //       )}
+        //     </div>
+        //   );
+        // } else {
+        //   return (
+        //     <div id="content">
+        //       <TopNavBar />
+        //       <Dashboard />
+        //
+        //       {/*this.props.store.clientStore.isWorkItemOpen && <WorkItemWindow/>*/}
+        //     </div>
+        //   );
+        // }
       }
     }
   )
