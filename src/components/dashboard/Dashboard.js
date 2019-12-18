@@ -8,7 +8,7 @@ class Dashboard extends Component {
         <div id="d-board">
           <div className="flex-grid">
             <div className="col">
-              <div className="projects-container mt-5">
+              <div className="db-container mt-5">
                 <h4>Your projects</h4>
                 <SearchBar placeholder="Search for a project" />
                 <div className="project-list mt-5">
@@ -23,7 +23,7 @@ class Dashboard extends Component {
               </div>
             </div>
             <div className="col">
-              <div className="tasks-container mt-5">
+              <div className="db-container mt-5">
                 <h4>Your tasks</h4>
                 <SearchBar placeholder="Search for a task" />
                 <div className="task-list mt-5">

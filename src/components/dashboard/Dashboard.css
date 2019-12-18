@@ -1,5 +1,7 @@
 .flex-grid {
   display: flex;
+  flex-direction: row;
+  height: calc(100vh - 62px);
 }
 h4 {
   font-size: 20px;
@@ -13,8 +15,13 @@ h4 {
   margin-top: 15px !important;
 }
 .col {
-  height: 100vh;
+  height: calc(100vh - 62px);
   flex: 1;
+}
+
+#d-board {
+  background-color: var(--color-background-dark);
+  height: calc(100vh - 62px);
 }
 
 input[type="text"] {
@@ -22,21 +29,40 @@ input[type="text"] {
   border: 1px solid gray;
   border-radius: 2px;
   padding: 4px;
-  width: 90%;
+  display: flex;
+  flex: 0.8;
 }
+
+.search-bar-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.search-bar {
+  display: flex;
+  flex: 1.6;
+}
+
 .search-btn {
   padding: 4px;
   border: none;
+  border-radius: 2px;
   margin-left: 12px;
+  flex: 0.2;
+  display: flex
 }
-.projects-container {
+
+.db-container {
+  background-color: var(--color-background-primary);
   padding: 12px;
-  border: 1px solid black;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  height: 250px;
 }
-.tasks-container {
-  padding: 12px;
-  border: 1px solid black;
-}
+
 /* #dashboard {
   width: 100%;
   margin-left: auto;

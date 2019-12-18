@@ -130,8 +130,8 @@ class ProjectStore{
     };
 
     
-    addProject = (title) => {
-        this.rootStore.socketStore.createProject(this.projectId, title);
+    addProject = (title, organizationId) => {
+        this.rootStore.socketStore.createProject(this.projectId, title, organizationId);
     };
 
 
