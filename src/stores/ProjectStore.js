@@ -8,7 +8,7 @@ class ProjectStore{
     users = {};
     sprints = {};
     workItems = [{
-        workItemId: 789123,
+        workItemId: 78912,
         workItemTitle: "TestWorkItem1",
         workItemDescription: "This is a workitem test.",
         laneId: 23456
@@ -47,6 +47,8 @@ class ProjectStore{
 
     //Updates the currently loaded project 
     updateStore = (response) => {
+        console.log(response)
+
         let foundSprint;
         let foundWorkItem;
 

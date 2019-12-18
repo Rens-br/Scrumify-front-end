@@ -119,6 +119,7 @@ class SocketStore{
 	};
 
 	createProject = (projectId, title, organizationId) => {
+		console.log(organizationId)
 		this.socket.emit('createProject', {ProjectId: projectId, title: title, OrganizationId: organizationId});
 	};
 
