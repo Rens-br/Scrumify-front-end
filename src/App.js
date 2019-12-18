@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LoadTheme } from "./ThemeProvider";
 import ProtectedRoute from "./components/Routing/ProtectedRoute";
-import LoginScreen from "./components/LoginScreen";
+import LandingPage from "./components/LandingPage.js";
 import NotFound from "./components/NotFound";
 import './App.css'
 
@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={ProtectedRoute} />
-          <Route exact path="/login" component={LoginScreen} />
+          <Route exact path="/login" component={LandingPage} />
           <Route component={NotFound} />
         </Switch>
       </Router>

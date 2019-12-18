@@ -16,11 +16,9 @@ class SocketStore{
 		this.socket.on('connect', () => {
 			console.log(this.socket.id);
 			this.sendSession();
-			this.getUser('1')
 		});
 
 		this.socket.on('authentication', (response) => {
-			console.log(response);
 			this.rootStore.userStore.updateStore({ type: 'authenticateUser', data: response })
 		});
 
