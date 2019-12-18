@@ -52,8 +52,8 @@ class UserStore{
         }
     };
 
-    authenticateUser = (credentials) => {
-        this.rootStore.socketStore.sendLogin(credentials);
+    setLoginWarning = (msg) => {
+        this.loginMessage = msg;
     };
 
     updateUser = (user) => {

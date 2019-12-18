@@ -13,7 +13,7 @@ const LoginScreen = inject('store')(observer(class LoginScreen extends Component
             isLogin: true,
             isForgotPassword: false,
             isSmall: window.innerWidth <= 1000,
-            userName: '',
+            name: '',
             email: '',
             pass: '',
             pass2: '',
@@ -30,16 +30,25 @@ const LoginScreen = inject('store')(observer(class LoginScreen extends Component
     };
 
     onLoginUser = (value) => {
-        this.props.store.userStore.authenticateUser({email: this.state.email, password: value ? value : this.state.pass}, this.loginCallback);
+        this.props.store.socketStore.sendLogin({email: this.state.email, password: value ? value : this.state.pass});
     };
 
-    loginCallback = (response) => {
-        console.log(response)
-        if(response.message){
-            this.setState({warning: response.message});
+    onRegisterUser = () => {
+        if(this.state.pass !== this.state.pass2){
+            this.props.store.userStore.setLoginWarning("The passwords you entered don't match");
+        }
+        else if(this.state.name === ''){
+            this.props.store.userStore.setLoginWarning("Please fill out your user name");
+        }
+        else if(this.state.email === ''){
+            this.props.store.userStore.setLoginWarning("Please fill out your email");
+        }
+        else if(this.state.pass === ''){
+            this.props.store.userStore.setLoginWarning("Please fill out your password");
         }
         else{
-            this.setState({warning: ''});
+            this.props.store.userStore.setLoginWarning('');
+            this.props.store.socketStore.sendRegister({name: this.state.name, email: this.state.email, password: this.state.pass});
         }
     };
 
@@ -82,11 +91,12 @@ const LoginScreen = inject('store')(observer(class LoginScreen extends Component
           <div>
               <h1>Welcome</h1>
               <p>Create an account to start working more efficiently.</p>
-              <CustomInputField icon='person' placeholder='Username' valueChanged={() => console.log('nameChanged')}/>
-              <CustomInputField icon='email' placeholder='Email' valueChanged={() => console.log('emailChanged')}/>
-              <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={() => console.log('password')}/>
-              <CustomInputField icon='lock' isPassword placeholder='Re-enter password' valueChanged={() => console.log('password')}/>
-              <CustomButton label='Create account' onClick={() => console.log('Login clicked')}/>
+              {this.props.store.userStore.loginMessage && <p className='warning'>{this.props.store.userStore.loginMessage}</p>}
+              <CustomInputField icon='person' placeholder='Username' valueChanged={(value) => this.setState({name: value})}/>
+              <CustomInputField icon='email' placeholder='Email' valueChanged={(value) => this.setState({email: value})}/>
+              <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={(value) => this.setState({pass: value})}/>
+              <CustomInputField icon='lock' isPassword placeholder='Re-enter password' valueChanged={(value) => this.setState({pass2: value})}/>
+              <CustomButton label='Create account' onClick={this.onRegisterUser}/>
               <div style={{display: 'flex', justifyContent: 'center'}}>
                   <p className='bottomText'>Already have an account?</p>
                   <p className='bottomText' id='clickable' onClick={() => this.setState({isLogin: true})}>Login</p>

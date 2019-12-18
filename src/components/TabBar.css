@@ -16,7 +16,7 @@
     flex-grow: 0;
     min-width: 100px;
     margin: 5px;
-    height:85%;
+    height:80%;
     color: var(--color-text-primary);
     background: var(--color-background-primary);
     align-self: flex-end;
@@ -28,7 +28,7 @@
 }
 
 .tab:hover{
-    background: var(--color-primary-light);
+    background: white;
 }
 
 .tab#active{
@@ -79,11 +79,11 @@
 
 .addTab{
     justify-content: center;
-    flex: 42.5px;
+    flex: 40px;
     flex-grow: 0;
     flex-shrink: 0;
     margin: 5px;
-    height:85%;
+    height:80%;
     background: var(--color-primary-dark);
     align-self: flex-end;
     display: flex;

@@ -6,7 +6,7 @@ import { Col } from 'react-bootstrap';
 export default class NewLaneButton extends React.Component{
   render(){
     return(
-        <Col onClick={this.props.onClick} className="newLaneButton"><p>Add New Lane</p></Col>
+        <div onClick={this.props.onClick} className="newLaneButton"><p>Add New Lane</p></div>
     );
   }
 }

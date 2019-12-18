@@ -54,6 +54,11 @@ class SocketStore{
 		this.socket.emit('login', credentials);
 	};
 
+	sendRegister = (credentials) => {
+		console.log(credentials)
+		this.socket.emit('register', credentials);
+	};
+
 	sendSession = () => {
 		let oldSession = sessionStorage.getItem('sessionId');
 		if(oldSession !== '' && oldSession !== undefined){
