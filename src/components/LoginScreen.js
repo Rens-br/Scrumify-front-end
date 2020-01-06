@@ -36,7 +36,7 @@ const LoginScreen = () => (
             } = props;
             return (
                 <form onSubmit={handleSubmit} className="loginForm">
-                    <div className="header">
+                    <div className="loginHeader">
                         <h1>Welcome</h1>
                         <p>Login to gain access to all your boards and projects.</p>
                     </div>
