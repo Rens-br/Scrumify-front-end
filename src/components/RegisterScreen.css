@@ -1,0 +1,28 @@
+.registerBtn {
+    display: flex;
+    width: 100%;
+    border-radius: 2px;
+    margin-top: 30px;
+    padding-top: 2px;
+    min-height: 35px;
+    text-align: center;
+    justify-content: center;
+    border: solid 2px var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-background-primary);
+}
+
+#loginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}

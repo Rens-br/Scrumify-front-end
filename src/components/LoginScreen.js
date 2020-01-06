@@ -42,7 +42,6 @@ const LoginScreen = inject('store')(observer((props) => (
                         <h1>Welcome</h1>
                         <p>Login to gain access to all your boards and projects.</p>
                     </div>
-                    {/* <label htmlFor="email">Email</label> */}
                     <div id="inputField">
                         <input
                             name="email"
@@ -57,7 +56,6 @@ const LoginScreen = inject('store')(observer((props) => (
                             <div className="input-feedback">{errors.email}</div>
                         )}
                     </div>
-                    {/* <label htmlFor="email">Password</label> */}
                     <div id="inputField">
                         <input
                             name="password"

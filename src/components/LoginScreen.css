@@ -7,9 +7,7 @@
 #inputField {
     display: flex;
     width: 100%;
-    margin-top: 40px;
-    /* border: solid 2px var(--color-primary);
-    border-radius: 2px; */
+    margin-top: 30px;
     height: 35px;
     flex-direction: column;
 }

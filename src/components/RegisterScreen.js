@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
 import {inject, observer} from "mobx-react";
+import './RegisterScreen.css';
 
 const RegisterScreen = inject('store')(observer((props) => (
     <div>
@@ -109,7 +110,7 @@ const RegisterScreen = inject('store')(observer((props) => (
             );
         }}
     </Formik>
-        <p>Login</p>
+        <a id="loginBtn" href="/">Login</a>
     </div>
 )));
 
