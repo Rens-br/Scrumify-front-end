@@ -3,13 +3,14 @@ import './LoginScreen.css'
 import { Formik } from "formik";
 import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
+import {inject, observer} from "mobx-react";
 
-const LoginScreen = () => (
+const LoginScreen = inject('store')(observer((props) => (
     <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-                console.log("Logging in", values);
+                props.store.socketStore.sendLogin({email: values.email, password: values.password});
                 setSubmitting(false);
             }, 500);
         }}
@@ -20,7 +21,7 @@ const LoginScreen = () => (
                 .required("Required"),
             password: Yup.string()
                 .required("No password provided.")
-                .min(8, "Password is too short - should be 8 chars minimum.")
+                .min(6, "Password is too short - should be 6 chars minimum.")
                 .matches(/(?=.*[0-9])/, "Password must contain a number.")
         })}
     >
@@ -77,6 +78,6 @@ const LoginScreen = () => (
             );
         }}
     </Formik>
-);
+)));
 
 export default LoginScreen;
