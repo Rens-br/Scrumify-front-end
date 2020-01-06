@@ -20,8 +20,6 @@ class UserStore{
     }
 
     updateStore = (response) => {
-        console.log(response)
-
         switch(response.type){
             case 'authenticateUser':
                 this.loggedIn = response.data.succes;

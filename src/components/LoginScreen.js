@@ -1,133 +1,83 @@
 import React, {Component} from 'react';
 import './LoginScreen.css'
-import CustomInputField from "./CustomInputField";
-import CustomButton from "./CustomButton";
+import { Formik } from "formik";
+import * as EmailValidator from "email-validator";
+import * as Yup from "yup";
 import {inject, observer} from "mobx-react";
-import {Redirect} from "react-router-dom";
 
-const LoginScreen = inject('store')(observer(class LoginScreen extends Component {
-    constructor(props) {
-        super(props);
+const LoginScreen = inject('store')(observer((props) => (
+    <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={(values, { setSubmitting }) => {
+            setTimeout(() => {
+                props.store.socketStore.sendLogin({email: values.email, password: values.password});
+                setSubmitting(false);
+            }, 500);
+        }}
 
-        this.state = {
-            isLogin: true,
-            isForgotPassword: false,
-            isSmall: window.innerWidth <= 1000,
-            name: '',
-            email: '',
-            pass: '',
-            pass2: '',
-            warning: '',
-        }
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.onResize);
-    };
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.onResize);
-    };
-
-    onLoginUser = (value) => {
-        this.props.store.socketStore.sendLogin({email: this.state.email, password: value ? value : this.state.pass});
-    };
-
-    onRegisterUser = () => {
-        if(this.state.pass !== this.state.pass2){
-            this.props.store.userStore.setLoginWarning("The passwords you entered don't match");
-        }
-        else if(this.state.name === ''){
-            this.props.store.userStore.setLoginWarning("Please fill out your user name");
-        }
-        else if(this.state.email === ''){
-            this.props.store.userStore.setLoginWarning("Please fill out your email");
-        }
-        else if(this.state.pass === ''){
-            this.props.store.userStore.setLoginWarning("Please fill out your password");
-        }
-        else{
-            this.props.store.userStore.setLoginWarning('');
-            this.props.store.socketStore.sendRegister({name: this.state.name, email: this.state.email, password: this.state.pass});
-        }
-    };
-
-    onResize = () => {
-        this.setState({isSmall: window.innerWidth <= 1000})
-    };
-
-    renderLoginScreen = () => {
-        return (
-            <div>
-                <h1>Welcome</h1>
-                <p style={{marginBottom: this.props.store.userStore.loginMessage === '' ? '60px' : '20px'}}>Login to gain access to al your boards and projects.</p>
-                {this.props.store.userStore.loginMessage && <p className='warning'>{this.props.store.userStore.loginMessage}</p>}
-                <CustomInputField icon='email' placeholder='Email' value={this.state.email} valueChanged={(value) => this.setState({email: value})}/>
-                <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={(value) => this.setState({pass: value})} onSubmit={this.onLoginUser}/>
-                <CustomButton label='Sign-in' onClick={() => this.onLoginUser()}/>
-                <p className='bottomText' id='clickable' onClick={() => this.setState({isForgotPassword: true})}>Forgot password?</p>
-                <div style={{display: 'flex', justifyContent: 'center'}}>
-                    <p className='bottomText'>Dont have an account yet?</p>
-                    <p className='bottomText' id='clickable' onClick={() => this.setState({isLogin: false})}>Register</p>
-                </div>
-            </div>
-        )
-    };
-
-    renderForgotPasswordScreen = () => {
-        return (
-            <div>
-                <h1>Welcome</h1>
-                <p>Enter you email below to receive instructions on how to reset your password.</p>
-                <CustomInputField icon='email' placeholder='Email' valueChanged={() => console.log('emailChanged')}/>
-                <CustomButton label='Send recovery mail' onClick={() => console.log('Reset password')}/>
-                <p className='bottomText' id='clickable' onClick={() => this.setState({isForgotPassword: false})}>Back</p>
-            </div>
-        )
-    };
-
-    renderRegisterScreen = () => {
-      return (
-          <div>
-              <h1>Welcome</h1>
-              <p>Create an account to start working more efficiently.</p>
-              {this.props.store.userStore.loginMessage && <p className='warning'>{this.props.store.userStore.loginMessage}</p>}
-              <CustomInputField icon='person' placeholder='Username' valueChanged={(value) => this.setState({name: value})}/>
-              <CustomInputField icon='email' placeholder='Email' valueChanged={(value) => this.setState({email: value})}/>
-              <CustomInputField icon='lock' isPassword placeholder='Password' valueChanged={(value) => this.setState({pass: value})}/>
-              <CustomInputField icon='lock' isPassword placeholder='Re-enter password' valueChanged={(value) => this.setState({pass2: value})}/>
-              <CustomButton label='Create account' onClick={this.onRegisterUser}/>
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                  <p className='bottomText'>Already have an account?</p>
-                  <p className='bottomText' id='clickable' onClick={() => this.setState({isLogin: true})}>Login</p>
-              </div>
-          </div>
-      )
-    };
-
-    render() {
-        if(this.props.store.userStore.loggedIn){
-            return <Redirect to="/" />;
-        }
-        else {
+        validationSchema={Yup.object().shape({
+            email: Yup.string()
+                .email()
+                .required("Required"),
+            password: Yup.string()
+                .required("No password provided.")
+                .min(6, "Password is too short - should be 6 chars minimum.")
+                .matches(/(?=.*[0-9])/, "Password must contain a number.")
+        })}
+    >
+        {props => {
+            const {
+                values,
+                touched,
+                errors,
+                isSubmitting,
+                handleChange,
+                handleBlur,
+                handleSubmit
+            } = props;
             return (
-                <div class='loginScreen'>
-                    <div className='left' style={{flex: !this.state.isSmall ? '0.3 0 0' : '1'}}>
-                        {this.state.isForgotPassword ? this.renderForgotPasswordScreen() : this.state.isLogin ? this.renderLoginScreen() : this.renderRegisterScreen()}
+                <form onSubmit={handleSubmit} className="loginForm">
+                    <div className="loginHeader">
+                        <h1>Welcome</h1>
+                        <p>Login to gain access to all your boards and projects.</p>
                     </div>
-                    {!this.state.isSmall &&
-                    <div className='right'>
-                        <svg viewBox="0 0 35 35">
-                            <path
-                                d="M19,8.94a13.29,13.29,0,0,1,7.58,19.7,12.79,12.79,0,0,1-21.27,1,13.18,13.18,0,0,1-2.38-5.43L6,23.62a9.75,9.75,0,0,0,19.34-1.33c.3-12.27-16-14.55-19.21-3.13L9.31,20,3.82,21.67,0,17.54l3.07.81A13,13,0,0,1,16.89,8.53a9,9,0,0,1,13.88-7,9.28,9.28,0,0,1-.44,15.67l.65,1.1L28.53,17l0-2.9.72,1.24a6.19,6.19,0,0,0,1.16-.85,7.13,7.13,0,0,0-1-11.29A6.9,6.9,0,0,0,19,8.94Z"/>
-                        </svg>
-                        <h1>Scrumify</h1>
+                    {/* <label htmlFor="email">Email</label> */}
+                    <div id="inputField">
+                        <input
+                            name="email"
+                            type="text"
+                            placeholder="Email"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={errors.email && touched.email ? "error inputTb" : "inputTb"}
+                        />
+                        {errors.email && touched.email && (
+                            <div className="input-feedback">{errors.email}</div>
+                        )}
                     </div>
-                    }
-                </div>
+                    {/* <label htmlFor="email">Password</label> */}
+                    <div id="inputField">
+                        <input
+                            name="password"
+                            type="password"
+                            placeholder="Password"
+                            value={values.password}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={errors.password && touched.password ? "error inputTb" : "inputTb"}
+                        />
+                        {errors.password && touched.password && (
+                            <div className="input-feedback">{errors.password}</div>
+                        )}
+                    </div>
+                    <button className="loginBtn" type="submit" disabled={isSubmitting}>
+                        Login
+                    </button>
+                </form>
             );
-        }
-    }
-}));
+        }}
+    </Formik>
+)));
 
 export default LoginScreen;

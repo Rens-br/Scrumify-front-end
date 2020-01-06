@@ -10,6 +10,7 @@ class SearchBar extends Component {
             type="text"
             id="search"
             placeholder={this.props.placeholder}
+            className="txtInput"
           />
           <input type="submit" value="Search" className="search-btn" />
         </form>

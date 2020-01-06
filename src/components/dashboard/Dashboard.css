@@ -62,30 +62,7 @@ input[type="text"] {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
   height: 250px;
 }
-
-/* #dashboard {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background: white;
+.tasks-container {
+  padding: 12px;
+  border: 1px solid black;
 }
-.search-row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-}
-
-.col {
-  -ms-flex-preferred-size: 0;
-  flex-basis: 0;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  max-width: 100%;
-}
-
-@media (min-width: 1200px) {
-  .search-bar {
-    width: 100%;
-  }
-} */
