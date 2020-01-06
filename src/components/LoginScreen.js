@@ -73,7 +73,6 @@ const LoginScreen = () => (
                     <button className="loginBtn" type="submit" disabled={isSubmitting}>
                         Login
                     </button>
-                    <a></a>
                 </form>
             );
         }}
