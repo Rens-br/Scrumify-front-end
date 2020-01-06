@@ -24,14 +24,14 @@ h4 {
   height: calc(100vh - 62px);
 }
 
-input[type="text"] {
+.txtInput {
   box-shadow: none;
   border: 1px solid gray;
   border-radius: 2px;
   padding: 4px;
   display: flex;
   flex: 0.8;
-}
+} 
 
 .search-bar-div {
   display: flex;
