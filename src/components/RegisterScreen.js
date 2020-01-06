@@ -109,7 +109,7 @@ const RegisterScreen = inject('store')(observer((props) => (
             );
         }}
     </Formik>
-        <p>Login</p>
+        <p onClick={props.onScreenSwitch}>Login</p>
     </div>
 )));
 
