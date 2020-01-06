@@ -3,6 +3,7 @@ import './LandingPage.css'
 import {inject, observer} from "mobx-react";
 import {Redirect} from "react-router-dom";
 import LoginScreen from "./LoginScreen";
+import RegisterScreen from "./RegisterScreen";
 
 const LandingPage = inject('store')(observer(class LandingPage extends Component {
     constructor(props) {
@@ -34,7 +35,7 @@ const LandingPage = inject('store')(observer(class LandingPage extends Component
             return (
                 <div class='loginScreen'>
                     <div className='left' style={{flex: !this.state.isSmall ? '0.3 0 0' : '1'}}>
-                        {this.state.currentScreen === 0 && <LoginScreen/>}
+                        {this.state.currentScreen === 0 && <RegisterScreen/>}
                     </div>
                     {!this.state.isSmall &&
                     <div className='right'>

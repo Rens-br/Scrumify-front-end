@@ -53,7 +53,7 @@ class SocketStore{
 	};
 
 	sendRegister = (credentials) => {
-		console.log(credentials)
+		console.log(credentials);
 		this.socket.emit('register', credentials);
 	};
 
@@ -117,11 +117,12 @@ class SocketStore{
 	};
 
 	createProject = (projectId, title, organizationId) => {
-		console.log(organizationId)
 		this.socket.emit('createProject', {ProjectId: projectId, title: title, OrganizationId: organizationId});
 	};
 
-
+	createOrganization = (userId, organizationName) => {
+		this.socket.emit('createOrganization', {UserId: userId, OrganizationName: organizationName});
+	}
 }
 
 decorate(SocketStore, {
@@ -129,7 +130,8 @@ decorate(SocketStore, {
 	io: observable,
 	getUser: action,
 	getProject: action,
-	createSprint: action
+	createSprint: action,
+	createOrganization: action
 });
 
 export default SocketStore;

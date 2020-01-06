@@ -5,25 +5,29 @@ import * as EmailValidator from "email-validator";
 import * as Yup from "yup";
 import {inject, observer} from "mobx-react";
 
-const LoginScreen = inject('store')(observer((props) => (
+const RegisterScreen = inject('store')(observer((props) => (
     <div>
     <Formik
-        initialValues={{ email: "", password: "" }}
+        initialValues={{name: "", email: "", password: "", password2: "" }}
         onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
-                props.store.socketStore.sendLogin({email: values.email, password: values.password});
+                props.store.socketStore.sendRegister({email: values.email, name: values.name, password: values.password});
                 setSubmitting(false);
             }, 500);
         }}
 
         validationSchema={Yup.object().shape({
+            name: Yup.string()
+                .required("Required"),
             email: Yup.string()
                 .email()
                 .required("Required"),
             password: Yup.string()
                 .required("No password provided.")
                 .min(6, "Password is too short - should be 6 chars minimum.")
-                .matches(/(?=.*[0-9])/, "Password must contain a number.")
+                .matches(/(?=.*[0-9])/, "Password must contain a number."),
+            password2: Yup.string()
+                .oneOf([Yup.ref('password'), null], 'Passwords must match')
         })}
     >
         {(props) => {
@@ -37,12 +41,25 @@ const LoginScreen = inject('store')(observer((props) => (
                 handleSubmit
             } = props;
             return (
-                <form onSubmit={handleSubmit} className="loginForm">
-                    <div className="loginHeader">
+                <form onSubmit={handleSubmit} className="registerForm">
+                    <div className="registerHeader">
                         <h1>Welcome</h1>
-                        <p>Login to gain access to all your boards and projects.</p>
+                        <p>Register to gain access to all your boards and projects.</p>
                     </div>
-                    {/* <label htmlFor="email">Email</label> */}
+                    <div id="inputField">
+                        <input
+                            name="name"
+                            type="text"
+                            placeholder="Name"
+                            value={values.name}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={errors.name && touched.name ? "error inputTb" : "inputTb"}
+                        />
+                        {errors.name && touched.name && (
+                            <div className="input-feedback">{errors.name}</div>
+                        )}
+                    </div>
                     <div id="inputField">
                         <input
                             name="email"
@@ -57,7 +74,6 @@ const LoginScreen = inject('store')(observer((props) => (
                             <div className="input-feedback">{errors.email}</div>
                         )}
                     </div>
-                    {/* <label htmlFor="email">Password</label> */}
                     <div id="inputField">
                         <input
                             name="password"
@@ -72,15 +88,29 @@ const LoginScreen = inject('store')(observer((props) => (
                             <div className="input-feedback">{errors.password}</div>
                         )}
                     </div>
-                    <button className="loginBtn" type="submit" disabled={isSubmitting}>
-                        Login
+                    <div id="inputField">
+                        <input
+                            name="password2"
+                            type="password"
+                            placeholder="Confirm password"
+                            value={values.password2}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={errors.password2 && touched.password2 ? "error inputTb" : "inputTb"}
+                        />
+                        {errors.password2 && touched.password2 && (
+                            <div className="input-feedback">{errors.password2}</div>
+                        )}
+                    </div>
+                    <button className="registerBtn" type="submit" disabled={isSubmitting}>
+                        Register
                     </button>
                 </form>
             );
         }}
     </Formik>
-        <p>Register</p>
+        <p>Login</p>
     </div>
 )));
 
-export default LoginScreen;
+export default RegisterScreen;
