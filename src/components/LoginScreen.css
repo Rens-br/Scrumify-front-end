@@ -31,12 +31,14 @@
 
 .loginBtn {
     border-radius: 2px;
-    margin-top: 30px;
+    margin-top: 40px;
+    min-height: 35px;
     border: solid 2px var(--color-primary);
     background-color: var(--color-primary);
-    color: var(--color-background-light);
+    color: var(--color-background-primary);
 }
 
 .input-feedback {
     color: red;
+    font-size: 0.8rem;
 }
