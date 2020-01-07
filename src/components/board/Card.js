@@ -52,6 +52,8 @@ export class Card extends Component{
 					<p>{this.props.workItem.workItemTitle}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
+					<p class="workItemUserName">Rens B</p>
+					<p class="workItemUserName">Kanker Tijd</p>
 			</div>
 		);
 	}
