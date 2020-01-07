@@ -1,0 +1,33 @@
+.dashboardProjectContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.projectListItem {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5px;
+  border-bottom: 0.5px solid var(--color-primary);
+}
+
+.projectListItem:hover {
+  cursor: pointer;
+  background: #f2f2f2;
+}
+
+.projectListItemName {
+  padding: 5px;
+  flex-grow: 8;
+  justify-content: flex-start;
+}
+.projectListItemName:hover {
+  font-weight: bold;
+}
+.projectListItemId {
+  padding: 5px;
+  border-radius: 5px;
+  background: var(--color-primary);
+  color: white;
+  justify-content: flex-end;
+}

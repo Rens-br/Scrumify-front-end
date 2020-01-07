@@ -8,9 +8,16 @@ const DashboardProjectList = inject("store")(
       constructor(props) {
         super(props);
       }
+
+      handleProject(projectId) {
+        //alert(projectId);
+        //console.log(this.props);
+        this.props.store.projectStore.getProject(projectId);
+        this.props.store.clientStore.setCurrentScreen(1);
+      }
       render() {
         return (
-          <ul>
+          <div className="dashboardProjectContainer">
             {this.props.store.userStore.projects
               .filter(
                 x =>
@@ -18,9 +25,13 @@ const DashboardProjectList = inject("store")(
                   this.props.store.userStore.currentOrganization
               )
               .map(project => (
-                <Project projectName={project.projectName} />
+                <Project
+                  projectId={project.projectId}
+                  projectName={project.projectName}
+                  handleProject={this.handleProject.bind(this)}
+                />
               ))}
-          </ul>
+          </div>
         );
       }
     }
