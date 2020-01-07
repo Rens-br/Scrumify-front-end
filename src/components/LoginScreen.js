@@ -36,6 +36,7 @@ const LoginScreen = inject('store')(observer((props) => (
                 handleBlur,
                 handleSubmit
             } = props;
+
             return (
                 <form onSubmit={handleSubmit} className="loginForm">
                     <div className="loginHeader">

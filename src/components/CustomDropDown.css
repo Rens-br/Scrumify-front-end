@@ -1,4 +1,4 @@
-.customDropDown{
+.customDropDown, .disabledDropdown{
     display: flex;
     flex: 300px;
     flex-shrink: 0;
@@ -10,6 +10,10 @@
     user-select: none;
     background-color: var(--color-background-primary);
     margin-left: 15px;
+}
+
+.disabledDropdown:hover {
+    background-color: var(--color-background-primary);
 }
 
 .customDropDown:hover {
@@ -32,8 +36,8 @@
 .extendedDropdown {
     width: 300px;
     position: absolute;
-    margin-left: -1.5px;
-    margin-top: -1px;
+    margin-left: -2px;
+    margin-top: -2px;
     background-color: var(--color-background-primary);
     border-radius: 2px;
     border: 2px solid var(--color-primary);

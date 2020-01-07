@@ -22,6 +22,10 @@ class SocketStore{
 			this.rootStore.userStore.updateStore({ type: 'authenticateUser', data: response })
 		});
 
+		this.socket.on('registration', (response) => {
+			this.rootStore.userStore.updateStore({ type: 'userRegistration', data: response })
+		});
+
 		this.socket.on("error", (error) => console.log(error));
 
 		this.socket.on('receiveUserData', (userObject) => {

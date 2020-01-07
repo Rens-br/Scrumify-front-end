@@ -29,17 +29,29 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 	}
 
 	render() {
-		return (
-			<div className='customDropDown' onClick={this.toggleDropdown}>
-				<DropdownItem label={this.getOrganizationName()} />
-				<MaterialIcon icon='keyboard_arrow_down'/>
-				{this.state.dropdownToggled && (
-					<div className="extendedDropdown">
-						{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem" label={obj.name} key={obj.id} onClick={() => this.onSelect(obj.id)}/>)}
-					</div>
-				)}
-			</div>
-		);
+		if(this.props.store.userStore.organizations.length > 1) {
+			return (
+				<div className='customDropDown' onClick={this.toggleDropdown}>
+					<DropdownItem label={this.getOrganizationName()}/>
+					<MaterialIcon icon='keyboard_arrow_down'/>
+					{this.state.dropdownToggled && (
+						<div className="extendedDropdown">
+							{this.props.store.userStore.organizations.map((obj) => <DropdownItem className="ddItem"
+																								 label={obj.name}
+																								 key={obj.id}
+																								 onClick={() => this.onSelect(obj.id)}/>)}
+						</div>
+					)}
+				</div>
+			);
+		}
+		else{
+			return (
+				<div className='disabledDropdown'>
+					<p >{this.getOrganizationName()}</p>
+				</div>
+			);
+		}
 	}
 }));
 

@@ -2,6 +2,11 @@ import {action, decorate, observable} from 'mobx';
 import { Redirect } from 'react-router-dom';
 
 class UserStore{
+    //User registration
+    registered = false;
+    registerMessage = '';
+
+    //User login
     loggedIn = false;
     loginMessage = '';
 
@@ -30,6 +35,11 @@ class UserStore{
                     this.rootStore.socketStore.getUser(this.userId);
                 }
 
+                break;
+            case 'userRegistration':
+                this.registered = response.data.succes;
+                this.registerMessage = response.data.message;
+                alert(response.data.message);
                 break;
             case 'updateUser':
                 this.currentOrganization = response.data.organizations[0].id;
