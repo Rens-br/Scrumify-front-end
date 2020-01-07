@@ -48,7 +48,7 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 		else{
 			return (
 				<div className='disabledDropdown'>
-					<p >{this.getOrganizationName()}</p>
+					<p>{this.getOrganizationName()}</p>
 				</div>
 			);
 		}
