@@ -4,6 +4,7 @@
 }
 
 .projectListItem {
+  width: 100%;
   padding: 5px;
   display: flex;
   flex-direction: row;
@@ -17,15 +18,17 @@
 }
 
 .projectListItemName {
+  width: 90%;
   flex-grow: 8;
-  justify-content: flex-start;
 }
 .projectListItemName:hover {
   font-weight: bold;
 }
 .projectListItemId {
+  width: 10%;
+  min-width: 30px;
+  flex-grow: 1;
   text-align: center;
-  width: 5%;
   border-radius: 5px;
   background: var(--color-primary);
   color: white;
