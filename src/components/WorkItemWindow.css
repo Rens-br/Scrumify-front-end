@@ -111,12 +111,12 @@
 
 .workItemDescription{
     flex: .7;
-    border-right: 2px solid var(--color-background-dark);
+    border-right: 2px solid #ccc;
     background-color: var(--color-background-primary);
     border-radius: 2px;
 }
 
-.workItemDescription h1{
+.workItemDescription h1, .workItemOptions h1{
     margin-left: 10px;
     margin-top: 10px;
     color: var(--color-text-primary);
@@ -150,4 +150,33 @@
     flex: .3;
     float:left;
     background-color: var(--color-background-primary);
+}
+
+.optionDivider{
+    height: 2px;
+    background: var(--color-background-dark);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.userOption{
+    height: 40px;
+    display: flex;
+}
+
+.userOption p{
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.userIcon{
+    width: 30px;
+    height: 30px;
+    background: var(--color-primary);
+    border-radius: 30px;
+    align-self: center;
+    margin-left: 10px;
 }

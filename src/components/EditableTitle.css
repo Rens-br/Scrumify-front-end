@@ -2,7 +2,7 @@
     border: none;
     border-bottom: 2px solid var(--color-primary);
     background: none;
-    min-width: 50px;
+    width: 100%;
     color: var(--color-text-primary);
 }
 

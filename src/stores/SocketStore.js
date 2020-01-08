@@ -87,6 +87,7 @@ class SocketStore{
 	};
 
 	createLane = (projectId, sprintId, title) => {
+		console.log(sprintId, title);
 		this.socket.emit('createLane', {ProjectId: projectId, SprintId: sprintId, title: title})
 	};
 
@@ -125,7 +126,7 @@ class SocketStore{
 	};
 
 	createOrganization = (userId, organizationName) => {
-		this.socket.emit('createOrganization', {UserId: userId, OrganizationName: organizationName});
+		this.socket.emit('createOrganizationBasic', {UserId: userId, OrganizationName: organizationName});
 	}
 }
 

@@ -53,7 +53,7 @@ export class Card extends Component{
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
 					<p class="workItemUserName">Rens B</p>
-					<p class="workItemUserName">Kanker Tijd</p>
+					<p class="workItemUserName">{Math.round(Math.random() * 10 + 1)} hours</p>
 			</div>
 		);
 	}
