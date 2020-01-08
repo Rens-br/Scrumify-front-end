@@ -4,15 +4,17 @@ class SearchBar extends Component {
   render() {
     return (
       <div className="search-bar-div">
-        <form className="search-bar" action="" method="post">
+        <form className="search-bar">
           <input
             name="search"
             type="text"
             id="search"
             placeholder={this.props.placeholder}
             className="txtInput"
+            value={this.props.value}
+            onChange={this.props.onSearch}
           />
-          <input type="submit" value="Search" className="search-btn" />
+          {/* <input type="submit" value="Search" className="search-btn" /> */}
         </form>
       </div>
     );

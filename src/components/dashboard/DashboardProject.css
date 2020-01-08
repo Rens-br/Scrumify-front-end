@@ -1,30 +1,40 @@
-.dashboardProjectContainer {
+.dashboardProjectContainer,
+.dashboardTaskContainer {
   display: flex;
   flex-direction: column;
 }
 
-.projectListItem {
+.projectListItem,
+.taskItem {
   width: 100%;
   padding: 5px;
   display: flex;
   flex-direction: row;
   margin-top: 5px;
-  border-bottom: 0.5px solid var(--color-primary);
+  border-left: 3px solid var(--color-primary);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom: 0.5px solid #f1f1f1;
+  /* border-top: 0.5px solid #f1f1f1; */
 }
 
-.projectListItem:hover {
+.projectListItem:hover,
+.taskItem:hover {
   cursor: pointer;
   background: #f2f2f2;
 }
 
-.projectListItemName {
+.projectListItemName,
+.projectTaskItemName {
   width: 90%;
   flex-grow: 8;
 }
-.projectListItemName:hover {
+.projectListItemName:hover,
+.projectTaskItemName:hover {
   font-weight: bold;
 }
-.projectListItemId {
+.projectListItemId,
+.projectTaskItemId {
   width: 10%;
   min-width: 30px;
   flex-grow: 1;

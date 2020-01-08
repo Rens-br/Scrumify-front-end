@@ -10,29 +10,47 @@ const DashboardProjectList = inject("store")(
       }
 
       handleProject(projectId) {
-        //alert(projectId);
-        //console.log(this.props);
         this.props.store.projectStore.getProject(projectId);
         this.props.store.clientStore.setCurrentScreen(1);
       }
       render() {
-        return (
-          <div className="dashboardProjectContainer">
-            {this.props.store.userStore.projects
-              .filter(
-                x =>
-                  x.organizationId ===
-                  this.props.store.userStore.currentOrganization
-              )
-              .map(project => (
-                <Project
-                  projectId={project.projectId}
-                  projectName={project.projectName}
-                  handleProject={this.handleProject.bind(this)}
-                />
-              ))}
-          </div>
-        );
+        // Display all projects if there is no on going search
+        console.log(this.props.value + " this is my value");
+        if (this.props.value === "") {
+          return (
+            <div className="dashboardProjectContainer">
+              {this.props.store.userStore.projects
+                .filter(
+                  x =>
+                    x.organizationId ===
+                    this.props.store.userStore.currentOrganization
+                )
+                .map(project => (
+                  <Project
+                    projectId={project.projectId}
+                    projectName={project.projectName}
+                    handleProject={this.handleProject.bind(this)}
+                  />
+                ))}
+            </div>
+          );
+        } else {
+          if (this.props.searchResult.length > 0) {
+            return (
+              <div className="dashboardProjectContainer">
+                {this.props.searchResult.map(project => (
+                  <Project
+                    projectId={project.projectId}
+                    projectName={project.projectName}
+                    handleProject={this.handleProject.bind(this)}
+                  />
+                ))}
+              </div>
+            );
+          } else {
+            return <div>Your search did not match any projects</div>;
+          }
+        }
       }
     }
   )
