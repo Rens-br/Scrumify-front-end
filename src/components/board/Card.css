@@ -23,6 +23,10 @@
 .cardHeader p {
   margin-top: 5px;
   color: var(--color-text-primary);
+  text-overflow: ellipsis;
+  overflow-x: hidden;
+  white-space: nowrap;
+  height: 100%;
 }
 
 .workItemUserName {

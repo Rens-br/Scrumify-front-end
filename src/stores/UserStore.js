@@ -15,6 +15,7 @@ class UserStore{
     name = "";
     email = "";
     projects = [];
+    workItems = [];
     organizations = [];
     currentOrganization = undefined;
 
@@ -48,6 +49,7 @@ class UserStore{
                 this.email = response.data.email;
                 this.projects = response.data.projects;
                 this.organizations = response.data.organizations;
+                this.workItems = response.data.workitems;
                 break;
             case 'updateProject':
                 let foundProject = this.projects.find(proj => proj.projectId === response.projectId);

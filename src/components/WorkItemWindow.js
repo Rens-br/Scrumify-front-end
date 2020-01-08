@@ -22,8 +22,8 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 
 	render() {
 		return (
-			<div className='backdrop'>
-				<div className='window'>
+			<div className='backdrop' onClick={this.props.store.clientStore.closeWorkItem}>
+				<div className='window'  onClick={(event) => event.stopPropagation()}>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
 							<p className='headerId'>#{this.state.workItems[this.state.workItemIndex].workItemId}</p>
@@ -46,11 +46,31 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 								<div className='workItemOptions'>
 									<h1>Settings</h1>
 									<div className='optionDivider'/>
-									<div className='userOption'>
-										<div className='userIcon'/>
-										<p>Stinking</p>
+									<div className='option'>
+										<p className='optionTitle'>User</p>
+										<p className='optionContent'>Rens B</p>
+										<div className='optionDivider'/>
 									</div>
-									<div className='optionDivider'/>
+									<div className='option'>
+										<p className='optionTitle'>Sprint</p>
+										<p className='optionContent'>new sprint</p>
+										<div className='optionDivider'/>
+									</div>
+									<div className='option'>
+										<p className='optionTitle'>Estimated Time</p>
+										<p className='optionContent'>4 Hours</p>
+										<div className='optionDivider'/>
+									</div>
+									<div className='option'>
+										<p className='optionTitle'>Tag</p>
+										<p className='optionContent'>Frontend</p>
+										<div className='optionDivider'/>
+									</div>
+									<div className='option'>
+										<p className='optionTitle'>Color</p>
+										<p className='optionContent'>Frontend</p>
+										<div className='optionDivider'/>
+									</div>
 								</div>
 							</div>
 						</div>
