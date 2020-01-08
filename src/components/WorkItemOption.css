@@ -1,0 +1,36 @@
+.optionContent{
+    margin-left: 5px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    justify-content: center;
+    margin-right: 5px;
+    padding: 2px 2px 2px 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.optionContent:hover{
+    background: var(--color-background-dark);
+}
+
+.optionTitle{
+    user-select: none;
+    color: #888;
+    font-size: small;
+    font-weight: 600;
+    margin: 5px 0 0 10px;
+}
+
+.optionDivider{
+    height: 2px;
+    background: var(--color-background-dark);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.colorOption{
+    height: 30px;
+    margin: 3px 3px 3px 0px;
+    border-radius: 2px;
+    background: orangered;
+}

@@ -97,6 +97,7 @@ decorate(UserStore, {
     updateStore: action,
     updateUser: action,
     leaveProject: action,
+    workItems: observable,
 });
 
 export default UserStore;

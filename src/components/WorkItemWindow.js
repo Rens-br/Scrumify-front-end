@@ -6,6 +6,8 @@ import {inject, observer} from 'mobx-react';
 import EditableTitle from './EditableTitle';
 import SimpleBar from "simplebar-react";
 import RichText from "./RichText";
+import WorkItemOption from "./WorkItemOption";
+import {toJS} from "mobx";
 
 const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
 	constructor(props) {
@@ -16,18 +18,22 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 			workItemIndex: this.getWorkItemIndex(props.store.clientStore.currentWorkItem),
 		};
 	}
+
 	getWorkItemIndex = (workItemId) => {
 		return this.props.store.projectStore.workItems.indexOf(this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId));
 	};
 
 	render() {
+		const workItem = this.state.workItems[this.state.workItemIndex];
+		console.log(toJS(workItem));
+
 		return (
 			<div className='backdrop' onClick={this.props.store.clientStore.closeWorkItem}>
 				<div className='window'  onClick={(event) => event.stopPropagation()}>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
-							<p className='headerId'>#{this.state.workItems[this.state.workItemIndex].workItemId}</p>
-							<EditableTitle placeholder='Task' title={this.state.workItems[this.state.workItemIndex].workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(this.state.workItems[this.state.workItemIndex].workItemId, {title: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
+							<p className='headerId'>#{workItem.workItemId}</p>
+							<EditableTitle placeholder='Task' title={workItem.workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(workItem.workItemId, {workItemTitle: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
 						</div>
 						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
 							<MaterialIcon icon='close'/>
@@ -46,31 +52,11 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 								<div className='workItemOptions'>
 									<h1>Settings</h1>
 									<div className='optionDivider'/>
-									<div className='option'>
-										<p className='optionTitle'>User</p>
-										<p className='optionContent'>Rens B</p>
-										<div className='optionDivider'/>
-									</div>
-									<div className='option'>
-										<p className='optionTitle'>Sprint</p>
-										<p className='optionContent'>new sprint</p>
-										<div className='optionDivider'/>
-									</div>
-									<div className='option'>
-										<p className='optionTitle'>Estimated Time</p>
-										<p className='optionContent'>4 Hours</p>
-										<div className='optionDivider'/>
-									</div>
-									<div className='option'>
-										<p className='optionTitle'>Tag</p>
-										<p className='optionContent'>Frontend</p>
-										<div className='optionDivider'/>
-									</div>
-									<div className='option'>
-										<p className='optionTitle'>Color</p>
-										<p className='optionContent'>Frontend</p>
-										<div className='optionDivider'/>
-									</div>
+									<WorkItemOption title='User' type='ListSelection' default='undefined' value={workItem.workItemUser} />
+									<WorkItemOption title='Sprint' type='ListSelection' default='undefined'/>
+									<WorkItemOption title='Estimated time' type='NumberSelection' default='0'/>
+									<WorkItemOption title='Tag' type='ListSelection' default='undefined' value={workItem.workItemStatus}/>
+									<WorkItemOption title='Color' type='ColorSelection' default='dodgerblue'/>
 								</div>
 							</div>
 						</div>

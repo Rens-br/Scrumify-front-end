@@ -162,8 +162,8 @@ class ProjectStore{
     updateWorkItem = (workItemId, workItem) => {
         let oldItem = this.workItems.find(x => x.workItemId === workItemId);
         this.workItems[this.workItems.indexOf(oldItem)] = {...oldItem, ...workItem};
+        console.log(workItem)
         this.rootStore.socketStore.updateWorkItem(this.projectId, workItemId, workItem);
-        //TODO: Send update workItem to socket using provided workItemId and workItem object
     };
     
     removeSprint = (sprintId) => {
