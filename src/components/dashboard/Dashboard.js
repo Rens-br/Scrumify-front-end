@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import SearchBar from "./SearchBar";
 import "./Dashboard.css";
 import DashboardProjecList from "./DashboardProjectList";
@@ -6,51 +6,55 @@ import DashboardTaskList from "./DashboardTaskList";
 import { inject, observer } from "mobx-react";
 import { toJS } from "mobx";
 
-// React.useEffect(() => {
-//   const projectResults = people.filter(person =>
-//     person.toLowerCase().includes(searchTerm)
-//   );
-//   setSearchResults(results);
-// }, [searchTerm]);
 const Dashboard = inject("store")(
   observer(props => {
     const [projectSearchTerm, setProjectSearchTerm] = React.useState("");
     const [projectSearchResults, setProjectSearchResults] = React.useState([]);
-    const [searchMessage, setSearchMessage] = React.useState("");
     /* ------------- TASKS ------------- */
     const [taskSearchTerm, setTaskSearchTerm] = React.useState("");
     const [taskSearchResults, setTaskSearchResults] = React.useState([]);
     /* ------------- HANDLERS ------------- */
-    // const handleOnProjectSubmit = e => {
-    //   e.preventDefault();
-    //   alert(projectSearchTerm);
-    // };
-
-    // const handleOnTaskSubmit = e => {
-    //   e.preventDefault();
-    // };
 
     const handleOnProjectSearch = e => {
       setProjectSearchTerm(e.target.value);
-      // Pass projectSearchResults to DashboardProjectList
-      // By default show all projects
-      // If user starts typing, filter the list and display those results.
     };
     const handleOnTaskSearch = e => {
       setTaskSearchTerm(e.target.value);
     };
 
+    // This function will be executed to modify the searchState when a user starts typing.
     React.useEffect(() => {
+      // Retrieve all stored projects from our state Store
+      // Then filter by organization, so we only get the projects that belong to an organization
+      // Loop over those projects and find a match with the given search query.
+      // Finally set the searchState accordingly with the matched results.
       const projectResults = props.store.userStore.projects
         .filter(
           x => x.organizationId === props.store.userStore.currentOrganization
         )
-        .map(prj => toJS(prj))
+        .map(prj => toJS(prj)) // MobX creates [ Proxy ] objects, to undo this we must call the toJS function so our code knows what object to filter on.
         .filter(project =>
-          project.projectName.toLowerCase().includes(projectSearchTerm)
+          project.projectName
+            .toLowerCase()
+            .includes(projectSearchTerm.toLowerCase())
         );
       setProjectSearchResults(projectResults);
-    }, [projectSearchTerm]);
+    }, [
+      projectSearchTerm,
+      props.store.userStore.currentOrganization,
+      props.store.userStore.projects
+    ]);
+
+    /* -------- TASK SEARCH --------*/
+    React.useEffect(() => {
+      // Retrieve all assigned work items and display them
+      // Loop over the work items and find a match for work item name and shortdesc.
+      const taskResults = props.store.userStore.workItems.filter(wi =>
+        wi.title.toLowerCase().includes(taskSearchTerm.toLowerCase())
+      );
+      // Finally set the searchState accordingly with the matched results
+      setTaskSearchResults(taskResults);
+    }, [taskSearchTerm, props.store.userStore.workItems]);
 
     return (
       <React.Fragment>
@@ -62,7 +66,6 @@ const Dashboard = inject("store")(
                 <SearchBar
                   headerText="Your Projects"
                   placeholder={"Search for a project"}
-                  // handleOnSubmit={handleOnProjectSubmit}
                   value={projectSearchTerm}
                   onSearch={handleOnProjectSearch}
                 />
@@ -70,7 +73,6 @@ const Dashboard = inject("store")(
                   <DashboardProjecList
                     value={projectSearchTerm}
                     searchResult={projectSearchResults}
-                    searchMessage={searchMessage}
                   />
                 </div>
               </div>
@@ -80,12 +82,14 @@ const Dashboard = inject("store")(
                 <h4>Your Tasks</h4>
                 <SearchBar
                   placeholder="Search for a task"
-                  // handleOnSubmit={handleOnTaskSubmit}
                   onSearch={handleOnTaskSearch}
                   value={taskSearchTerm}
                 />
                 <div className="task-list mt-5">
-                  <DashboardTaskList />
+                  <DashboardTaskList
+                    value={taskSearchTerm}
+                    searchResult={taskSearchResults}
+                  />
                 </div>
               </div>
             </div>
@@ -96,8 +100,4 @@ const Dashboard = inject("store")(
   })
 );
 
-// function Dashboard() {
-//   /* ------------ PROJECTS ----------- */
-
-// }
 export default Dashboard;
