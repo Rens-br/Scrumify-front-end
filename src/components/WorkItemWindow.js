@@ -15,27 +15,38 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 		this.state = {
 			value: 'test',
 			workItems: props.store.projectStore.workItems,
-			workItemIndex: this.getWorkItemIndex(props.store.clientStore.currentWorkItem),
+			workItem: this.getWorkItem(props.store.clientStore.currentWorkItem),
 		};
 	}
 
-	getWorkItemIndex = (workItemId) => {
-		return this.props.store.projectStore.workItems.indexOf(this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId));
+	getWorkItem = (workItemId) => {
+		return this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId);
+	};
+
+	updateWorkItem = (changes) => {
+		this.setState({workItem: {...this.state.workItem, ...changes}});
+		console.log(this.state.workItem)
+	};
+
+	sendWorkItemUpdate = () => {
+		this.props.store.projectStore.updateWorkItem(this.state.workItem.workItemId, this.state.workItem);
 	};
 
 	render() {
-		const workItem = this.state.workItems[this.state.workItemIndex];
-		console.log(toJS(workItem));
+		console.log(toJS(this.state.workItem));
 
 		return (
 			<div className='backdrop' onClick={this.props.store.clientStore.closeWorkItem}>
 				<div className='window'  onClick={(event) => event.stopPropagation()}>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
-							<p className='headerId'>#{workItem.workItemId}</p>
-							<EditableTitle placeholder='Task' title={workItem.workItemTitle} titleChanged={(title) => this.props.store.projectStore.updateWorkItem(workItem.workItemId, {workItemTitle: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
+							<p className='headerId'>#{this.state.workItem.workItemId}</p>
+							<EditableTitle placeholder='Task' title={this.state.workItem.workItemTitle} titleChanged={(title) => this.updateWorkItem({workItemTitle: title})} className='headerName' style={{ "textAlign": "left", "fontSize": "20px","fontWeight": "600"}}/>
 						</div>
-						<div onClick={this.props.store.clientStore.closeWorkItem} className='closeBtn'>
+						<div onClick={() => {
+							this.sendWorkItemUpdate();
+							this.props.store.clientStore.closeWorkItem();
+						}} className='closeBtn'>
 							<MaterialIcon icon='close'/>
 						</div>
 					</div>
@@ -52,11 +63,11 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 								<div className='workItemOptions'>
 									<h1>Settings</h1>
 									<div className='optionDivider'/>
-									<WorkItemOption title='User' type='ListSelection' default='undefined' value={workItem.workItemUser} />
-									<WorkItemOption title='Sprint' type='ListSelection' default='undefined'/>
-									<WorkItemOption title='Estimated time' type='NumberSelection' default='0'/>
-									<WorkItemOption title='Tag' type='ListSelection' default='undefined' value={workItem.workItemStatus}/>
-									<WorkItemOption title='Color' type='ColorSelection' default='dodgerblue'/>
+									<WorkItemOption title='User' type='TextSelection' default='undefined' value={this.state.workItem.workItemUser} onValueChanged={(value) => this.updateWorkItem({workItemUser: value})}/>
+									<WorkItemOption title='Sprint' type='ListSelection' default='undefined' value={this.state.workItem.Lane.Sprint.id} options={Array.from(this.props.store.projectStore.sprints, x => x = {id: x.sprintId, title: x.sprintTitle})} onValueChanged={(value) => this.updateWorkItem({Lane:{Sprint:{id: value}}})}/>
+									<WorkItemOption title='Estimated time' type='NumberSelection' default='0' value={this.state.workItem.workItemTimeEst} onValueChanged={(value) => this.updateWorkItem({workItemTimeEst: value})}/>
+									<WorkItemOption title='Tag' type='TextSelection' default='undefined' value={this.state.workItem.workItemStatus} placeholder='Enter tag' onValueChanged={(value) => this.updateWorkItem({workItemStatus: value})}/>
+									<WorkItemOption title='Color' type='ColorSelection' default='dodgerblue' value={this.state.workItem.workItemColor} onValueChanged={(value) => this.updateWorkItem({workItemColor: value})}/>
 								</div>
 							</div>
 						</div>

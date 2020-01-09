@@ -110,7 +110,7 @@
 }
 
 .workItemDescription{
-    flex: .7;
+    flex: 1;
     border-right: 2px solid #ccc;
     background-color: var(--color-background-primary);
     border-radius: 2px;
@@ -147,7 +147,8 @@
 }
 
 .workItemOptions{
-    flex: .3;
+    flex: 0 0;
+    min-width: 375px;
     float:left;
     background-color: var(--color-background-primary);
 }

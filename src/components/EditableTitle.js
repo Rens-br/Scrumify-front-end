@@ -14,7 +14,7 @@ class EditableTitle extends Component {
 	}
 
 	clickedTitle = () => {
-		if(this.state.wasClicked){
+		if(this.state.wasClicked || this.props.singleClick){
 			this.setState({wasClicked: false, isEditing: true})
 		}
 		else{
@@ -58,13 +58,13 @@ class EditableTitle extends Component {
 		if(this.state.isEditing && !this.props.isLocked){
 			return (
 				<div className={this.props.className}>
-					<input onKeyDown={this.handleKeyDown} placeholder={this.props.placeholder ? this.props.placeholder : ''} onChange={(event) =>this.setState({title: event.target.value})} autoFocus onBlur={this.stopEditing} value={this.state.title} style={this.props.style} className='inputField'/>
+					<input onKeyDown={this.handleKeyDown} type={this.props.number ? 'number' : 'text'} placeholder={this.props.placeholder ? this.props.placeholder : ''} onChange={(event) =>this.setState({title: event.target.value})} autoFocus onBlur={this.stopEditing} value={this.state.title} style={this.props.style} className='inputField'/>
 				</div>
 			)
 		}else{
 			return (
 				<div onClick={this.clickedTitle} className={this.props.className}>
-					<p style={this.props.style} className='title'>{this.state.title}</p>
+					<p style={this.props.style} className='title'>{this.state.title === '' || this.state.title === undefined ? '0' : this.state.title}</p>
 				</div>
 			)
 		}

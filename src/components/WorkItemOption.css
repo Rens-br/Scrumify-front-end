@@ -29,8 +29,31 @@
 }
 
 .colorOption{
-    height: 30px;
-    margin: 3px 3px 3px 0px;
+    height: 21px;
+    margin: 3px 6px 3px 0px;
     border-radius: 2px;
     background: orangered;
+}
+
+.optionPopup{
+    background: var(--color-background-primary);
+    position: relative;
+    width: 375px;
+    margin-top: -42px;
+    border-bottom: 2px solid var(--color-background-dark);
+    padding-top: 0;
+    max-height: 150px;
+}
+
+.numSelector{
+    text-align: left;
+    height: 30px;
+    margin-left: 10px;
+    padding-top: 2px;
+    margin-right: 10px;
+}
+
+.numSelector input{
+    margin-top: -2px;
+    margin-left: -1px;
 }
