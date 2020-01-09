@@ -42,7 +42,6 @@ class UserStore {
         alert(response.data.message);
         break;
       case "updateUser":
-        this.currentOrganization = response.data.organizations[0].id;
         this.userId = response.data.userId;
         this.name = response.data.name;
         this.email = response.data.email;

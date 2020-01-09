@@ -62,7 +62,7 @@ const SideBar = inject("store")(
                   <Divider />
                 </div>
                 <div className="bottombar">
-                  <ProjectList />
+                    {this.props.store.userStore.currentOrganization !== undefined && <ProjectList />}
                 </div>
                 <div className="footer">
                   <Divider />

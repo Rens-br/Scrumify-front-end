@@ -56,47 +56,47 @@ const Dashboard = inject("store")(
       setTaskSearchResults(taskResults);
     }, [taskSearchTerm, props.store.userStore.workItems]);
 
-    return (
-      <React.Fragment>
-        <div id="d-board">
-          <div className="flex-grid">
-            <div className="col">
-              <div className="db-container mt-5">
-                <h4>Your Projects</h4>
-                <SearchBar
-                  headerText="Your Projects"
-                  placeholder={"Search for a project"}
-                  value={projectSearchTerm}
-                  onSearch={handleOnProjectSearch}
-                />
-                <div className="project-list mt-5">
-                  <DashboardProjecList
-                    value={projectSearchTerm}
-                    searchResult={projectSearchResults}
-                  />
+        return (
+            <React.Fragment>
+                <div id="d-board">
+                    <div className="flex-grid">
+                        <div className="col">
+                            <div className="db-container mt-5">
+                                <h4>Your Projects</h4>
+                                <SearchBar
+                                    headerText="Your Projects"
+                                    placeholder={"Search for a project"}
+                                    value={projectSearchTerm}
+                                    onSearch={handleOnProjectSearch}
+                                />
+                                <div className="project-list mt-5">
+                                    <DashboardProjecList
+                                        value={projectSearchTerm}
+                                        searchResult={projectSearchResults}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="db-container mt-5">
+                                <h4>Your Tasks</h4>
+                                <SearchBar
+                                    placeholder="Search for a task"
+                                    onSearch={handleOnTaskSearch}
+                                    value={taskSearchTerm}
+                                />
+                                <div className="task-list mt-5">
+                                    <DashboardTaskList
+                                        value={taskSearchTerm}
+                                        searchResult={taskSearchResults}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-            <div className="col">
-              <div className="db-container mt-5">
-                <h4>Your Tasks</h4>
-                <SearchBar
-                  placeholder="Search for a task"
-                  onSearch={handleOnTaskSearch}
-                  value={taskSearchTerm}
-                />
-                <div className="task-list mt-5">
-                  <DashboardTaskList
-                    value={taskSearchTerm}
-                    searchResult={taskSearchResults}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </React.Fragment>
-    );
+            </React.Fragment>
+        );
   })
 );
 
