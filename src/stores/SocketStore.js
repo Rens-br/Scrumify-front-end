@@ -126,6 +126,7 @@ class SocketStore{
 	};
 
 	createOrganization = (userId, organizationName) => {
+		console.log(organizationName)
 		this.socket.emit('createOrganizationBasic', {UserId: userId, OrganizationName: organizationName});
 	}
 }
