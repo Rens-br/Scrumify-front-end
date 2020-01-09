@@ -21,17 +21,13 @@
 .projectListItem:hover,
 .taskItem:hover {
   cursor: pointer;
-  background: #f2f2f2;
+  background: var(--color-background-dark);
 }
 
 .projectListItemName,
 .projectTaskItemName {
   width: 90%;
   flex-grow: 8;
-}
-.projectListItemName:hover,
-.projectTaskItemName:hover {
-  font-weight: bold;
 }
 .projectListItemId,
 .projectTaskItemId {
