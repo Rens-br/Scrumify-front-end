@@ -9,6 +9,7 @@ import { toJS } from "mobx";
 import WorkItemWindow from "./WorkItemWindow";
 import Dashboard from "./dashboard/Dashboard";
 import { Spinner } from "react-bootstrap";
+import OrganizationScreen from "./OrganizationScreen";
 
 const Content = inject("store")(
   observer(
@@ -46,7 +47,7 @@ const Content = inject("store")(
           return (
             <div id="content">
               <TopNavBar />
-              <Dashboard />
+                {this.props.store.userStore.currentOrganization === undefined ? <OrganizationScreen/> : <Dashboard />}
             </div>
           );
         } else if (this.props.store.clientStore.currentScreen === 1) {

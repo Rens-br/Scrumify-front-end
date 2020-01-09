@@ -47,13 +47,13 @@ export class Card extends Component{
 
 	render() {
 		return this.props.connectDragSource(
-			<div onClick={this.clickedCard} id="card">
+			<div onClick={this.clickedCard} id="card" style={{borderLeftColor: this.props.workItem.workItemColor }}>
 				<div className='cardHeader'>
 					<p>{this.props.workItem.workItemTitle}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
-					<p class="workItemUserName">Rens B</p>
-					<p class="workItemUserName">{Math.round(Math.random() * 10 + 1)} hours</p>
+					<p className="workItemUserName">{this.props.workItem.workItemUser}</p>
+					<p className="workItemUserName">{this.props.workItem.workItemTimeEst} hours</p>
 			</div>
 		);
 	}
