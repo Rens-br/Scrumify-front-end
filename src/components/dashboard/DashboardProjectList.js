@@ -5,17 +5,12 @@ import Project from "./Project";
 const DashboardProjectList = inject("store")(
   observer(
     class DashboardProjectList extends Component {
-      constructor(props) {
-        super(props);
-      }
-
       handleProject(projectId) {
         this.props.store.projectStore.getProject(projectId);
         this.props.store.clientStore.setCurrentScreen(1);
       }
       render() {
         // Display all projects if there is no on going search
-        console.log(this.props.value + " this is my value");
         if (this.props.value === "") {
           return (
             <div className="dashboardProjectContainer">

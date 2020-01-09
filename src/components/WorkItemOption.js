@@ -71,11 +71,16 @@ class WorkItemOption extends Component {
             case 'NumberSelection':
                 break;
             case 'ColorSelection':
-                return this.state.colors.map(x =>
+                return <div>
+                    <div className='optionContent'>
+                        <div style={{backgroundColor: '#ccc'}} className='colorOption' onClick={() => this.changeValue(undefined)}/>
+                    </div>
+                    {this.state.colors.map(x =>
                     <div className='optionContent'>
                         <div style={{backgroundColor: x}} className='colorOption' onClick={() => this.changeValue(x)}/>
                     </div>
-                );
+                )}
+                </div>;
             default:
                 return <p className='optionContent'>undefined</p>
         }
