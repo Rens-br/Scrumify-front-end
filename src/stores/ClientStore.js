@@ -11,7 +11,6 @@ class ClientStore {
   currentWorkItem = 789123;
   currentProjectIndex = undefined;
   currentScreen = 0;
-  currentTheme = {};
 
   rootStore = null;
 
@@ -37,20 +36,14 @@ class ClientStore {
     this.isWorkItemOpen = false;
     this.currentWorkItem = undefined;
   };
-
-  setCurrentTheme = theme => {
-    this.currentTheme = theme;
-  }
 }
 
 decorate(ClientStore, {
   isWorkItemOpen: observable,
   currentProjectIndex: observable,
   currentScreen: observable,
-  currentTheme: observable,
   setCurrentProjectIndex: action,
   setCurrentScreen: action,
-  setCurrentTheme: action,
   openWorkItem: action
 });
 

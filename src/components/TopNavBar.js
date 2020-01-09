@@ -10,7 +10,6 @@ import { inject, observer } from "mobx-react";
 const TopNavBar = inject('store')(observer(class TopNavBar extends React.Component{
   cycleColor(){
     NextHighlight();
-    this.props.store.clientStore.setCurrentTheme(CurrentHighlight);
   }
 
   logOut(){
@@ -31,16 +30,9 @@ const TopNavBar = inject('store')(observer(class TopNavBar extends React.Compone
                   className="profileIcon"
                 />
               </div>
-              <div onClick={NextHighlight} className="profileButton">
-                <MaterialIcon
-                  icon="color_lens"
-                  style={{ fontSize: "40px" }}
-                  className="profileIcon"
-                />
+              <div onClick={this.cycleColor} className="profileButton">
+                <MaterialIcon icon="color_lens" style={{ fontSize: '40px' }} className="profileIcon"/>
               </div>
-            </div>
-            <div onClick={this.cycleColor} className="profileButton">
-              <MaterialIcon icon="color_lens" style={{ fontSize: '40px' }} className="profileIcon"/>
             </div>
         </div>
     );

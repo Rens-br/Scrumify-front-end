@@ -2,6 +2,10 @@
     background: var(--color-primary-dark);
 }
 
-.dropdownDiv {
-    /* background: var(--color-primary-dark); */
+#activeProject {
+    background: var(--color-primary-light);
+}
+
+#inactiveProject {
+    background: var(--color-primary);
 }
