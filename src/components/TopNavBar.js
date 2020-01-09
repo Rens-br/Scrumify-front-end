@@ -9,6 +9,10 @@ import {inject, observer} from 'mobx-react';
 import {Redirect} from "react-router-dom";
 
 const TopNavBar = inject('store')(observer(class TopNavBar extends React.Component{
+  cycleColor(){
+    NextHighlight();
+  }
+
   logOut(){
     sessionStorage.setItem("sessionId", "");
     this.props.store.socketStore.disconnect();
@@ -23,7 +27,7 @@ const TopNavBar = inject('store')(observer(class TopNavBar extends React.Compone
             <div onClick={this.logOut.bind(this)} className="profileButton">
               <MaterialIcon icon="exit_to_app" style={{ fontSize: '40px' }} className="profileIcon"/>
             </div>
-            <div onClick={NextHighlight} className="profileButton">
+            <div onClick={this.cycleColor} className="profileButton">
               <MaterialIcon icon="color_lens" style={{ fontSize: '40px' }} className="profileIcon"/>
             </div></div>
         </div>

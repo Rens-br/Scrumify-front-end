@@ -41,10 +41,6 @@ const SideBar = inject("store")(
         }
       }
 
-      changeCurrentScreen() {
-        this.props.store.clientStore.setCurrentScreen(0);
-      }
-
       render() {
         const isDesktop = this.state.isDesktop;
         return (
@@ -60,7 +56,7 @@ const SideBar = inject("store")(
                     label="Dashboard"
                     path="/newpage"
                     onClick={() => {
-                      this.changeCurrentScreen();
+                      this.props.store.clientStore.setCurrentScreen(0);
                     }}
                   />
                   <Divider />

@@ -22,7 +22,10 @@ const SmallSideBar = inject('store')(observer(class SmallSideBar extends React.C
             </div>
             <Divider style={{ width: '50px' }} />
 
+            <div id="dbBtn" onClick={() => {this.props.store.clientStore.setCurrentScreen(0);}}>
             <SbIcon style={{ marginTop: '2px' }} icon="dashboard" />
+            </div>
+
             <Divider style={{ width: '50px' }} />
             {this.props.store.projectStore.projectId!==undefined && (
               <SbIcon icon="directions_run" onClick={this.loadSprints}/>

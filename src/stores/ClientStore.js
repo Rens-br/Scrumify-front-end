@@ -11,6 +11,7 @@ class ClientStore {
   currentWorkItem = 789123;
   currentProjectIndex = undefined;
   currentScreen = 0;
+  currentTheme = {};
 
   rootStore = null;
 
@@ -42,6 +43,7 @@ decorate(ClientStore, {
   isWorkItemOpen: observable,
   currentProjectIndex: observable,
   currentScreen: observable,
+  currentTheme: observable,
   setCurrentProjectIndex: action,
   setCurrentScreen: action,
   openWorkItem: action
