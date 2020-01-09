@@ -37,6 +37,10 @@ class ClientStore {
     this.isWorkItemOpen = false;
     this.currentWorkItem = undefined;
   };
+
+  setCurrentTheme = theme => {
+    this.currentTheme = theme;
+  }
 }
 
 decorate(ClientStore, {
@@ -46,6 +50,7 @@ decorate(ClientStore, {
   currentTheme: observable,
   setCurrentProjectIndex: action,
   setCurrentScreen: action,
+  setCurrentTheme: action,
   openWorkItem: action
 });
 
