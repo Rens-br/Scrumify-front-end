@@ -67,7 +67,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 									<WorkItemOption title='Sprint' type='ListSelection' default='undefined' value={this.state.workItem.Lane.Sprint.id} options={Array.from(this.props.store.projectStore.sprints, x => x = {id: x.sprintId, title: x.sprintTitle})} onValueChanged={(value) => this.updateWorkItem({Lane:{Sprint:{id: value}}})}/>
 									<WorkItemOption title='Estimated time' type='NumberSelection' default='0' value={this.state.workItem.workItemTimeEst} onValueChanged={(value) => this.updateWorkItem({workItemTimeEst: value})}/>
 									<WorkItemOption title='Tag' type='TextSelection' default='undefined' value={this.state.workItem.workItemStatus} placeholder='Enter tag' onValueChanged={(value) => this.updateWorkItem({workItemStatus: value})}/>
-									<WorkItemOption title='Color' type='ColorSelection' default='dodgerblue' value={this.state.workItem.workItemColor} onValueChanged={(value) => this.updateWorkItem({workItemColor: value})}/>
+									<WorkItemOption title='Color' type='ColorSelection' default='#ccc' value={this.state.workItem.workItemColor} onValueChanged={(value) => this.updateWorkItem({workItemColor: value})}/>
 								</div>
 							</div>
 						</div>

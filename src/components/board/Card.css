@@ -6,7 +6,7 @@
   min-height: 100px;
   max-height: 100px;
   box-shadow: 4px 4px 4px #d9d9d9;
-  border-left: 2px solid dodgerblue;
+  border-left: 4px solid #ccc;
 }
 
 .cardHeader {
@@ -30,10 +30,8 @@
 }
 
 .workItemUserName {
-  margin-top: 5px;
   color: var(--color-text-primary);
-  margin: auto;
-  margin-left: 10px;
+  margin: auto auto auto 10px;
 }
 
 .cardHeader i {
