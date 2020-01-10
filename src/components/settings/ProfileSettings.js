@@ -16,11 +16,11 @@ const ProfileSettings = inject('store')(observer(class ProfileSettings extends C
                 </div>
                 <div className="settingsInputField">
                     <p className="inputTitle">Change password:</p>
-                    <input type="text" className="settingsInputBar"></input>
+                    <input type="password" className="settingsInputBar"></input>
                 </div>
                 <div className="settingsInputField">
                     <p className="inputTitle">Confirm password:</p>
-                    <input type="text" className="settingsInputBar"></input>
+                    <input type="password" className="settingsInputBar"></input>
                 </div>
                 <div className="SettingsSubmitBtn">Accept changes</div>
             </div>
