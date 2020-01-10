@@ -6,7 +6,7 @@ const RichText = () => {
     const [value, setValue] = useState(initialValue)
     const editor = useMemo(() => withReact(createEditor()), []);
     return (
-        <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+        <Slate editor={editor} value={value} onChange={value => {console.log(value); setValue(value);}}>
             <Editable placeholder="Enter your ticket description..." />
         </Slate>
     )
