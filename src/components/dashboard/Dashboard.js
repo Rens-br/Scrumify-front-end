@@ -22,6 +22,10 @@ const Dashboard = inject("store")(
       setTaskSearchTerm(e.target.value);
     };
 
+    React.useEffect(() => {
+      props.store.socketStore.getUser(props.store.userStore.userId);
+    }, []);
+
     // This function will be executed to modify the searchState when a user starts typing.
     React.useEffect(() => {
       // Retrieve all stored projects from our state Store
@@ -56,47 +60,47 @@ const Dashboard = inject("store")(
       setTaskSearchResults(taskResults);
     }, [taskSearchTerm, props.store.userStore.workItems]);
 
-        return (
-            <React.Fragment>
-                <div id="d-board">
-                    <div className="flex-grid">
-                        <div className="col">
-                            <div className="db-container mt-5">
-                                <h4>Your Projects</h4>
-                                <SearchBar
-                                    headerText="Your Projects"
-                                    placeholder={"Search for a project"}
-                                    value={projectSearchTerm}
-                                    onSearch={handleOnProjectSearch}
-                                />
-                                <div className="project-list mt-5">
-                                    <DashboardProjecList
-                                        value={projectSearchTerm}
-                                        searchResult={projectSearchResults}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="db-container mt-5">
-                                <h4>Your Tasks</h4>
-                                <SearchBar
-                                    placeholder="Search for a task"
-                                    onSearch={handleOnTaskSearch}
-                                    value={taskSearchTerm}
-                                />
-                                <div className="task-list mt-5">
-                                    <DashboardTaskList
-                                        value={taskSearchTerm}
-                                        searchResult={taskSearchResults}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    return (
+      <React.Fragment>
+        <div id="d-board">
+          <div className="flex-grid">
+            <div className="col">
+              <div className="db-container mt-5">
+                <h4>Your Projects</h4>
+                <SearchBar
+                  headerText="Your Projects"
+                  placeholder={"Search for a project"}
+                  value={projectSearchTerm}
+                  onSearch={handleOnProjectSearch}
+                />
+                <div className="project-list mt-5">
+                  <DashboardProjecList
+                    value={projectSearchTerm}
+                    searchResult={projectSearchResults}
+                  />
                 </div>
-            </React.Fragment>
-        );
+              </div>
+            </div>
+            <div className="col">
+              <div className="db-container mt-5">
+                <h4>Your Tasks</h4>
+                <SearchBar
+                  placeholder="Search for a task"
+                  onSearch={handleOnTaskSearch}
+                  value={taskSearchTerm}
+                />
+                <div className="task-list mt-5">
+                  <DashboardTaskList
+                    value={taskSearchTerm}
+                    searchResult={taskSearchResults}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
   })
 );
 
