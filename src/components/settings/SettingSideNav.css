@@ -1,0 +1,4 @@
+#settingsSideNavContainer {
+    display: flex; 
+    flex-direction: column;
+}

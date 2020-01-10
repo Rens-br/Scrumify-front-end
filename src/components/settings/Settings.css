@@ -1,0 +1,36 @@
+.settingsContainer {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    margin-top: 1%;
+    background: var(--color-background-primary);
+    height: 85%;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 2px;
+}
+
+#settingsContentContainer {
+    display: flex;
+    width: 80%;
+    height: 100%;
+}
+
+#settingsTitle {
+    font-size: 40px;
+    font-weight: 600;
+    margin-left: 2%;
+}
+
+#settingsSideNavigation {
+    display: flex;
+    flex-direction: column;
+    border-right: solid grey 2px;
+    width: 20%;
+}
+
+#settingsBackground {
+    background: var(--color-background-dark);
+    height: 100%;
+}

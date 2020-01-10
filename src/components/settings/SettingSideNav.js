@@ -1,12 +1,14 @@
 import React from "react";
+import SideNavBtn from './SideNavBtn.js';
+import './SettingSideNav.css';
 
 function SettingSideNav() {
   return (
-    <div>
-      <div>Profile settings</div>
-      <div>Organization settings</div>
-      <div>Project settings</div>
-      <div>Preferences</div>
+    <div id="settingsSideNavContainer">
+      <SideNavBtn label="Profile Settings" />
+      <SideNavBtn label="Organization Settings" />
+      <SideNavBtn label="Project Settings" />
+      <SideNavBtn label="Preferences" />
     </div>
   );
 }
