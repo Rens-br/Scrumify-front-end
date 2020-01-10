@@ -29,6 +29,9 @@ export class Card extends Component{
 		if(index === 0){
 			this.props.onRemove(this.props.workItem.workItemId);
 		}
+		if(index === 1){
+			this.props.onDoubleClick(this.props.workItem.workItemId);
+		}
 	};
 
 	clickedCard = () => {
