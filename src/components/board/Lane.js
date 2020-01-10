@@ -68,6 +68,11 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 		this.props.store.clientStore.openWorkItem(workItemId);
 	 };
 
+	 getUserName= (item) =>{
+	 	let user = this.props.store.projectStore.projectUsers.find(x => x.id === item.workItemUser);
+		return user ? user.name : 'Unassigned'
+	 };
+
 	render() {
 		const { isOver, connectDropTarget } = this.props;
 		const style = {
@@ -86,7 +91,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">
 					{this.state.isAdding && <NewCard onCreateWorkItem={(title) => this.createWorkItem(title)} onCancel={() => this.setState({isAdding: false})}/>}
 					{this.props.data.laneItems.map((item, index) => (
-						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={item} callback={this.moveWorkItem}/>
+						<Card onDoubleClick={this.workItemClicked} onRemove={() => this.removeWorkItem(item.workItemId)} key={index} workItem={{...item, ...{name: this.getUserName(item)}}} callback={this.moveWorkItem}/>
 					))}
 				</SimpleBar>
 			</Col>

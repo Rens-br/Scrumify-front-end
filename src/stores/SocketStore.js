@@ -42,6 +42,7 @@ class SocketStore{
 		});
 
 		this.socket.on('updateProject', (updateObject) => {
+			console.log(updateObject);
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
 	};
