@@ -52,8 +52,8 @@ export class Card extends Component{
 					<p>{this.props.workItem.workItemTitle}</p>
 					<DropDownMenu onOptionClick={this.menuItemClicked} options={['Remove', 'Edit']}/>
 				</div>
-					<p className="workItemUserName">{this.props.workItem.workItemUser}</p>
-					<p className="workItemUserName">{this.props.workItem.workItemTimeEst} hours</p>
+					<p className="workItemUserName">{this.props.workItem.workItemUser ? this.props.workItem.workItemUser : 'Unassigned'}</p>
+					<p className="workItemUserName">{this.props.workItem.workItemTimeEst ? this.props.workItem.workItemTimeEst : '0'} hours</p>
 			</div>
 		);
 	}

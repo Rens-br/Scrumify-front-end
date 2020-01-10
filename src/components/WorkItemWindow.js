@@ -16,7 +16,12 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 			value: 'test',
 			workItems: props.store.projectStore.workItems,
 			workItem: this.getWorkItem(props.store.clientStore.currentWorkItem),
+			workItemSprint: this.getSprint(),
 		};
+	}
+
+	getSprint = () => {
+		return toJS(this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === this.getWorkItem(this.props.store.clientStore.currentWorkItem).laneId) !== undefined)).sprintId;
 	}
 
 	getWorkItem = (workItemId) => {
@@ -33,8 +38,6 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 	};
 
 	render() {
-		console.log(toJS(this.state.workItem));
-
 		return (
 			<div className='backdrop' onClick={this.props.store.clientStore.closeWorkItem}>
 				<div className='window'  onClick={(event) => event.stopPropagation()}>
@@ -64,7 +67,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 									<h1>Settings</h1>
 									<div className='optionDivider'/>
 									<WorkItemOption title='User' type='TextSelection' default='undefined' value={this.state.workItem.workItemUser} onValueChanged={(value) => this.updateWorkItem({workItemUser: value})}/>
-									<WorkItemOption title='Sprint' type='ListSelection' default='undefined' value={this.state.workItem.Lane.Sprint.id} options={Array.from(this.props.store.projectStore.sprints, x => x = {id: x.sprintId, title: x.sprintTitle})} onValueChanged={(value) => this.updateWorkItem({Lane:{Sprint:{id: value}}})}/>
+									<WorkItemOption title='Sprint' type='ListSelection' default='undefined' value={this.state.workItemSprint} options={Array.from(this.props.store.projectStore.sprints, x => x = {id: x.sprintId, title: x.sprintTitle})} onValueChanged={(value) => this.updateWorkItem({Lane:{Sprint:{id: value}}})}/>
 									<WorkItemOption title='Estimated time' type='NumberSelection' default='0' value={this.state.workItem.workItemTimeEst} onValueChanged={(value) => this.updateWorkItem({workItemTimeEst: value})}/>
 									<WorkItemOption title='Tag' type='TextSelection' default='undefined' value={this.state.workItem.workItemStatus} placeholder='Enter tag' onValueChanged={(value) => this.updateWorkItem({workItemStatus: value})}/>
 									<WorkItemOption title='Color' type='ColorSelection' default='#ccc' value={this.state.workItem.workItemColor} onValueChanged={(value) => this.updateWorkItem({workItemColor: value})}/>

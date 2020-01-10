@@ -25,7 +25,6 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 
 	getOrganizationName() {
 		let org = this.props.store.userStore.organizations.find(x => x.id === this.props.store.userStore.currentOrganization);
-		console.log(this.props.store.userStore.organizations);
 		return org ? org.name : 'unknown'
 	}
 
