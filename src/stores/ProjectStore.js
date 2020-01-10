@@ -40,7 +40,7 @@ class ProjectStore{
         this.projectId = data.projectId;
         this.projectName = data.projectName;
         this.companyId = data.companyId;
-        this.users = data.users;
+        this.projectUsers = data.projectUsers;
         this.sprints = data.sprints;
         this.workItems = data.workItems;
     };

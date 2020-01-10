@@ -31,7 +31,7 @@ class WorkItemOption extends Component {
     };
 
     changeValue = (value) => {
-        if(value === undefined || value === null || value === '') return;
+        if( value === null || value === '') return;
 
         this.setState({value: value, isOpen: false});
         if(this.props.onValueChanged) this.props.onValueChanged(value);
@@ -65,7 +65,7 @@ class WorkItemOption extends Component {
     renderSelector = (type) => {
         switch (type) {
             case 'ListSelection':
-                return <div><p key={0} className='optionContent'>{this.props.default}</p>
+                return <div><p key={0} className='optionContent' onClick={() => this.changeValue(undefined)}>{this.props.default}</p>
                     {this.props.options.map(x => <p key={x.id} className='optionContent' onClick={() => this.changeValue(x.id)}>{x.title}</p>)}
                 </div>;
             case 'NumberSelection':

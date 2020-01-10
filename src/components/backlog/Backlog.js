@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import TopNavBar from "../TopNavBar";
-class Backlog extends Component {
+import {inject, observer} from "mobx-react";
+const Backlog = inject('store')(observer( class Backlog extends Component {
   render() {
     return (
       <div className="backlogContainer">
         <TopNavBar />
-        <div>Een mooi idee voor stijn om op te lossen</div>
+        <div>
+            {this.props.store.projectStore.workItems.map(x => <div/>)}
+        </div>
       </div>
     );
   }
-}
+}));
 
 export default Backlog;
