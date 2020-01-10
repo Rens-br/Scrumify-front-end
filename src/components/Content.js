@@ -47,7 +47,7 @@ const Content = inject("store")(
           return (
             <div id="content">
               <TopNavBar />
-                {this.props.store.userStore.currentOrganization === undefined ? <OrganizationScreen/> : <Dashboard />}
+                {this.props.store.userStore.organizations.length === 0 ? <OrganizationScreen/> : <Dashboard />}
             </div>
           );
         } else if (this.props.store.clientStore.currentScreen === 1) {
