@@ -30,9 +30,6 @@ const TopNavBar = inject('store')(observer(class TopNavBar extends React.Compone
                   className="profileIcon"
                 />
               </div>
-              <div onClick={this.cycleColor} className="profileButton">
-                <MaterialIcon icon="color_lens" style={{ fontSize: '40px' }} className="profileIcon"/>
-              </div>
             </div>
         </div>
     );
