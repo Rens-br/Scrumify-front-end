@@ -40,7 +40,11 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 
 	 createWorkItem = (title) => {
 	 	this.setState({isAdding: false});
-		 this.props.store.projectStore.addWorkItem(this.props.data.laneId, title);
+	 	this.props.store.projectStore.addWorkItem(this.props.data.laneId, title);
+	 };
+
+	 clearLane = () => {
+	 	this.props.store.projectStore.workItems.filter(x => x.laneId === this.props.data.laneId).forEach(i => this.props.store.projectStore.updateWorkItem(i.workItemId, {laneId: undefined}));
 	 };
 
 	 menuOptionClicked = (index) => {
@@ -49,8 +53,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					this.props.store.projectStore.removeLane(this.props.data.laneId);
 				break;
 			case 1:
-				break;
-			case 2:
+					this.clearLane();
 				break;
 			default:
 				break;
@@ -77,7 +80,7 @@ export const Lane = inject('store')(observer(class Lane extends Component{
 					<EditableTitle titleChanged={this.changeLaneTitle} title={this.props.data.laneTitle} className='laneTitle' style={{maxWidth: '90%', fontSize: "20px","fontWeight": "600"}}/>
 					<div className='headerIcons'>
 						<MaterialIcon onClick={this.addWorkItem} icon='add'/>
-						<DropDownMenu options={['Remove', 'Edit', 'Clear']} onOptionClick={this.menuOptionClicked}/>
+						<DropDownMenu options={['Remove', 'Clear']} onOptionClick={this.menuOptionClicked}/>
 					</div>
 				</div>
 				<SimpleBar id='cardArea'  forceVisible="y" autoHide="true">

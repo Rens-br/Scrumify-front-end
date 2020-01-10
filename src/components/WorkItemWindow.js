@@ -22,7 +22,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 
 	getSprint = () => {
 		return toJS(this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === this.getWorkItem(this.props.store.clientStore.currentWorkItem).laneId) !== undefined)).sprintId;
-	}
+	};
 
 	getWorkItem = (workItemId) => {
 		return this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId);
