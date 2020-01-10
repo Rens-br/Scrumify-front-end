@@ -47,8 +47,6 @@ class ProjectStore{
 
     //Updates the currently loaded project 
     updateStore = (response) => {
-        console.log(response)
-
         let foundSprint;
         let foundWorkItem;
 

@@ -1,4 +1,4 @@
-import {action, decorate, observable} from 'mobx';
+import {action, decorate, observable, toJS} from 'mobx';
 import io  from 'socket.io-client';
 
 class SocketStore{
@@ -37,12 +37,10 @@ class SocketStore{
 		});
 
 		this.socket.on('receiveProjectData', (projectObject) => {
-			console.log(projectObject);
 			this.rootStore.projectStore.loadProjectIntoStore(projectObject);
 		});
 
 		this.socket.on('updateProject', (updateObject) => {
-			console.log(updateObject);
 			this.rootStore.projectStore.updateStore(updateObject);
 		})
 	};
@@ -100,8 +98,6 @@ class SocketStore{
 	};
 
 	updateWorkItem = (projectId, workItemId, workItem) => {
-		console.log(workItemId);
-		console.log(workItem);
 		this.socket.emit('updateWorkItem', {ProjectId: projectId, WorkItemId: workItemId, data: workItem})
 	};
 
@@ -126,7 +122,6 @@ class SocketStore{
 	};
 
 	createOrganization = (userId, organizationName) => {
-		console.log(organizationName)
 		this.socket.emit('createOrganizationBasic', {UserId: userId, OrganizationName: organizationName});
 	}
 }
