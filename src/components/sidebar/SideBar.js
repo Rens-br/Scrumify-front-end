@@ -62,11 +62,18 @@ const SideBar = inject("store")(
                   <Divider />
                 </div>
                 <div className="bottombar">
-                    {this.props.store.userStore.currentOrganization !== undefined && <ProjectList />}
+                  {this.props.store.userStore.currentOrganization !==
+                    undefined && <ProjectList />}
                 </div>
                 <div className="footer">
                   <Divider />
-                  <NavButton icon="tune" label="Settings" />
+                  <NavButton
+                    icon="tune"
+                    label="Settings"
+                    onClick={() => {
+                      this.props.store.clientStore.setCurrentScreen(3);
+                    }}
+                  />
                   <Divider />
                   <NavButton
                     style={{ fontSize: "40px" }}

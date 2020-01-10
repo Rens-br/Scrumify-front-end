@@ -3,7 +3,8 @@ import { observable, action, decorate } from "mobx";
 export const Screens = {
   DASHBOARD: 0,
   SPRINTS: 1,
-  BACKLOG: 2
+  BACKLOG: 2,
+  SETTINGS: 3
 };
 
 class ClientStore {
