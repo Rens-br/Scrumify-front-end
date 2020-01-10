@@ -13,6 +13,10 @@
     font-size: 30px;
     color: var(--color-primary);
     user-select: none;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-bottom: solid #f2f2f2 2px;
 }
 
 .settingsInputField {
