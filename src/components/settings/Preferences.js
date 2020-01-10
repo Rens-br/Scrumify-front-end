@@ -7,7 +7,7 @@ class Preferences extends Component {
         <div className="SettingsViewContainer">
             <p className="SettingsHeader">Preferences</p>
 
-            <div className="SettingsSubmitBtn" style={{minWidth: "700px"}}>Change colorscheme</div>
+            <div className="SettingsSubmitBtn" style={{minWidth: "210px"}}>Change colorscheme</div>
         </div>
     );
   }
