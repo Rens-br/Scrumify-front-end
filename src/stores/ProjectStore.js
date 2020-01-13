@@ -98,6 +98,7 @@ class ProjectStore{
 
     
     getProject = (projectId) => {
+        if(projectId === this.projectId) return;
         this.rootStore.socketStore.getProject(projectId)
     };
 
