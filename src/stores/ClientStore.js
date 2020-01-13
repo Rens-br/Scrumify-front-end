@@ -8,6 +8,8 @@ export const Screens = {
 };
 
 class ClientStore {
+  isLoading = true;
+
   isWorkItemOpen = false;
   currentWorkItem = 789123;
   currentProjectIndex = undefined;
@@ -18,6 +20,10 @@ class ClientStore {
   constructor(root) {
     this.rootStore = root;
   }
+
+  stopLoading = () => {
+    this.isLoading = false;
+  };
 
   setCurrentScreen = screen => {
     this.currentScreen = screen;
@@ -40,6 +46,7 @@ class ClientStore {
 }
 
 decorate(ClientStore, {
+  isLoading: observable,
   isWorkItemOpen: observable,
   currentProjectIndex: observable,
   currentScreen: observable,

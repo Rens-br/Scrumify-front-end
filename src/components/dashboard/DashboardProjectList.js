@@ -22,6 +22,7 @@ const DashboardProjectList = inject("store")(
                 )
                 .map(project => (
                   <Project
+                    key={project.projectId}
                     projectId={project.projectId}
                     projectName={project.projectName}
                     handleProject={this.handleProject.bind(this)}

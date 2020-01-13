@@ -30,6 +30,12 @@ class UserStore {
         this.loggedIn = response.data.succes;
         this.loginMessage = response.data.message;
 
+        console.log(response.data.code)
+
+        if(response.data.code === 7 || response.data.code === 5){
+          this.rootStore.clientStore.stopLoading();
+        }
+
         if (response.data.userId !== undefined) {
           this.userId = response.data.userId;
           this.rootStore.socketStore.getUser(this.userId);
@@ -42,7 +48,8 @@ class UserStore {
         alert(response.data.message);
         break;
       case "updateUser":
-        console.log(response);
+        if(response.data.organizations !== undefined || response.data.organizations.length !== 0) this.rootStore.clientStore.stopLoading();
+
         this.currentOrganization = response.data.organizations  !== undefined && response.data.organizations.length !== 0 ? response.data.organizations[0].id : undefined;
         this.userId = response.data.userId;
         this.name = response.data.name;
