@@ -1,0 +1,23 @@
+.backlogItem {
+  display: flex;
+}
+.backlogItem > * {
+  margin-left: 15px;
+}
+
+.backlogID {
+}
+
+.backlogTitle {
+}
+
+.backlogSprint {
+}
+
+.backlogStatus {
+}
+.backlogLabel {
+}
+
+.backlogTimeEstimation {
+}

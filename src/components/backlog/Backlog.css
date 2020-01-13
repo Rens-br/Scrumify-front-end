@@ -1,0 +1,9 @@
+.backlogContainer {
+  display: flex;
+  flex-direction: row;
+  /* flex-direction: column; */
+}
+.flex-grid {
+  display: flex;
+  /* flex-direction: row; */
+}
