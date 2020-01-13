@@ -85,7 +85,7 @@ const Content = inject("store")(
                 </div>
               );
             } else {
-              return <Spinner className="spinner" animation="border" />;
+              return <div className='spinnerBg'><Spinner className="spinner" animation="border" /></div>;
             }
           case 2:
             return (

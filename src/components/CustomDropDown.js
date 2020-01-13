@@ -37,11 +37,13 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 	}
 
 	handleClick = (e) => {
-		if(this.node.contains(e.target)){
-			return;
-		}
+		if(this.state.dropdownToggled) {
+			if (this.node.contains(e.target)) {
+				return;
+			}
 
-		this.setState({dropdownToggled: false});
+			this.setState({dropdownToggled: false});
+		}
 	};
 
 	render() {
