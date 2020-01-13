@@ -154,10 +154,6 @@ class ProjectStore{
     removeLane = (laneId) => {
         this.rootStore.socketStore.removeLane(this.projectId, laneId);
     };
-
-      default:
-        throw Error("Response type not found");
-    }
   };
 
   getProject = projectId => {
