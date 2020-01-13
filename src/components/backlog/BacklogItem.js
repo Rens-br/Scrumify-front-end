@@ -8,7 +8,7 @@ class BacklogItem extends Component {
         <div className="backlogTitle">{this.props.title}</div>
         <div className="backlogSprint">{this.props.sprint}</div>
         <div className="backlogWorkItemUser">{this.props.assignedUser}</div>
-        <div className="backlogStatus">{this.props.sprint}</div>
+        <div className="backlogStatus">{this.props.status}</div>
         <div className="backlogLabel">{this.props.workItemLabel}</div>
         <div className="backlogTimeEstimation">{this.props.timeEstimation}</div>
       </div>

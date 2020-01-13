@@ -1,46 +1,76 @@
 import React, { Component } from "react";
 import BacklogItem from "./BacklogItem";
 import "./BacklogItemList.css";
+import { toJS } from "mobx";
+
 class BackLogItemList extends Component {
   render() {
-    // const getBackLogItems = wi => {
-    //   const sprint = this.props.sprints.find(sp =>
-    //     sp.Lanes.includes(x => x.laneId === wi.laneId)
-    //   )(
-    //     <BacklogItem
-    //       id={wi.workItemId}
-    //       title={wi.workItemTitle}
-    //       assignedUser={wi.workItemUser}
-    //       sprint={sprint.sprintTitle}
-    //       status
-    //       label
-    //       timeEstimation={wi.workItemTimeEst}
-    //     />
-    //   );
-    // };
+    const sprints = toJS(this.props.sprints);
+    console.log("SPRINTS", sprints);
+    const workItems = toJS(this.props.workItems);
+    const projectUsers = this.props.users;
+    console.log("BACKLOG PROJECT USERS", this.props.users);
+    const titles = [];
+    workItems.map(item => {
+      const laneId = item.laneId;
+      sprints.map(sprint => {
+        sprint.Lanes.map(lane => {
+          if (lane.laneId === laneId) {
+            console.log("FOUND TITLE:", lane.laneTitle);
+            titles.push(lane.laneTitle);
+            item.laneTitle = lane.laneTitle;
+          }
+        });
+      });
+    });
+    workItems.map(item => {
+      const usr = item.workItemUser;
+      projectUsers.find(user => {
+        if (user.id === usr) {
+          titles.push(user.name);
+          item.user = user.name;
+        }
+      });
+    });
+
+    const laneIds = sprints.map(sprint => sprint.Lanes.map(sp => sp.laneId));
+    console.log("SPR TEST", laneIds);
+    const sprintTitles = sprints.find(sprint => {
+      let workItemLaneIds = workItems.map(workItem => workItem.laneId);
+      if (workItemLaneIds === laneIds) {
+        return sprint;
+      }
+      return workItemLaneIds;
+    });
+    console.log("MY WORKITEM IDS:", sprintTitles.sprintTitle);
+    const backlogItems = [];
+    for (let item of workItems) {
+      console.log("time:", item);
+      const backlogItem = (
+        <BacklogItem
+          id={item.workItemId}
+          title={item.workItemTitle}
+          assignedUser={item.user}
+          sprint={sprintTitles.sprintTitle}
+          status={item.laneTitle}
+          timeEstimation={item.workItemTimeEst}
+        />
+      );
+      backlogItems.push(backlogItem);
+    }
+
     return (
       <div className="backlogItemListContainer">
         <div className="backlogItem">
-          <div></div>
           <div>ID</div>
           <div>TITLE</div>
           <div>SPRINT</div>
+          <div>ASSIGNED USER</div>
           <div>STATUS</div>
           <div>LABEL</div>
           <div>Time Estimation</div>
         </div>
-        {this.props.workItems.map(wi => (
-          <BacklogItem
-            id={wi.workItemId}
-            title={wi.workItemTitle}
-            assignedUser={wi.workItemUser}
-            sprint={wi.laneId}
-            // sprint={sprint.sprintTitle}
-            status
-            label
-            timeEstimation={wi.workItemTimeEst}
-          />
-        ))}
+        {backlogItems}
       </div>
     );
   }
