@@ -13,3 +13,9 @@
     margin: auto;
     color: var(--color-primary);
 }
+
+.spinnerBg{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
