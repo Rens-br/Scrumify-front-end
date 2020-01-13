@@ -28,10 +28,26 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 		return org ? org.name : 'unknown'
 	}
 
+	componentDidMount() {
+		document.addEventListener('mousedown', this.handleClick, false);
+	}
+
+	componentWillUnmount() {
+		document.removeEventListener('mousedown', this.handleClick, false);
+	}
+
+	handleClick = (e) => {
+		if(this.node.contains(e.target)){
+			return;
+		}
+
+		this.setState({dropdownToggled: false});
+	};
+
 	render() {
 		if(this.props.store.userStore.organizations.length > 1) {
 			return (
-				<div className='customDropDown' onClick={this.toggleDropdown}>
+				<div  ref={node => this.node = node} className='customDropDown' onClick={this.toggleDropdown}>
 					<DropdownItem label={this.getOrganizationName()}/>
 					<MaterialIcon icon='keyboard_arrow_down'/>
 					{this.state.dropdownToggled && (

@@ -15,6 +15,8 @@ class ClientStore {
   currentProjectIndex = undefined;
   currentScreen = 0;
 
+  sidebarOpen = true;
+
   rootStore = null;
 
   constructor(root) {
@@ -43,11 +45,16 @@ class ClientStore {
     this.isWorkItemOpen = false;
     this.currentWorkItem = undefined;
   };
+
+  toggleSidebar = (bool) => {
+    this.sidebarOpen = bool;
+  }
 }
 
 decorate(ClientStore, {
   isLoading: observable,
   isWorkItemOpen: observable,
+  sidebarOpen: observable,
   currentProjectIndex: observable,
   currentScreen: observable,
   setCurrentProjectIndex: action,

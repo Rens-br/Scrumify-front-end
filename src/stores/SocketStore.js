@@ -7,7 +7,6 @@ class SocketStore {
 
 	constructor(root) {
 		this.rootStore = root;
-		console.log('connect')
 		this.connect();
 	}
 
@@ -15,7 +14,6 @@ class SocketStore {
 		this.socket = io.connect(process.env.REACT_APP_API_URL, {reconnectionDelay: 100});
 
 		this.socket.on('connect', () => {
-			console.log(this.socket.id);
 			this.sendSession();
 		});
 
@@ -64,7 +62,6 @@ class SocketStore {
 
 	sendSession = () => {
 		let oldSession = sessionStorage.getItem('sessionId');
-		console.log(oldSession)
 
 		if (oldSession !== '' && oldSession !== undefined) {
 			this.socket.emit('restoreSession', oldSession);

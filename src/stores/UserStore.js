@@ -1,4 +1,4 @@
-import { action, decorate, observable } from "mobx";
+import {action, decorate, observable, toJS} from "mobx";
 
 class UserStore {
   //User registration
@@ -25,6 +25,9 @@ class UserStore {
   }
 
   updateStore = response => {
+
+    console.log(toJS(response));
+
     switch (response.type) {
       case "authenticateUser":
         this.loggedIn = response.data.succes;
