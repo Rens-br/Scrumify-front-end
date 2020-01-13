@@ -4,6 +4,7 @@ class UserStore {
   //User registration
   registered = false;
   registerMessage = "";
+  registerCode = 0;
 
   //User login
   loggedIn = false;
@@ -35,8 +36,6 @@ class UserStore {
         this.loginMessage = response.data.message;
         this.loginCode = response.data.code;
 
-        console.log(response.data.code)
-
         if(response.data.code === 7 || response.data.code === 5){
           this.rootStore.clientStore.stopLoading();
         }
@@ -50,7 +49,12 @@ class UserStore {
       case "userRegistration":
         this.registered = response.data.succes;
         this.registerMessage = response.data.message;
-        alert(response.data.message);
+        this.registerCode = response.data.code;
+
+        if(response.data.code === 3) {
+          alert(response.data.message);
+        }
+
         break;
       case "updateUser":
         if(response.data.organizations !== undefined || response.data.organizations.length !== 0) this.rootStore.clientStore.stopLoading();
@@ -84,8 +88,14 @@ class UserStore {
     }
   };
 
-  setLoginWarning = msg => {
-    this.loginMessage = msg;
+  clearLogin = () => {
+    this.loginCode = 0;
+    this.loginMessage = ''
+  };
+
+  clearRegister = () => {
+    // this.registerCode = 0;
+    // this.registerMessage = ''
   };
 
   updateUser = user => {
@@ -113,6 +123,7 @@ decorate(UserStore, {
   currentOrganization: observable,
   loggedIn: observable,
   loginMessage: observable,
+  registerMessage: observable,
   updateStore: action,
   updateUser: action,
   leaveProject: action,

@@ -18,15 +18,15 @@ const LoginScreen = inject("store")(
                 <Formik
                     initialValues={{ email: "", password: "" }}
                     onSubmit={(values, actions) => {
-                        console.log(actions)
+                        props.store.socketStore.sendLogin({
+                            email: values.email,
+                            password: values.password
+                        });
                         setTimeout(() => {
-                            props.store.socketStore.sendLogin({
-                                email: values.email,
-                                password: values.password
-                            });
                             actions.setFieldError(Responses[props.store.userStore.loginCode], props.store.userStore.loginMessage);
+                            props.store.userStore.clearLogin();
                             actions.setSubmitting(false);
-                        }, 500);
+                        }, 200);
                     }}
                     validationSchema={Yup.object().shape({
                         email: Yup.string()
