@@ -7,6 +7,7 @@ class UserStore {
 
   //User login
   loggedIn = false;
+  loginCode = 0;
   loginMessage = "";
 
   //Values stored in user store
