@@ -10,14 +10,14 @@ class BackLogItemList extends Component {
     const workItems = toJS(this.props.workItems);
     const projectUsers = this.props.users;
     console.log("BACKLOG PROJECT USERS", this.props.users);
-    const titles = [];
+    //const titles = [];
     workItems.map(item => {
       const laneId = item.laneId;
       sprints.map(sprint => {
         sprint.Lanes.map(lane => {
           if (lane.laneId === laneId) {
             console.log("FOUND TITLE:", lane.laneTitle);
-            titles.push(lane.laneTitle);
+            //titles.push(lane.laneTitle);
             item.laneTitle = lane.laneTitle;
           }
         });
@@ -27,22 +27,22 @@ class BackLogItemList extends Component {
       const usr = item.workItemUser;
       projectUsers.find(user => {
         if (user.id === usr) {
-          titles.push(user.name);
+          //titles.push(user.name);
           item.user = user.name;
         }
       });
     });
-
-    const laneIds = sprints.map(sprint => sprint.Lanes.map(sp => sp.laneId));
-    console.log("SPR TEST", laneIds);
-    const sprintTitles = sprints.find(sprint => {
-      let workItemLaneIds = workItems.map(workItem => workItem.laneId);
-      if (workItemLaneIds === laneIds) {
-        return sprint;
-      }
-      return workItemLaneIds;
+    workItems.map(item => {
+      const laneId = item.laneId;
+      sprints.map(sprint => {
+        sprint.Lanes.map(lane => {
+          if (lane.laneId === laneId) {
+            console.log("FOUND SPRINT TITLE", sprint.sprintTitle);
+            item.sprintName = sprint.sprintTitle;
+          }
+        });
+      });
     });
-    console.log("MY WORKITEM IDS:", sprintTitles.sprintTitle);
     const backlogItems = [];
     for (let item of workItems) {
       console.log("time:", item);
@@ -51,7 +51,7 @@ class BackLogItemList extends Component {
           id={item.workItemId}
           title={item.workItemTitle}
           assignedUser={item.user}
-          sprint={sprintTitles.sprintTitle}
+          sprint={item.sprintName}
           status={item.laneTitle}
           timeEstimation={item.workItemTimeEst}
         />
