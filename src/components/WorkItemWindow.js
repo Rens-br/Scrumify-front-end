@@ -12,16 +12,20 @@ import {toJS} from "mobx";
 const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
 	constructor(props) {
 		super(props);
+
+		const workItem = this.getWorkItem(props.store.clientStore.currentWorkItem);
+
 		this.state = {
 			value: 'test',
 			workItems: props.store.projectStore.workItems,
-			workItem: this.getWorkItem(props.store.clientStore.currentWorkItem),
-			workItemSprint: this.getSprint(),
+			workItem: workItem,
+			workItemSprint: this.getSprint(workItem),
+			workItemDesc: this.getWorkItemDescription(workItem)
 		};
 	}
 
-	getSprint = () => {
-		return toJS(this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === this.getWorkItem(this.props.store.clientStore.currentWorkItem).laneId) !== undefined)).sprintId;
+	getSprint = (workItem) => {
+		return toJS(this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === workItem.laneId) !== undefined)).sprintId;
 	};
 
 	changeSprint = (id) => {
@@ -32,18 +36,27 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 		return this.props.store.projectStore.workItems.find(x => x.workItemId === workItemId);
 	};
 
+	getWorkItemDescription = (workItem) => {
+		if(workItem.workItemDescription === null || workItem.workItemDescription === undefined) return undefined;
+		return JSON.parse(workItem.workItemDescription);
+	};
+
 	updateWorkItem = (changes) => {
 		this.setState({workItem: {...this.state.workItem, ...changes}});
-		console.log(this.state.workItem)
 	};
 
 	sendWorkItemUpdate = () => {
-		this.props.store.projectStore.updateWorkItem(this.state.workItem.workItemId, this.state.workItem);
+		const desc = JSON.stringify(this.state.workItemDesc);
+
+		this.props.store.projectStore.updateWorkItem(this.state.workItem.workItemId, {...this.state.workItem, ...{workItemDescription: desc}});
 	};
 
 	render() {
 		return (
-			<div className='backdrop' onClick={this.props.store.clientStore.closeWorkItem}>
+			<div className='backdrop' onClick={() => {
+				this.sendWorkItemUpdate();
+				this.props.store.clientStore.closeWorkItem();
+			}}>
 				<div className='window'  onClick={(event) => event.stopPropagation()}>
 					<div className='windowHeader'>
 						<div className='headerNameTab'>
@@ -64,7 +77,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 								<div className='workItemDescription'>
 									<h1>Description</h1>
 									<SimpleBar style={{margin:'10px', maxHeight: '550px', paddingRight: '12px'}}>
-										<RichText/>
+										<RichText value={this.state.workItemDesc} onValueChange={(value) => this.setState({workItemDesc: value})}/>
 									</SimpleBar>
 								</div>
 								<div className='workItemOptions'>

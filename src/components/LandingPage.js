@@ -33,7 +33,7 @@ const LandingPage = inject('store')(observer(class LandingPage extends Component
         }
         else {
             return (
-                <div class='loginScreen'>
+                <div className='loginScreen'>
                     <div className='left' style={{flex: !this.state.isSmall ? '0.3 0 0' : '1'}}>
                         {this.state.isLogin ? <LoginScreen onScreenSwitch={() => this.setState({isLogin: !this.state.isLogin})}/> : <RegisterScreen onScreenSwitch={() => this.setState({isLogin: !this.state.isLogin})}/>}
                     </div>

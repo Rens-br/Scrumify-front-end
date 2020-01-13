@@ -22,17 +22,16 @@ const RegisterScreen = inject("store")(
           }, 500);
         }}
         validationSchema={Yup.object().shape({
-          name: Yup.string().required("Required"),
+          name: Yup.string().required("Please enter your name"),
           email: Yup.string()
             .email()
-            .required("Required"),
+            .required("Please enter your email"),
           password: Yup.string()
-            .required("No password provided.")
-            .min(6, "Password is too short - should be 6 chars minimum.")
-            .matches(/(?=.*[0-9])/, "Password must contain a number."),
+            .required("Please enter your password")
+            .min(6, "Your password need to be at least 6 characters"),
           password2: Yup.string().oneOf(
             [Yup.ref("password"), null],
-            "Passwords must match"
+            "Entered passwords do not match"
           )
         })}
       >
