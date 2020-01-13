@@ -40,7 +40,7 @@ class ProjectStore {
       case "updateWorkItem":
         const tempWorkItems = this.workItems;
         foundWorkItem = tempWorkItems.find(
-          wi => wi.workItemId === response.data.workItemId
+            wi => wi.workItemId === response.data.workItemId
         );
         if (foundWorkItem) {
           tempWorkItems[tempWorkItems.indexOf(foundWorkItem)] = {
@@ -55,14 +55,14 @@ class ProjectStore {
 
       case "removeWorkItem":
         this.workItems = this.workItems.filter(
-          wi => wi.workItemId !== response.data.workItemId
+            wi => wi.workItemId !== response.data.workItemId
         );
         break;
 
       case "updateSprint":
         const tempArray = this.sprints;
         foundSprint = tempArray.find(
-          sp => sp.sprintId === response.data.sprintId
+            sp => sp.sprintId === response.data.sprintId
         );
         if (foundSprint)
           tempArray[tempArray.indexOf(foundSprint)] = {
@@ -76,18 +76,18 @@ class ProjectStore {
 
       case "removeSprint":
         this.sprints = this.sprints.filter(
-          sp => sp.sprintId !== response.data.sprintId
+            sp => sp.sprintId !== response.data.sprintId
         );
         break;
 
       case "updateLane":
         foundSprint = this.sprints.find(
-          sp => sp.sprintId === response.sprintId
+            sp => sp.sprintId === response.sprintId
         );
         if (foundSprint) {
           const tempArray = foundSprint.Lanes;
           const foundLane = tempArray.find(
-            ln => ln.laneId === response.data.laneId
+              ln => ln.laneId === response.data.laneId
           );
           if (foundLane)
             tempArray[tempArray.indexOf(foundLane)] = response.data;
@@ -101,13 +101,13 @@ class ProjectStore {
 
       case "removeLane":
         foundSprint = this.sprints.find(
-          sp => sp.sprintId === response.sprintId
+            sp => sp.sprintId === response.sprintId
         );
         if (foundSprint) {
           this.sprints[
-            this.sprints.indexOf(foundSprint)
-          ].Lanes = foundSprint.Lanes.filter(
-            ln => ln.laneId !== response.data.laneId
+              this.sprints.indexOf(foundSprint)
+              ].Lanes = foundSprint.Lanes.filter(
+              ln => ln.laneId !== response.data.laneId
           );
         }
         break;
@@ -132,9 +132,9 @@ class ProjectStore {
 
   addProject = (title, organizationId) => {
     this.rootStore.socketStore.createProject(
-      this.projectId,
-      title,
-      organizationId
+        this.projectId,
+        title,
+        organizationId
     );
   };
 
@@ -153,8 +153,8 @@ class ProjectStore {
 
   updateLaneName = (sprintId, laneId, title) => {
     this.sprints
-      .find(x => x.sprintId === sprintId)
-      .Lanes.find(x => x.laneId === laneId).laneTitle = title;
+        .find(x => x.sprintId === sprintId)
+        .Lanes.find(x => x.laneId === laneId).laneTitle = title;
     this.rootStore.socketStore.updateLane(this.projectId, laneId, title);
   };
 
@@ -166,9 +166,9 @@ class ProjectStore {
     };
     console.log(workItem);
     this.rootStore.socketStore.updateWorkItem(
-      this.projectId,
-      workItemId,
-      workItem
+        this.projectId,
+        workItemId,
+        workItem
     );
   };
 
@@ -179,73 +179,74 @@ class ProjectStore {
   removeLane = laneId => {
     this.rootStore.socketStore.removeLane(this.projectId, laneId);
   };
-}
 
-getProject = projectId => {
-  this.rootStore.socketStore.getProject(projectId);
-};
 
-getWorkItem = workItemId => {
-  this.rootStore.socketStore.getWorkItem(this.projectId, workItemId);
-};
-
-addSprint = title => {
-  this.rootStore.socketStore.createSprint(this.projectId, title);
-};
-
-addProject = (title, organizationId) => {
-  this.rootStore.socketStore.createProject(
-    this.projectId,
-    title,
-    organizationId
-  );
-};
-
-addLane = (sprintId, title) => {
-  this.rootStore.socketStore.createLane(this.projectId, sprintId, title);
-};
-
-addWorkItem = (laneId, workItem) => {
-  this.rootStore.socketStore.addWorkItem(this.projectId, laneId, workItem);
-};
-
-updateSprintTitle = (sprintId, title) => {
-  this.sprints.find(x => x.sprintId === sprintId).sprintTitle = title;
-  this.rootStore.socketStore.updateSprint(this.projectId, sprintId, title);
-};
-
-updateLaneName = (sprintId, laneId, title) => {
-  this.sprints
-    .find(x => x.sprintId === sprintId)
-    .Lanes.find(x => x.laneId === laneId).laneTitle = title;
-  this.rootStore.socketStore.updateLane(this.projectId, laneId, title);
-};
-
-updateWorkItem = (workItemId, workItem) => {
-  let oldItem = this.workItems.find(x => x.workItemId === workItemId);
-  this.workItems[this.workItems.indexOf(oldItem)] = {
-    ...oldItem,
-    ...workItem
+  getProject = projectId => {
+    this.rootStore.socketStore.getProject(projectId);
   };
-  console.log(workItem);
-  this.rootStore.socketStore.updateWorkItem(
-    this.projectId,
-    workItemId,
-    workItem
-  );
-};
 
-removeSprint = sprintId => {
-  this.rootStore.socketStore.removeSprint(this.projectId, sprintId);
-};
+  getWorkItem = workItemId => {
+    this.rootStore.socketStore.getWorkItem(this.projectId, workItemId);
+  };
 
-removeLane = laneId => {
-  this.rootStore.socketStore.removeLane(this.projectId, laneId);
-};
+  addSprint = title => {
+    this.rootStore.socketStore.createSprint(this.projectId, title);
+  };
 
-removeWorkItem = workItemId => {
-  this.rootStore.socketStore.removeWorkItem(this.projectId, workItemId);
-};
+  addProject = (title, organizationId) => {
+    this.rootStore.socketStore.createProject(
+        this.projectId,
+        title,
+        organizationId
+    );
+  };
+
+  addLane = (sprintId, title) => {
+    this.rootStore.socketStore.createLane(this.projectId, sprintId, title);
+  };
+
+  addWorkItem = (laneId, workItem) => {
+    this.rootStore.socketStore.addWorkItem(this.projectId, laneId, workItem);
+  };
+
+  updateSprintTitle = (sprintId, title) => {
+    this.sprints.find(x => x.sprintId === sprintId).sprintTitle = title;
+    this.rootStore.socketStore.updateSprint(this.projectId, sprintId, title);
+  };
+
+  updateLaneName = (sprintId, laneId, title) => {
+    this.sprints
+        .find(x => x.sprintId === sprintId)
+        .Lanes.find(x => x.laneId === laneId).laneTitle = title;
+    this.rootStore.socketStore.updateLane(this.projectId, laneId, title);
+  };
+
+  updateWorkItem = (workItemId, workItem) => {
+    let oldItem = this.workItems.find(x => x.workItemId === workItemId);
+    this.workItems[this.workItems.indexOf(oldItem)] = {
+      ...oldItem,
+      ...workItem
+    };
+    console.log(workItem);
+    this.rootStore.socketStore.updateWorkItem(
+        this.projectId,
+        workItemId,
+        workItem
+    );
+  };
+
+  removeSprint = sprintId => {
+    this.rootStore.socketStore.removeSprint(this.projectId, sprintId);
+  };
+
+  removeLane = laneId => {
+    this.rootStore.socketStore.removeLane(this.projectId, laneId);
+  };
+
+  removeWorkItem = workItemId => {
+    this.rootStore.socketStore.removeWorkItem(this.projectId, workItemId);
+  };
+}
 
 decorate(ProjectStore, {
   projectId: observable,

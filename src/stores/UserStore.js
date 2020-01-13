@@ -33,6 +33,7 @@ class UserStore {
       case "authenticateUser":
         this.loggedIn = response.data.succes;
         this.loginMessage = response.data.message;
+        this.loginCode = response.data.code;
 
         console.log(response.data.code)
 
