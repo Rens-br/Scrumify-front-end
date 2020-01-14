@@ -1,23 +1,16 @@
 .backlogItem {
   display: flex;
-}
-.backlogItem > * {
-  margin-left: 15px;
-}
-
-.backlogID {
-}
-
-.backlogTitle {
+  flex-direction: row;
+  font-size: 18px;
+  padding-left: 10px;
+  border-bottom: 0.5px solid #f2f2f2;
+  border-radius: 2px;
+  border-left: 3px solid grey;
+  margin-bottom: 5px;
 }
 
-.backlogSprint {
+.backlogItem div {
+  width: 15%;
+  padding-bottom: 5px;
 }
 
-.backlogStatus {
-}
-.backlogLabel {
-}
-
-.backlogTimeEstimation {
-}

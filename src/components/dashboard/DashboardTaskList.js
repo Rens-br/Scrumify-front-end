@@ -7,7 +7,7 @@ const DashboardTaskList = inject("store")(
       makeShortDescription(wi) {
         return this.props.store.userStore.projects
           .find(project => project.projectId === wi.ProjectId)
-          .projectName.slice(0, 3)
+          .projectName.slice(0, 4)
           .toUpperCase();
       }
       handleSelectedWorkItem() {}

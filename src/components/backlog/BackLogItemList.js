@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BacklogItem from "./BacklogItem";
+import SimpleBar from "simplebar-react";
 import "./BacklogItemList.css";
 import { toJS } from "mobx";
 
@@ -65,16 +66,20 @@ class BackLogItemList extends Component {
 
     return (
       <div className="backlogItemListContainer">
-        <div className="backlogItem">
+
+        <div className="backlogItemHeader">
           <div>ID</div>
-          <div>TITLE</div>
-          <div>SPRINT</div>
-          <div>ASSIGNED USER</div>
-          <div>STATUS</div>
-          <div>LABEL</div>
+          <div>Title</div>
+          <div>Sprint</div>
+          <div>Assigned user</div>
+          <div>Status</div>
+          <div>Label</div>
           <div>Time Estimation</div>
         </div>
-        {backlogItems}
+
+        <SimpleBar forceVisible="y" id="cardArea">
+          {backlogItems}
+        </SimpleBar>
       </div>
     );
   }

@@ -1,9 +1,25 @@
 .backlogContainer {
   display: flex;
   flex-direction: row;
-  /* flex-direction: column; */
+  margin-left: 1%;  
+  background: var(--color-background-primary);
+  height: 85%;
+  width: 98%;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
 }
 .flex-grid {
   display: flex;
-  /* flex-direction: row; */
+}
+
+#backlogTitle {
+  font-size: 40px;
+  font-weight: 600;
+  margin-left: 1%;
+  margin-bottom: 1%;
+}
+
+.backlog {
+  background: var(--color-background-dark);
+  height: 100%;
 }
