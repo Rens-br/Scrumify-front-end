@@ -50,7 +50,7 @@ const Backlog = inject("store")(
           return (
             <div className="backlog">
               <TopNavBar />
-              <h2>Backlog</h2>
+              <h2 id="backlogTitle">Backlog</h2>
               <div className="backlogContainer">
                 <BackLogItemList
                   workItems={this.props.store.projectStore.workItems}
