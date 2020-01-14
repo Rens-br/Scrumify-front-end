@@ -61,10 +61,12 @@ export const ThemeEnum = {
 };
 
 export const HighlightEnum = {
-    RED: 0,
-    GREEN: 1,
-    BLUE: 2,
-    ORANGE: 3
+    PINK: 0,
+    RED: 1,
+    GREEN: 2,
+    BLUE: 3,
+    ORANGE: 4,
+    YELLOW: 5
 };
 
 export let CurrentTheme = {...Themes[0]};
