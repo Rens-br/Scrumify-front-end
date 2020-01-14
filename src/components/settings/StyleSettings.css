@@ -56,3 +56,65 @@
 .SettingsSubmitBtn:hover {
     background: var(--color-primary-dark);
 }
+
+.SettingsColorBtnContainer {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.SettingsColorBtn {
+    display: flex;
+    color: var(--color-background-primary);
+    background: var(--color-primary);
+    border-radius: 2px;
+    height: 40px;
+    font-size: 20px;
+    padding-top: 2px;
+    max-width: 500px;
+    padding-left: 10px;
+    padding-right: 10px;
+    user-select: none;
+    width: 150px;
+    text-align: center;
+    margin: 15px;
+}
+
+#pinkBtn {
+    background: #eb5757;
+}
+#redBtn {
+    background: #d32f2f;
+}
+#greenBtn {
+    background: #388E3C;
+}
+#blueBtn {
+    background: #1976D2;
+}
+#orangeBtn {
+    background: #E64A19;
+}
+#yellowBtn {
+    background: #FFB300;
+}
+
+#pinkBtn:hover {
+    background: #eb494e;
+}
+#redBtn:hover {
+    background: #c62828;
+}
+#greenBtn:hover {
+    background: #2E7D32;
+}
+#blueBtn:hover {
+    background: #1565C0;
+}
+#orangeBtn:hover {
+    background: #D84315;
+}
+#yellowBtn:hover {
+    background: #FFA000;
+}
