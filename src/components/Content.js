@@ -69,6 +69,7 @@ const Content = inject("store")(
                       )
                     )}
                     onTabClicked={this.changeSprint}
+                    tab={this.state.sprint}
                     onAddClicked={this.addSprint}
                     onRemoveTab={this.removeSprint}
                   />
