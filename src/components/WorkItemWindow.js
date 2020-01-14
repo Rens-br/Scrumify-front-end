@@ -7,7 +7,6 @@ import EditableTitle from './EditableTitle';
 import SimpleBar from "simplebar-react";
 import RichText from "./RichText";
 import WorkItemOption from "./WorkItemOption";
-import {toJS} from "mobx";
 
 const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Component {
 	constructor(props) {
@@ -25,7 +24,7 @@ const WorkItemWindow = inject('store')(observer(class WorkItemWindow extends Com
 	}
 
 	getSprint = (workItem) => {
-		return toJS(this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === workItem.laneId) !== undefined)).sprintId;
+		return workItem.laneId !== null ? (this.props.store.projectStore.sprints.find(x => x.Lanes.find(y => y.laneId === workItem.laneId) !== undefined)).sprintId : undefined;
 	};
 
 	changeSprint = (id) => {

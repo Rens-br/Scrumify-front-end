@@ -87,7 +87,7 @@ export const LoadTheme = () => {
         SetTheme(0);
         SetHighlight(0);
     }
-}
+};
 
 export const SetTheme = theme => {
     CurrentTheme = Themes[theme];

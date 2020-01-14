@@ -153,7 +153,15 @@ class SocketStore {
 	};
 
 	RemoveOrganizationUser = (organizationId, userId) => {
-		this.socket.emit('changeOrganizationName', {OrganizationId: organizationId, UserId: userId});
+		this.socket.emit('removeOrganizationUser', {OrganizationId: organizationId, UserId: userId});
+	};
+
+	removeProjectUser = (projectId, userId) => {
+		this.socket.emit('removeProjectUser', {ProjectId: projectId, UserId: userId})
+	};
+
+	addProjectUser = (projectId, userId) => {
+		this.socket.emit('addProjectUser', {ProjectId: projectId, UserId: userId})
 	};
 }
 
