@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BacklogItem from "./BacklogItem";
+import SimpleBar from "simplebar-react";
 import "./BacklogItemList.css";
 import { toJS } from "mobx";
 
@@ -75,8 +76,9 @@ class BackLogItemList extends Component {
           <div>Time Estimation</div>
         </div>
 
-
-        {backlogItems}
+        <SimpleBar forceVisible="y" id="cardArea">
+          {backlogItems}
+        </SimpleBar>
       </div>
     );
   }
