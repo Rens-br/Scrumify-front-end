@@ -5,6 +5,8 @@ import ProfileSettings from "./ProfileSettings";
 import ProjectSettings from "./ProjectSettings";
 import OrganizationSettings from "./OrganizationSettings";
 import Preferences from "./Preferences";
+import TopNavBar from "../TopNavBar";
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +32,7 @@ class Settings extends Component {
       case 0:
         return (
           <div id="settingsBackground">
+          <TopNavBar/>
             <p id="settingsTitle">Settings</p>
             <div className="settingsContainer">
               <div id="settingsSideNavigation">
@@ -44,6 +47,7 @@ class Settings extends Component {
       case 1:
         return (
           <div id="settingsBackground">
+            <TopNavBar/>
             <p id="settingsTitle">Settings</p>
             <div className="settingsContainer">
               <div id="settingsSideNavigation">
@@ -58,6 +62,7 @@ class Settings extends Component {
       case 2:
         return (
           <div id="settingsBackground">
+            <TopNavBar/>
             <p id="settingsTitle">Settings</p>
             <div className="settingsContainer">
               <div id="settingsSideNavigation">
@@ -72,6 +77,7 @@ class Settings extends Component {
     }
     return (
       <div id="settingsBackground">
+        <TopNavBar/>
         <p id="settingsTitle">Settings</p>
         <div className="settingsContainer">
           <div id="settingsSideNavigation">
