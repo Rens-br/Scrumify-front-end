@@ -13,7 +13,6 @@ const SideBar = inject("store")(
         class SideBar extends React.Component {
             constructor(props) {
                 super(props);
-
                 this.toggleSidebar = this.toggleSidebar.bind(this);
             }
 
@@ -39,7 +38,6 @@ const SideBar = inject("store")(
                                 <div className="topbar">
                                     <Header />
                                     <Divider />
-
                                     <NavButton
                                         icon="dashboard"
                                         label="Dashboard"
@@ -56,13 +54,14 @@ const SideBar = inject("store")(
                                 </div>
                                 <div className="footer">
                                     <Divider />
+                                    {this.props.store.userStore.currentOrganization !== undefined &&
                                     <NavButton
                                         icon="tune"
                                         label="Settings"
                                         onClick={() => {
                                             this.props.store.clientStore.setCurrentScreen(3);
                                         }}
-                                    />
+                                    />}
                                     <Divider />
                                     <NavButton
                                         style={{ fontSize: "40px" }}
