@@ -28,7 +28,7 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                                 <input type="text" className="settingsInputBar" value={this.state.projName}
                                        onChange={(event) => this.setState({projName: event.target.value})}/>
                             </div>
-                            < div className="SettingsSubmitBtn" onClick={this.saveChanges}>Save changes</div>
+                            <div className="SettingsSubmitBtn" onClick={this.saveChanges}>Save changes</div>
                         </div>
                         : <p>Please select a project first</p>
                 }
