@@ -27,6 +27,7 @@
 .inputTitle {
     font-size: 20px;
     width: 250px;
+    margin-bottom: 4px;
 }
 
 .settingsInputBar {
@@ -41,13 +42,15 @@
 .SettingsSubmitBtn {
     color: var(--color-background-primary);
     background: var(--color-primary);
-    border-radius: 5px;
+    border-radius: 2px;
     height: 40px;
     font-size: 20px;
-    padding-left: 10px;
     padding-top: 2px;
     max-width: 165px;
     user-select: none;
+    margin: auto 0 20px auto;
+    width: 200px;
+    text-align: center;
 }
 
 .SettingsSubmitBtn:hover {

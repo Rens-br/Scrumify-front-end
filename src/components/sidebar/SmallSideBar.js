@@ -52,7 +52,7 @@ const SmallSideBar = inject("store")(
                         {this.props.store.projectStore.projectId !== undefined && (
                             <div
                                 onClick={() => {
-                                    this.props.store.clientStore.setCurrentScreen(0);
+                                    this.props.store.clientStore.setCurrentScreen(2);
                                 }}
                             >
                                 <SbIcon icon="list_alt"/>

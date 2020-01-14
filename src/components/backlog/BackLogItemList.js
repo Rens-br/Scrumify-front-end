@@ -57,6 +57,7 @@ class BackLogItemList extends Component {
           status={item.laneTitle}
           workItemTag={item.workItemTag}
           timeEstimation={item.workItemTimeEst}
+          color={item.workItemColor}
         />
       );
       backlogItems.push(backlogItem);

@@ -31,7 +31,7 @@ const ProfileSettings = inject('store')(observer(class ProfileSettings extends C
                     <p className="inputTitle">Confirm password:</p>
                     <input type="password" className="settingsInputBar"></input>
                 </div>
-                <div className="SettingsSubmitBtn">Accept changes</div>
+                <div className="SettingsSubmitBtn">Save changes</div>
             </div>
         );
     }

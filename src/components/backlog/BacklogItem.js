@@ -3,7 +3,7 @@ import "./BacklogItem.css";
 class BacklogItem extends Component {
   render() {
     return (
-      <div className="backlogItem">
+      <div className="backlogItem" style={{borderLeftColor: this.props.color === null ? 'rgb(204,204,204' : this.props.color}}>
         <div className="backlogID">{this.props.id}</div>
         <div className="backlogTitle">{this.props.title}</div>
         <div className="backlogSprint">{this.props.sprint}</div>

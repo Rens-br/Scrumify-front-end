@@ -15,7 +15,7 @@ class ProjectSettings extends Component {
                 <input type="password" className="settingsInputBar"></input>
             </div>
 
-            <div className="SettingsSubmitBtn">Accept changes</div>
+            <div className="SettingsSubmitBtn">Save changes</div>
         </div>
     );
   }

@@ -141,6 +141,7 @@ class SocketStore {
 	};
 
 	updateOrganization = (organizationId, organizationName) => {
+		console.log(organizationName);
 		this.socket.emit('changeOrganizationName', {
 			OrganizationId: organizationId,
 			OrganizationName: organizationName
