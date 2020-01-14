@@ -68,13 +68,13 @@ class BackLogItemList extends Component {
       <div className="backlogItemListContainer">
 
         <div className="backlogItemHeader">
-          <div>ID</div>
-          <div>Title</div>
+          <div id="blID">ID</div>
+          <div id="blTitle">Title</div>
           <div>Sprint</div>
           <div>Assigned user</div>
           <div>Status</div>
           <div>Label</div>
-          <div>Time Estimation</div>
+          <div id="blTimeEstimation">Time Estimation</div>
         </div>
 
         <SimpleBar forceVisible="y" id="cardArea">
