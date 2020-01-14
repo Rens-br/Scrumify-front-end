@@ -59,6 +59,7 @@ class BackLogItemList extends Component {
           workItemTag={item.workItemTag}
           timeEstimation={item.workItemTimeEst}
           color={item.workItemColor}
+          onClick={this.props.onClick}
         />
       );
       backlogItems.push(backlogItem);
