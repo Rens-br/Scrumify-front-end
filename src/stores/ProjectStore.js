@@ -34,7 +34,7 @@ class ProjectStore {
 
     switch (response.type) {
       case "updateProject":
-        this.projectName = response.data.projectName;
+        this.projectName = response.data.title;
         break;
 
       case "updateWorkItem":
