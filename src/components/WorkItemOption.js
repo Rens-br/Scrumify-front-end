@@ -31,7 +31,7 @@ class WorkItemOption extends Component {
     };
 
     changeValue = (value) => {
-        if( value === null || value === '') return;
+        if( value === null) return;
 
         this.setState({value: value, isOpen: false});
         if(this.props.onValueChanged) this.props.onValueChanged(value);
@@ -56,7 +56,7 @@ class WorkItemOption extends Component {
                     <div style={{backgroundColor: this.getValue()}} className='colorOption'/>
                 </div>;
             case 'TextSelection':
-                return	<EditableTitle singleClick placeholder={this.props.placeholder} title={this.state.value} titleChanged={(x) => this.changeValue(x)} className='numSelector'/>;
+                return	<EditableTitle canBeEmpty singleClick placeholder={this.props.placeholder} title={this.state.value} titleChanged={(x) => this.changeValue(x)} className='numSelector'/>;
             default:
                 return <p className='optionContent'>undefined</p>;
         }

@@ -29,7 +29,7 @@ class EditableTitle extends Component {
 	stopEditing = () => {
 		this.setState({wasClicked: false, isEditing: false});
 
-		if(this.state.title === "" || this.state.title === this.props.title){
+		if(this.state.title === "" && !this.props.canBeEmpty){
 			this.setState({title: this.props.title});
 			if(this.props.onStopEditing)this.props.onStopEditing();
 		}else{
@@ -64,7 +64,7 @@ class EditableTitle extends Component {
 		}else{
 			return (
 				<div onClick={this.clickedTitle} className={this.props.className}>
-					<p style={this.props.style} className='title'>{this.state.title === '' || this.state.title === undefined ? '0' : this.state.title}</p>
+					<p style={this.props.style} className='title'>{this.state.title === '' || this.state.title === undefined ? this.props.placeholder : this.state.title}</p>
 				</div>
 			)
 		}

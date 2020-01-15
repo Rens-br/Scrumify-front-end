@@ -32,6 +32,19 @@
 .workItemUserName {
   color: var(--color-text-primary);
   margin: auto auto auto 10px;
+  user-select: none;
+}
+
+.workItemTag{
+  color: var(--color-text-primary);
+  margin: auto 15px auto auto;
+  text-align: right;
+  border-bottom: 1px solid var(--color-background-dark);
+  user-select: none;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 120px;
 }
 
 .cardHeader i {
