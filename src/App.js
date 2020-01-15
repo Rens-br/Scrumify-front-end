@@ -4,6 +4,7 @@ import { LoadTheme } from "./ThemeProvider";
 import ProtectedRoute from "./components/Routing/ProtectedRoute";
 import LandingPage from "./components/LandingPage.js";
 import NotFound from "./components/NotFound";
+import Popup from './components/Popup.js';
 import './App.css'
 import {inject, observer} from "mobx-react";
 import LoadingScreen from "./components/LoadingScreen";
@@ -29,6 +30,7 @@ const App = inject('store')(observer(function App(props) {
               <Route component={NotFound} />
             </Switch>
           </Router>
+          <Popup content="This is a very fancy popup" />
         </div>
     );
   }

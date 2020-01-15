@@ -17,6 +17,7 @@
   font-weight: 600;
   margin-left: 1%;
   margin-bottom: 1%;
+  user-select: none;
 }
 
 .backlog {
