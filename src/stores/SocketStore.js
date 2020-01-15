@@ -166,6 +166,8 @@ class SocketStore {
 	};
 
 	addProjectUser = (projectId, email) => {
+		console.log(projectId);
+		console.log(email);
 		this.socket.emit('addProjectUser', {ProjectId: projectId, UserEmail: email, UserRoleId: 2})
 	};
 }

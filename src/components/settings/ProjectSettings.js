@@ -53,7 +53,7 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                                     {this.props.store.projectStore.projectUsers.map(x =>
                                     <div key={x.id} className="SettingsUserListItem">
                                         <p className="SettingsUserListName">{x.name}</p>
-                                        <div onClick={this.props.store.socketStore.removeProjectUser(this.state.projId, x.id)}>
+                                        <div onClick={() => this.props.store.socketStore.removeProjectUser(this.state.projId, x.id)}>
                                             <MaterialIcon icon='delete' style={{ fontSize: '24px', marginTop: "10px" }}/>
                                         </div>
                                     </div>)}
@@ -73,7 +73,9 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                         </div>
                         <div className='PopupButtonHolder'>
                             <div className='PopupButton'><CustomButton label='Cancel' onClick={() => {this.setState({userEmail: undefined, addUserPopupOpen: false})}}/></div>
-                            <div className='PopupButton'><CustomButton label='Add User' onClick={this.submitName}/></div>
+                            <div className='PopupButton'><CustomButton label='Add User' onClick={() => {
+                                this.submitName();
+                                this.setState({userEmail: undefined, addUserPopupOpen: false})}}/></div>
                         </div>
                     </div>
                 </div>
