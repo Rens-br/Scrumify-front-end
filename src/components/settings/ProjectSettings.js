@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import './StyleSettings.css';
 import {inject, observer} from "mobx-react";
 import MaterialIcon from "@material/react-material-icon";
+import CustomInputField from "../CustomInputField";
+import CustomButton from "../CustomButton";
 
 
 const ProjectSettings = inject('store')(observer(class ProjectSettings extends Component {
@@ -9,7 +11,9 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
         super(props);
         this.state = {
             projId: this.props.store.projectStore.projectId,
-            projName: this.props.store.projectStore.projectName
+            projName: this.props.store.projectStore.projectName,
+            addUserPopupOpen: false,
+            userEmail: undefined
         }
     }
 
@@ -44,14 +48,28 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                                     <div key={x.id} style={{display: "flex",}}>
                                         <p>{x.name}</p>
                                         <div onClick={this.props.store.socketStore.removeProjectUser(this.state.projId, x.id)}>
-                                        <MaterialIcon icon='delete' style={{ fontSize: '24px' }}/>
+                                            <MaterialIcon icon='delete' style={{ fontSize: '24px' }}/>
                                         </div>
                                     </div>)}
-                                <div>Add User</div>
+                                <div onClick={() => this.setState({addUserPopupOpen: true})}>Add User</div>
                             </div>
                             < div className="SettingsSubmitBtn" onClick={this.saveChanges}>Save changes</div>
                         </div>
                         : <p>Please select a project first</p>
+                }
+                {this.state.addUserPopupOpen &&
+                <div className='settingsPopupBg'>
+                    <div className='settingsPopup'>
+                        <h1 className='PopupTitle'>Enter the email of the user u want to add.</h1>
+                        <div className='PopupInput' id="orgInputField">
+                            <CustomInputField style={{minWidth: '500px'}} placeholder='User email' valueChanged={(value) => this.setState({userEmail: value})}/>
+                        </div>
+                        <div className='PopupButtonHolder'>
+                            <div className='PopupButton'><CustomButton label='Cancel' onClick={() => {this.setState({userEmail: undefined, addUserPopupOpen: false})}}/></div>
+                            <div className='PopupButton'><CustomButton label='Add User' onClick={this.submitName}/></div>
+                        </div>
+                    </div>
+                </div>
                 }
             </div>
         );

@@ -140,6 +140,10 @@ class SocketStore {
 		this.socket.emit('createOrganizationBasic', {UserId: userId, OrganizationName: organizationName});
 	};
 
+	getOrganization = (organizationId) => {
+		this.socket.emit('getOrganization', {OrganizationId: organizationId});
+	};
+
 	updateOrganization = (organizationId, organizationName) => {
 		console.log(organizationName);
 		this.socket.emit('changeOrganizationName', {

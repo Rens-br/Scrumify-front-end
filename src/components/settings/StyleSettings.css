@@ -118,3 +118,46 @@
 #yellowBtn:hover {
     background: #FFA000;
 }
+
+.settingsPopupBg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.24);
+    display: flex;
+}
+
+.settingsPopup{
+    background: white;
+    margin: auto;
+    width: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settingsPopup .PopupTitle{
+    font-size: 1.6em;
+    text-align: center;
+    margin: 30px 10px 10px;
+}
+
+.settingsPopup .PopupInput{
+    margin: 10px auto 0;
+}
+
+.settingsPopup .PopupButtonHolder{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+
+.settingsPopup .PopupButton{
+    flex: 1;
+}
+
+.settingsPopup .PopupButton .customButton{
+    flex: 1;
+}

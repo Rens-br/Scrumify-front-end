@@ -2,7 +2,7 @@ import { action, decorate, observable } from "mobx";
 
 class ProjectStore {
   //All values that are stored in the project store
-  projectId = undefined;
+  organizationId = undefined;
   projectName = "";
   companyId = 0;
   users = {};
