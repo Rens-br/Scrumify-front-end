@@ -32,6 +32,7 @@ class SocketStore {
 		});
 
 		this.socket.on('updateUser', (userObject) => {
+			console.log(userObject)
 			this.rootStore.userStore.updateStore(userObject);
 		});
 
@@ -164,8 +165,8 @@ class SocketStore {
 		this.socket.emit('removeProjectUser', {ProjectId: projectId, UserId: userId})
 	};
 
-	addProjectUser = (projectId, userId) => {
-		this.socket.emit('addProjectUser', {ProjectId: projectId, UserId: userId})
+	addProjectUser = (projectId, email) => {
+		this.socket.emit('addProjectUser', {ProjectId: projectId, UserEmail: email, UserRoleId: 2})
 	};
 }
 

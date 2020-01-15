@@ -122,6 +122,10 @@ class ProjectStore {
     this.rootStore.socketStore.getProject(projectId);
   };
 
+  clearProject = () => {
+    this.projectId = undefined;
+  };
+
   getWorkItem = workItemId => {
     this.rootStore.socketStore.getWorkItem(this.projectId, workItemId);
   };

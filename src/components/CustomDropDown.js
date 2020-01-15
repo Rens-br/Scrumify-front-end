@@ -21,6 +21,7 @@ const CustomDropDown = inject('store')(observer(class CustomDropDown extends Com
 	onSelect(id) {
 		this.props.store.userStore.setCurrentOrganization(id);
 		this.props.store.clientStore.setCurrentScreen(0);
+		this.props.store.projectStore.clearProject();
 	};
 
 	getOrganizationName() {

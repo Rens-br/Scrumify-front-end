@@ -30,6 +30,10 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
         )
     };
 
+    submitName = () => {
+        this.props.store.socketStore.addProjectUser(this.state.projId, this.state.userEmail);
+    };
+
     render() {
         return (
             <div className="SettingsViewContainer">
