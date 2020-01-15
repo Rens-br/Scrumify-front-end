@@ -30,7 +30,6 @@ const App = inject('store')(observer(function App(props) {
               <Route component={NotFound} />
             </Switch>
           </Router>
-          <Popup content="This is a very fancy popup" />
         </div>
     );
   }
