@@ -44,14 +44,17 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                             </div>
                             <div className="settingsInputField">
                                 <p className="inputTitle">Project users:</p>
-                                {this.props.store.projectStore.projectUsers.map(x =>
-                                    <div key={x.id} style={{display: "flex",}}>
-                                        <p>{x.name}</p>
+
+                                <div className="SettingsUserList">
+                                    {this.props.store.projectStore.projectUsers.map(x =>
+                                    <div key={x.id} className="SettingsUserListItem">
+                                        <p className="SettingsUserListName">{x.name}</p>
                                         <div onClick={this.props.store.socketStore.removeProjectUser(this.state.projId, x.id)}>
-                                            <MaterialIcon icon='delete' style={{ fontSize: '24px' }}/>
+                                            <MaterialIcon icon='delete' style={{ fontSize: '24px', marginTop: "10px" }}/>
                                         </div>
                                     </div>)}
-                                <div onClick={() => this.setState({addUserPopupOpen: true})}>Add User</div>
+                                </div>
+                                <div style={{width: "105px"}} className="SettingsColorBtn" onClick={() => this.setState({addUserPopupOpen: true})}>Add User</div>
                             </div>
                             < div className="SettingsSubmitBtn" onClick={this.saveChanges}>Save changes</div>
                         </div>
@@ -60,7 +63,7 @@ const ProjectSettings = inject('store')(observer(class ProjectSettings extends C
                 {this.state.addUserPopupOpen &&
                 <div className='settingsPopupBg'>
                     <div className='settingsPopup'>
-                        <h1 className='PopupTitle'>Enter the email of the user u want to add.</h1>
+                        <h1 className='PopupTitle'>Enter new user's email</h1>
                         <div className='PopupInput' id="orgInputField">
                             <CustomInputField style={{minWidth: '500px'}} placeholder='User email' valueChanged={(value) => this.setState({userEmail: value})}/>
                         </div>
