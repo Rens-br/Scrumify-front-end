@@ -19,6 +19,6 @@ decorate(RootStore, {
     clientStore: observable
 });
 
-const rootStore = window.store = new RootStore();
+const rootStore = new RootStore();
 
 export default rootStore;

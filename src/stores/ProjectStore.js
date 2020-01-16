@@ -31,6 +31,7 @@ class ProjectStore {
   updateStore = response => {
     let foundSprint;
     let foundWorkItem;
+    console.log(response)
 
     switch (response.type) {
       case "updateProject":
@@ -166,7 +167,8 @@ class ProjectStore {
     let oldItem = this.workItems.find(x => x.workItemId === workItemId);
     this.workItems[this.workItems.indexOf(oldItem)] = {
       ...oldItem,
-      ...workItem
+      ...workItem,
+      ...{laneId: workItem.laneId === -1 ? null : workItem.laneId, workItemUser: workItem.workItemUser === -1 ? null : workItem.workItemUser}
     };
     console.log(workItem);
     this.rootStore.socketStore.updateWorkItem(
