@@ -54,7 +54,7 @@ const SideBar = inject("store")(
                                 </div>
                                 <div className="footer">
                                     <Divider />
-                                    {/*{this.props.store.userStore.currentOrganization !== undefined &&*/}
+                                    {this.props.store.userStore.currentOrganization !== undefined &&
                                     <NavButton
                                         icon="tune"
                                         label="Settings"
@@ -62,7 +62,7 @@ const SideBar = inject("store")(
                                             this.props.store.clientStore.setCurrentScreen(3);
                                         }}
                                     />
-                                    {/*}*/}
+                                    }
                                     <Divider />
                                     <NavButton
                                         style={{ fontSize: "40px" }}

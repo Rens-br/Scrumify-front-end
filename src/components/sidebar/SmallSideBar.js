@@ -71,11 +71,13 @@ const SmallSideBar = inject("store")(
                             }}
                         >
                             <Divider style={{ width: "50px" }} />
+                            {this.props.store.userStore.currentOrganization !== undefined &&
                             <MaterialIcon
                                 className="settingsIcon"
                                 icon="tune"
-                                style={{ fontSize: "24px" }}
+                                style={{fontSize: "24px"}}
                             />
+                            }
                         </div>}
                         <div id="toggleBtn" onClick={this.props.onClick}>
                             <Divider style={{ width: "50px" }} />

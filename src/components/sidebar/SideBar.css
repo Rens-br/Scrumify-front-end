@@ -33,7 +33,6 @@
 }
 
 .footer {
-    min-height: 104px;
     position: fixed;
     align-self: flex-end;
     overflow: hidden;
