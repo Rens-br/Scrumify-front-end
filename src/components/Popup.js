@@ -7,7 +7,7 @@ const Popup = (props) => {
         <div className='popupRoot'>
             <div className='popup'>
                 <h1 className="popupTitle">{props.content}</h1>
-                <div className="popupBtn">
+                <div className="popupBtn" onClick={props.onDismiss}>
                     OK
                 </div>
             </div>

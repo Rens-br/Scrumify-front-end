@@ -51,10 +51,6 @@ class UserStore {
         this.registerMessage = response.data.message;
         this.registerCode = response.data.code;
 
-        if(response.data.code === 0) {
-          alert(response.data.message);
-        }
-
         break;
       case "updateUser":
         if(response.data.organizations !== undefined || response.data.organizations.length !== 0) this.rootStore.clientStore.stopLoading();

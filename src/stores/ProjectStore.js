@@ -258,6 +258,7 @@ decorate(ProjectStore, {
   users: observable,
   sprints: observable,
   workItems: observable,
+  projectUsers: observable,
   loadProjectIntoStore: action,
   updateStore: action,
   getProject: action,
