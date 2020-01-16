@@ -31,6 +31,7 @@ const App = inject('store')(observer(function App(props) {
             </Switch>
           </Router>
         </div>
+
     );
   }
 }));

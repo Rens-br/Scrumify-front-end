@@ -8,7 +8,7 @@ const Popup = (props) => {
             <div className='popup'>
                 <h1 className="popupTitle">{props.content}</h1>
                 <div className="popupBtn" onClick={props.onDismiss}>
-                    OK
+                    <p>OK</p>
                 </div>
             </div>
         </div>,
